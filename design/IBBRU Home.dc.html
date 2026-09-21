@@ -341,7 +341,7 @@
       </div>
       <div style="display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr); gap: clamp(28px,4vw,64px); align-items: end;" class="ib-two-col">
         <h2 data-reveal="1" style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px,3.6vw,46px); line-height: 1.08; letter-spacing: -0.015em; margin: 0;">We help teams solve problems, design better experiences, and build usable products.</h2>
-        <p data-reveal="2" style="font-size: 16px; line-height: 1.7; margin: 0; text-align: right; color: color-mix(in srgb, var(--color-text) 78%, transparent);">From complex enterprise workflows to everyday consumer experiences, we take ideas all the way to execution — across research, product design, systems, brand, graphics and motion.</p>
+        <p data-reveal="2" style="font-size: 16px; line-height: 1.7; margin: 0; text-align: right; color: color-mix(in srgb, var(--color-text) 78%, transparent);">From complex enterprise workflows to everyday consumer experiences, we take ideas all the way to execution across&nbsp; &nbsp;research, product design, systems, brand, graphics and motion.</p>
       </div>
 
       <div data-reveal="1" class="ib-svclist">
@@ -349,7 +349,7 @@
           <div class="ib-svc-row">
             <div class="ib-svc-lead">
               <span class="ib-svc-n">{{ s.num }}</span>
-              <h3 class="ib-svc-t">{{ s.name }}</h3>
+              <h3 class="ib-svc-t">{{ s.name }}<sc-if value="{{ s.name2 }}" hint-placeholder-val="{{ false }}"><br>{{ s.name2 }}</sc-if></h3>
             </div>
             <div class="ib-svc-tags">
               <sc-for list="{{ s.caps }}" as="c" hint-placeholder-count="3">
@@ -537,7 +537,7 @@
       <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,320px),1fr)); gap: clamp(20px,2.5vw,28px);">
         <sc-for list="{{ people }}" as="person" hint-placeholder-count="2">
           <div data-reveal="1" class="card" style="padding: clamp(24px,3vw,32px); display:flex; gap: clamp(18px,2.5vw,26px); align-items:flex-start;">
-            <div>
+            <div style="margin-top:16px;">
               <span style="font-family: var(--font-heading); font-size:12px; letter-spacing:0.06em; color: var(--color-accent); font-feature-settings:'tnum' 1;">{{ person.num }}</span>
               <h3 style="font-family: var(--font-heading); font-weight:600; font-size: clamp(22px,2.4vw,28px); margin: 8px 0 4px; letter-spacing:-0.01em;">{{ person.role }}</h3>
               <p style="font-size:13px; letter-spacing:0.02em; margin:0 0 14px; color: var(--color-accent-300);">{{ person.focus }}</p>
@@ -672,7 +672,7 @@ class Component extends DCLogic {
       { num: "01", name: "Product Strategy & Architecture", caps: ["Product Discovery & Definition", "Information Architecture", "UX Audits & Heuristic Evaluations"] },
       { num: "02", name: "Complex Workflows & Enterprise UX", caps: ["Dashboard & Data Visualization", "Enterprise Software Modernization", "Hardware-Software Integration"] },
       { num: "03", name: "Design Systems & Operations", caps: ["Design System Architecture", "Advanced Figma Workflows", "Design-to-Engineering Handoff"] },
-      { num: "04", name: "End-to-End Product Design (0 to 1 & Beyond)", caps: ["MVP Incubation", "Cross-Platform Experience Design"] },
+      { num: "04", name: "End-to-End Product Design", name2: "(0 to 1 & Beyond)", caps: ["MVP Incubation", "Cross-Platform Experience Design"] },
       { num: "05", name: "Brand & Promotional Videos", caps: ["Brand Storytelling", "Product Showcases"] },
     ];
 
