@@ -142,6 +142,77 @@
   [data-theme="light"] .ib-moon { color: color-mix(in srgb, var(--color-text) 42%, transparent); }
   .ib-knob { position: absolute; top: 50%; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: color-mix(in srgb, var(--color-accent) 26%, var(--color-bg)); border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent); transform: translate(30px, -50%); transition: transform .32s cubic-bezier(.4,.1,.2,1), background .3s ease, border-color .3s ease; z-index: 1; }
   [data-theme="light"] .ib-knob { transform: translate(0px, -50%); }
+
+  /* ---- Selected work — books ---- */
+  .ib-shelf { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(16px,2.4vw,30px); margin-top:clamp(30px,4vw,46px); }
+  .ib-book { position:relative; text-align:left; cursor:pointer; background:transparent; border:none; padding:0; perspective:1500px; font:inherit; color:inherit; }
+  .ib-book-inner { position:relative; display:flex; flex-direction:column; min-height:clamp(280px,32vw,352px); padding:clamp(22px,2.6vw,30px) clamp(22px,2.6vw,30px) clamp(22px,2.6vw,30px) clamp(36px,3.6vw,46px); border-radius:5px 10px 10px 5px; background:linear-gradient(135deg,var(--color-neutral-800),var(--color-neutral-900)); border:1px solid color-mix(in srgb,var(--color-neutral-700) 70%,transparent); box-shadow:var(--shadow-md); transform-origin:left center; transition:transform .55s cubic-bezier(.22,.61,.36,1), box-shadow .5s ease, border-color .4s ease; }
+  .ib-book-inner::before { content:""; position:absolute; top:0; bottom:0; left:0; width:clamp(14px,1.6vw,20px); border-radius:5px 0 0 5px; background:linear-gradient(var(--color-accent-800),color-mix(in srgb,var(--color-accent) 32%,var(--color-neutral-900))); box-shadow:inset -3px 0 5px rgba(0,0,0,.4); }
+  .ib-book-inner::after { content:""; position:absolute; top:7px; bottom:7px; right:0; width:6px; border-radius:0 4px 4px 0; background:repeating-linear-gradient(to right, color-mix(in srgb,var(--color-text) 16%,transparent) 0 1px, transparent 1px 3px); }
+  .ib-book:hover .ib-book-inner { transform:rotateY(-15deg); box-shadow:var(--shadow-lg); border-color:color-mix(in srgb,var(--color-accent) 45%,transparent); }
+  .ib-book:focus-visible { outline:2px solid var(--color-accent); outline-offset:4px; border-radius:10px; }
+  .ib-book-vol { font-family:var(--font-heading); font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent); }
+  .ib-book-title { font-family:var(--font-heading); font-weight:600; font-size:clamp(21px,2.3vw,27px); line-height:1.12; letter-spacing:-0.01em; margin:14px 0 0; }
+  .ib-book-foot { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto; padding-top:22px; }
+  .ib-book-count { font-size:13px; color:color-mix(in srgb,var(--color-text) 60%,transparent); }
+  .ib-book-open-cta { font-size:14px; color:var(--color-accent-300); display:inline-flex; align-items:center; gap:7px; }
+  .ib-book-art { position:absolute; right:clamp(16px,2vw,22px); bottom:clamp(58px,7vw,74px); width:clamp(74px,9vw,100px); height:auto; color:var(--color-text); opacity:.85; pointer-events:none; }
+  .ib-book--a { --color-accent: #8f81d8; }
+  .ib-book--b { --color-accent: #4f9ba6; }
+  .ib-book--c { --color-accent: #dd8060; }
+  .ib-book--a .ib-book-inner, .ib-book--b .ib-book-inner { background:linear-gradient(145deg, color-mix(in srgb, var(--color-accent) 26%, var(--color-neutral-900)), color-mix(in srgb, var(--color-accent) 7%, var(--color-neutral-900))); }
+  .ib-book--c .ib-book-inner { background:radial-gradient(135% 100% at 82% 6%, color-mix(in srgb, var(--color-accent) 30%, var(--color-neutral-900)), color-mix(in srgb, var(--color-accent) 8%, var(--color-neutral-900))); }
+  .ib-book--a .ib-book-inner::before, .ib-book--b .ib-book-inner::before, .ib-book--c .ib-book-inner::before { background:linear-gradient(color-mix(in srgb, var(--color-accent) 80%, var(--color-neutral-900)), color-mix(in srgb, var(--color-accent) 40%, var(--color-neutral-900))); }
+  .ib-book .ib-book-vol { color: color-mix(in srgb, var(--color-accent) 64%, var(--color-text)); }
+  .ib-book .ib-book-open-cta { color: color-mix(in srgb, var(--color-accent) 55%, var(--color-text)); }
+  .ib-book:hover .ib-book-inner { border-color: color-mix(in srgb, var(--color-accent) 60%, transparent) !important; }
+  .ib-open { margin-top:clamp(30px,4vw,46px); }
+  .ib-open-bar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin-bottom:20px; }
+  .ib-open-bar-title { display:flex; align-items:center; gap:14px; }
+  .ib-open-bar-title > span:first-child { width:26px; height:1px; background:var(--color-accent); }
+  .ib-open-bar-title h3 { font-family:var(--font-heading); font-weight:600; font-size:clamp(17px,1.9vw,22px); margin:0; letter-spacing:-0.01em; }
+  .ib-book-close { display:inline-flex; align-items:center; gap:8px; padding:9px 16px; border:1px solid var(--color-neutral-700); border-radius:999px; background:transparent; color:var(--color-text); font:inherit; font-size:13px; cursor:pointer; transition:border-color .3s ease, background .3s ease; }
+  .ib-book-close:hover { border-color:color-mix(in srgb,var(--color-accent) 55%,transparent); background:color-mix(in srgb,var(--color-accent-900) 30%,transparent); }
+  .ib-book-close:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
+  .ib-spread { position:relative; display:grid; grid-template-columns:1fr 1fr; border:1px solid color-mix(in srgb,var(--color-neutral-700) 65%,transparent); border-radius:var(--radius-lg); overflow:hidden; background:var(--color-neutral-900); box-shadow:var(--shadow-lg); min-height:clamp(340px,38vw,440px); }
+  .ib-spread::before { content:""; position:absolute; top:0; bottom:0; left:50%; width:34px; transform:translateX(-50%); background:linear-gradient(to right, transparent, rgba(0,0,0,.3), transparent); pointer-events:none; z-index:3; }
+  .ib-page { padding:clamp(26px,3.2vw,42px); display:flex; flex-direction:column; }
+  .ib-page-left { background:linear-gradient(135deg,color-mix(in srgb,var(--color-accent-900) 28%,var(--color-neutral-900)),var(--color-neutral-900)); }
+  .ib-p-num { font-family:var(--font-heading); font-size:13px; color:var(--color-accent); font-feature-settings:'tnum' 1; }
+  .ib-p-title { font-family:var(--font-heading); font-weight:600; font-size:clamp(24px,2.8vw,34px); line-height:1.08; letter-spacing:-0.02em; margin:14px 0 16px; }
+  .ib-p-summary { font-size:clamp(15px,1.5vw,17px); line-height:1.6; color:color-mix(in srgb,var(--color-text) 80%,transparent); margin:0; }
+  .ib-p-metric { align-self:flex-start; margin-top:auto; padding:5px 13px; border:1px solid color-mix(in srgb,var(--color-accent) 42%,transparent); border-radius:999px; font-size:12.5px; color:var(--color-accent-300); }
+  .ib-page-right { gap:16px; justify-content:center; }
+  .ib-flabel { display:flex; align-items:center; gap:8px; margin-bottom:5px; }
+  .ib-flabel span:first-child { width:14px; height:1px; background:var(--color-accent); }
+  .ib-flabel span:last-child { font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-accent); }
+  .ib-field p { font-size:13.5px; line-height:1.58; margin:0; color:color-mix(in srgb,var(--color-text) 72%,transparent); }
+  .ib-page-turn { position:absolute; top:0; bottom:0; left:50%; right:0; display:none; transform-origin:left center; z-index:4; backface-visibility:hidden; background:linear-gradient(135deg,color-mix(in srgb,var(--color-accent-900) 22%,var(--color-neutral-900)),var(--color-neutral-800)); box-shadow:0 0 40px rgba(0,0,0,.45); }
+  .ib-book-nav { display:flex; align-items:center; justify-content:center; gap:clamp(18px,3vw,34px); margin-top:22px; }
+  .ib-nav-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border:1px solid var(--color-neutral-700); border-radius:999px; background:transparent; color:var(--color-text); font:inherit; font-size:14px; cursor:pointer; transition:border-color .3s ease, background .3s ease, opacity .3s ease; }
+  .ib-nav-btn:hover:not(:disabled) { border-color:color-mix(in srgb,var(--color-accent) 55%,transparent); background:color-mix(in srgb,var(--color-accent-900) 30%,transparent); }
+  .ib-nav-btn:disabled { opacity:.35; cursor:not-allowed; }
+  .ib-nav-btn:focus-visible { outline:2px solid var(--color-accent); outline-offset:2px; }
+  .ib-page-count { font-family:var(--font-heading); font-size:14px; color:color-mix(in srgb,var(--color-text) 62%,transparent); font-feature-settings:'tnum' 1; min-width:70px; text-align:center; }
+  @media (max-width:720px){
+    .ib-shelf { grid-template-columns:1fr; }
+    .ib-spread { grid-template-columns:1fr; min-height:0; }
+    .ib-spread::before, .ib-page-turn { display:none !important; }
+    .ib-p-metric { margin-top:20px; }
+  }
+  /* ---- Services list ---- */
+  .ib-svclist { margin-top:clamp(36px,5vw,56px); border-top:1px solid color-mix(in srgb,var(--color-neutral-700) 55%,transparent); }
+  .ib-svc-row { display:grid; grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr); gap:clamp(16px,3vw,48px); align-items:center; padding:clamp(22px,2.8vw,32px) clamp(8px,1.4vw,18px); border-bottom:1px solid color-mix(in srgb,var(--color-neutral-700) 55%,transparent); transition:background .3s ease; }
+  .ib-svc-row:hover { background:color-mix(in srgb,var(--color-accent-900) 22%,transparent); }
+  .ib-svc-lead { display:flex; align-items:baseline; gap:clamp(14px,1.6vw,22px); }
+  .ib-svc-n { font-family:var(--font-heading); font-size:13px; color:var(--color-accent); font-feature-settings:'tnum' 1; flex:none; }
+  .ib-svc-t { font-family:var(--font-heading); font-weight:600; font-size:clamp(20px,2.2vw,27px); line-height:1.14; letter-spacing:-0.015em; margin:0; }
+  .ib-svc-tags { display:flex; flex-wrap:wrap; gap:9px; }
+  .ib-cap { display:inline-flex; align-items:center; padding:7px 14px; border:1px solid color-mix(in srgb,var(--color-neutral-700) 80%,transparent); border-radius:999px; font-size:13px; line-height:1; color:color-mix(in srgb,var(--color-text) 82%,transparent); background:color-mix(in srgb,var(--color-neutral-900) 55%,transparent); transition:border-color .3s ease; }
+  .ib-svc-row:hover .ib-cap { border-color:color-mix(in srgb,var(--color-accent) 38%,transparent); }
+  @media (max-width:760px){
+    .ib-svc-row { grid-template-columns:1fr; gap:16px; }
+  }
 </style>
 </helmet>
 
@@ -270,122 +341,20 @@
         <p data-reveal="2" style="font-size: 16px; line-height: 1.7; margin: 0; text-align: right; color: color-mix(in srgb, var(--color-text) 78%, transparent);">From complex enterprise workflows to everyday consumer experiences, we take ideas all the way to execution — across research, product design, systems, brand, graphics and motion.</p>
       </div>
 
-      <div data-reveal="1" style="margin-top: clamp(36px,5vw,56px); padding: clamp(22px,3vw,30px) clamp(22px,3vw,32px); border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 55%, transparent);">
-        <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap: 8px 22px; margin-bottom: 18px;">
-          <span style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color: var(--color-accent);">Experience</span>
-          <span style="font-size:14.5px; line-height:1.5; color: color-mix(in srgb,var(--color-text) 74%,transparent);">Across B2B enterprise and B2C products used by millions of people.</span>
-        </div>
-        <div style="display:flex; flex-wrap:wrap; gap: 14px 36px; align-items:center;">
-          <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">SAP Labs</span>
-          <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">Victoria's Secret</span>
-          <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">WayCool Foods</span>
-          <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">OpenText</span>
-          <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">ChargePoint</span>
-        </div>
-      </div>
-      <div data-reveal="1" class="ib-acc">
-        <details class="ib-svc" open="open">
-          <summary class="ib-svc-head">
-            <span class="ib-svc-num">01</span>
-            <h3 class="ib-svc-name">Product Strategy &amp; Architecture</h3>
-            <span class="ib-svc-count">3 capabilities</span>
-            <span class="ib-svc-plus" aria-hidden="true"></span>
-          </summary>
-          <div class="ib-svc-body">
-            <div>
-              <h4>Product Discovery &amp; Definition</h4>
-              <p>Uncovering core user needs through research audits, stakeholder workshops, and deep-dive problem framing.</p>
+      <div data-reveal="1" class="ib-svclist">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
+          <div class="ib-svc-row">
+            <div class="ib-svc-lead">
+              <span class="ib-svc-n">{{ s.num }}</span>
+              <h3 class="ib-svc-t">{{ s.name }}</h3>
             </div>
-            <div>
-              <h4>Information Architecture</h4>
-              <p>Structuring complex data ecosystems and multi-layered navigation to ensure seamless user flows across large-scale software.</p>
-            </div>
-            <div>
-              <h4>UX Audits &amp; Heuristic Evaluations</h4>
-              <p>Evaluating existing legacy platforms or digital products to pinpoint usability bottlenecks, accessibility gaps, and optimization opportunities.</p>
+            <div class="ib-svc-tags">
+              <sc-for list="{{ s.caps }}" as="c" hint-placeholder-count="3">
+                <span class="ib-cap">{{ c }}</span>
+              </sc-for>
             </div>
           </div>
-        </details>
-        <details class="ib-svc">
-          <summary class="ib-svc-head">
-            <span class="ib-svc-num">02</span>
-            <h3 class="ib-svc-name">Complex Workflows &amp; Enterprise UX</h3>
-            <span class="ib-svc-count">3 capabilities</span>
-            <span class="ib-svc-plus" aria-hidden="true"></span>
-          </summary>
-          <div class="ib-svc-body">
-            <div>
-              <h4>Dashboard &amp; Data Visualization</h4>
-              <p>Designing high-density monitoring tools, analytics panels, and real-time operational consoles built for clarity and speed.</p>
-            </div>
-            <div>
-              <h4>Enterprise Software Modernization</h4>
-              <p>Overhauling legacy enterprise tools into modern, efficient, and streamlined work environments.</p>
-            </div>
-            <div>
-              <h4>Hardware-Software Integration</h4>
-              <p>Bridging the gap between physical hardware ecosystems and digital control panels.</p>
-            </div>
-          </div>
-        </details>
-        <details class="ib-svc">
-          <summary class="ib-svc-head">
-            <span class="ib-svc-num">03</span>
-            <h3 class="ib-svc-name">Design Systems &amp; Operations</h3>
-            <span class="ib-svc-count">3 capabilities</span>
-            <span class="ib-svc-plus" aria-hidden="true"></span>
-          </summary>
-          <div class="ib-svc-body">
-            <div>
-              <h4>Design System Architecture</h4>
-              <p>Building, scaling, and governing robust design systems from scratch—incorporating design tokens, component variant libraries, and comprehensive documentation.</p>
-            </div>
-            <div>
-              <h4>Advanced Figma Workflows</h4>
-              <p>Streamlining design operations with optimized component structures, variable binding, and scalable auto-layout frameworks.</p>
-            </div>
-            <div>
-              <h4>Design-to-Engineering Handoff</h4>
-              <p>Creating meticulous, developer-friendly specifications that bridge design intent with clean implementation.</p>
-            </div>
-          </div>
-        </details>
-        <details class="ib-svc">
-          <summary class="ib-svc-head">
-            <span class="ib-svc-num">04</span>
-            <h3 class="ib-svc-name">End-to-End Product Design (0 to 1 &amp; Beyond)</h3>
-            <span class="ib-svc-count">2 capabilities</span>
-            <span class="ib-svc-plus" aria-hidden="true"></span>
-          </summary>
-          <div class="ib-svc-body">
-            <div>
-              <h4>MVP Incubation</h4>
-              <p>Taking a product concept from early-stage sketching and wireframing through to validation and launch-ready UI/UX execution.</p>
-            </div>
-            <div>
-              <h4>Cross-Platform Experience Design</h4>
-              <p>Crafting cohesive, multi-device experiences that scale effortlessly across web and mobile applications.</p>
-            </div>
-          </div>
-        </details>
-        <details class="ib-svc">
-          <summary class="ib-svc-head">
-            <span class="ib-svc-num">05</span>
-            <h3 class="ib-svc-name">Brand &amp; Promotional Videos</h3>
-            <span class="ib-svc-count">2 capabilities</span>
-            <span class="ib-svc-plus" aria-hidden="true"></span>
-          </summary>
-          <div class="ib-svc-body">
-            <div>
-              <h4>Brand Storytelling</h4>
-              <p>Crafting compelling, high-impact videos that elevate your brand identity and communicate your core message.</p>
-            </div>
-            <div>
-              <h4>Product Showcases</h4>
-              <p>Producing engaging visual content designed to highlight your digital products, features, and overall value proposition.</p>
-            </div>
-          </div>
-        </details>
+        </sc-for>
       </div>
 
     </section>
@@ -394,52 +363,113 @@
 
     <!-- ============ WORK ============ -->
     <section id="work" style="padding: clamp(56px,8vw,104px) 0;">
-      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: clamp(36px,5vw,56px);">
-        <div data-reveal="1" style="max-width: 40ch;">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: clamp(20px,3vw,32px);">
+        <div data-reveal="1" style="max-width: 44ch;">
           <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
             <span style="width:44px;height:1px;background:var(--color-accent);"></span>
             <span style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color: var(--color-accent);">Selected work</span>
           </div>
           <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(32px,4.2vw,54px); line-height: 1.03; letter-spacing: -0.02em; margin: 0;">A few problems we've solved.</h2>
         </div>
-        <a href="#work" class="ib-link" data-reveal="2" style="color: var(--color-accent-300); text-decoration:none; font-size:15px; white-space:nowrap;">View all work <span class="ib-arrow">→</span></a>
+        <p data-reveal="2" style="color: color-mix(in srgb, var(--color-text) 62%, transparent); font-size: 14.5px; line-height:1.6; max-width: 32ch; margin: 0;">Three volumes of work. Open one to read the problems inside — page by page.</p>
       </div>
-      <div style="margin-top: clamp(6px,1vw,14px);">
-        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="6">
-          <sc-if value="{{ p.groupStart }}" hint-placeholder-val="{{ true }}">
-            <div class="ib-work-group">
-              <span class="ib-work-mark"></span>
-              <h3>{{ p.group }}</h3>
+
+      <sc-if value="{{ shelfOpen }}" hint-placeholder-val="{{ true }}">
+        <div class="ib-shelf" data-reveal="1">
+          <button type="button" class="ib-book ib-book--a" onClick="{{ openA }}" aria-label="Open Designing for Clarity, 2 problems">
+            <span class="ib-book-inner">
+              <span>
+                <span class="ib-book-vol">Volume 01</span>
+                <h3 class="ib-book-title">Designing for Clarity</h3>
+              </span>
+              <svg class="ib-book-art" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                <circle cx="60" cy="60" r="47" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></circle>
+                <circle cx="60" cy="60" r="32" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></circle>
+                <circle cx="60" cy="60" r="17" stroke="var(--color-accent)" stroke-width="2.5"></circle>
+                <circle cx="60" cy="60" r="5" fill="var(--color-accent)"></circle>
+                <line x1="60" y1="6" x2="60" y2="20" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></line>
+                <line x1="60" y1="100" x2="60" y2="114" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></line>
+                <line x1="6" y1="60" x2="20" y2="60" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></line>
+                <line x1="100" y1="60" x2="114" y2="60" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></line>
+              </svg>
+              <span class="ib-book-foot">
+                <span class="ib-book-count">2 problems</span>
+                <span class="ib-book-open-cta">Open <span class="ib-arrow">→</span></span>
+              </span>
+            </span>
+          </button>
+          <button type="button" class="ib-book ib-book--b" onClick="{{ openB }}" aria-label="Open Designing for Evidence, 1 problem">
+            <span class="ib-book-inner">
+              <span>
+                <span class="ib-book-vol">Volume 02</span>
+                <h3 class="ib-book-title">Designing for Evidence</h3>
+              </span>
+              <svg class="ib-book-art" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                <line x1="20" y1="104" x2="104" y2="104" stroke="currentColor" stroke-opacity=".16" stroke-width="2"></line>
+                <rect x="28" y="66" width="16" height="38" rx="2" stroke="currentColor" stroke-opacity=".16" stroke-width="2"></rect>
+                <rect x="52" y="48" width="16" height="56" rx="2" stroke="currentColor" stroke-opacity=".16" stroke-width="2"></rect>
+                <rect x="76" y="30" width="16" height="74" rx="2" fill="var(--color-accent)" fill-opacity=".22" stroke="var(--color-accent)" stroke-width="2.5"></rect>
+                <path d="M30 40 l10 10 l22 -26" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <span class="ib-book-foot">
+                <span class="ib-book-count">1 problem</span>
+                <span class="ib-book-open-cta">Open <span class="ib-arrow">→</span></span>
+              </span>
+            </span>
+          </button>
+          <button type="button" class="ib-book ib-book--c" onClick="{{ openC }}" aria-label="Open Designing for Accessibility, 3 problems">
+            <span class="ib-book-inner">
+              <span>
+                <span class="ib-book-vol">Volume 03</span>
+                <h3 class="ib-book-title">Designing for Accessibility</h3>
+              </span>
+              <svg class="ib-book-art" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                <circle cx="60" cy="60" r="47" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></circle>
+                <circle cx="60" cy="31" r="7" fill="var(--color-accent)"></circle>
+                <path d="M34 46 h52" stroke="var(--color-accent)" stroke-width="2.6" stroke-linecap="round"></path>
+                <path d="M60 44 v26" stroke="var(--color-accent)" stroke-width="2.6" stroke-linecap="round"></path>
+                <path d="M60 70 l-14 24 M60 70 l14 24" stroke="var(--color-accent)" stroke-width="2.6" stroke-linecap="round"></path>
+              </svg>
+              <span class="ib-book-foot">
+                <span class="ib-book-count">3 problems</span>
+                <span class="ib-book-open-cta">Open <span class="ib-arrow">→</span></span>
+              </span>
+            </span>
+          </button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ bookOpen }}" hint-placeholder-val="{{ false }}">
+        <div class="ib-open" data-reveal="1">
+          <div class="ib-open-bar">
+            <div class="ib-open-bar-title">
+              <span></span>
+              <h3>{{ curGroup }}</h3>
             </div>
-          </sc-if>
-          <details class="ib-case" data-reveal="1">
-            <summary class="ib-case-row">
-              <span class="ib-case-num">{{ p.num }}</span>
-              <h4 class="ib-case-title">{{ p.title }}</h4>
-              <span class="ib-case-line">{{ p.summary }}<sc-if value="{{ p.metric }}" hint-placeholder-val="{{ false }}"><span class="ib-case-metric">{{ p.metric }}</span></sc-if></span>
-              <span class="ib-case-cta">Read in detail <span class="ib-arrow">→</span></span>
-            </summary>
-            <div class="ib-case-body">
-              <div class="ib-case-field">
-                <div class="ib-case-label"><span></span><span>Problem</span></div>
-                <p>{{ p.problem }}</p>
-              </div>
-              <div class="ib-case-field">
-                <div class="ib-case-label"><span></span><span>Insight</span></div>
-                <p>{{ p.insight }}</p>
-              </div>
-              <div class="ib-case-field">
-                <div class="ib-case-label"><span></span><span>Solution</span></div>
-                <p>{{ p.solution }}</p>
-              </div>
-              <div class="ib-case-field">
-                <div class="ib-case-label"><span></span><span>Impact</span></div>
-                <p>{{ p.impact }}</p>
-              </div>
+            <button type="button" class="ib-book-close" onClick="{{ closeBook }}">← Back to shelf</button>
+          </div>
+          <div class="ib-spread">
+            <div class="ib-page ib-page-left">
+              <span class="ib-p-num">{{ curNum }}</span>
+              <h4 class="ib-p-title">{{ curTitle }}</h4>
+              <p class="ib-p-summary">{{ curSummary }}</p>
+              <sc-if value="{{ curMetric }}" hint-placeholder-val="{{ false }}"><span class="ib-p-metric">{{ curMetric }}</span></sc-if>
             </div>
-          </details>
-        </sc-for>
-      </div>
+            <div class="ib-page ib-page-right">
+              <div class="ib-field"><div class="ib-flabel"><span></span><span>Problem</span></div><p>{{ curProblem }}</p></div>
+              <div class="ib-field"><div class="ib-flabel"><span></span><span>Insight</span></div><p>{{ curInsight }}</p></div>
+              <div class="ib-field"><div class="ib-flabel"><span></span><span>Solution</span></div><p>{{ curSolution }}</p></div>
+              <div class="ib-field"><div class="ib-flabel"><span></span><span>Impact</span></div><p>{{ curImpact }}</p></div>
+            </div>
+            <div class="ib-page-turn" aria-hidden="true"></div>
+          </div>
+          <div class="ib-book-nav">
+            <button type="button" class="ib-nav-btn" onClick="{{ prevPage }}" disabled="{{ noPrev }}"><span class="ib-arrow" style="transform:rotate(180deg)">→</span> Prev</button>
+            <span class="ib-page-count">{{ pageLabel }}</span>
+            <button type="button" class="ib-nav-btn" onClick="{{ nextPage }}" disabled="{{ noNext }}">Next <span class="ib-arrow">→</span></button>
+          </div>
+        </div>
+      </sc-if>
     </section>
 
     <div style="height:1px; background: linear-gradient(to right, transparent, var(--color-divider) 48px calc(100% - 48px), transparent);"></div>
@@ -488,6 +518,19 @@
       </div>
 
       <p data-reveal="1" style="font-size:15.5px; line-height:1.6; margin: clamp(44px,6vw,72px) 0 18px; color: color-mix(in srgb, var(--color-text) 74%, transparent);">Our collective journey spans world-class brands across consumer and enterprise landscapes:</p>
+      <div data-reveal="1" style="padding: clamp(22px,3vw,30px) clamp(22px,3vw,32px); border:1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 55%, transparent);">
+        <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap: 8px 22px; margin-bottom: 18px;">
+          <span style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color: var(--color-accent);">Experience</span>
+          <span style="font-size:14.5px; line-height:1.5; color: color-mix(in srgb,var(--color-text) 74%,transparent);">Across B2B enterprise and B2C products used by millions of people.</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap: 14px 36px; align-items:center;">
+          <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">SAP Labs</span>
+          <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">Victoria's Secret</span>
+          <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">WayCool Foods</span>
+          <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">OpenText</span>
+          <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">ChargePoint</span>
+        </div>
+      </div>
       <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,320px),1fr)); gap: clamp(20px,2.5vw,28px);">
         <sc-for list="{{ people }}" as="person" hint-placeholder-count="2">
           <div data-reveal="1" class="card" style="padding: clamp(24px,3vw,32px); display:flex; gap: clamp(18px,2.5vw,26px); align-items:flex-start;">
@@ -599,7 +642,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;'dark'|'light'&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
 class Component extends DCLogic {
-  state = { navOpen: false, theme: (() => { try { return localStorage.getItem('ibbru-theme'); } catch (e) { return null; } })() || 'dark' };
+  state = { navOpen: false, openBook: null, page: 0, theme: (() => { try { return localStorage.getItem('ibbru-theme'); } catch (e) { return null; } })() || 'dark' };
 
   renderVals() {
     const rawWork = [
@@ -626,13 +669,26 @@ class Component extends DCLogic {
       },
     ];
 
-    let caseNo = 0;
-    const projects = [];
-    for (const g of rawWork) {
-      g.cases.forEach((c, i) => {
-        projects.push({ ...c, num: String(++caseNo).padStart(2, "0"), group: g.group, groupStart: i === 0 });
-      });
-    }
+    const services = [
+      { num: "01", name: "Product Strategy & Architecture", caps: ["Product Discovery & Definition", "Information Architecture", "UX Audits & Heuristic Evaluations"] },
+      { num: "02", name: "Complex Workflows & Enterprise UX", caps: ["Dashboard & Data Visualization", "Enterprise Software Modernization", "Hardware-Software Integration"] },
+      { num: "03", name: "Design Systems & Operations", caps: ["Design System Architecture", "Advanced Figma Workflows", "Design-to-Engineering Handoff"] },
+      { num: "04", name: "End-to-End Product Design (0 to 1 & Beyond)", caps: ["MVP Incubation", "Cross-Platform Experience Design"] },
+      { num: "05", name: "Brand & Promotional Videos", caps: ["Brand Storytelling", "Product Showcases"] },
+    ];
+
+    const books = rawWork.map((g, i) => ({
+      vol: "Volume " + String(i + 1).padStart(2, "0"),
+      group: g.group,
+      countLabel: g.cases.length + (g.cases.length === 1 ? " problem" : " problems"),
+      aria: "Open " + g.group + ", " + g.cases.length + " problems",
+      open: () => { this._dir = 0; this.setState({ openBook: i, page: 0 }); },
+    }));
+    const ob = this.state.openBook;
+    const curBook = ob == null ? null : rawWork[ob];
+    const total = curBook ? curBook.cases.length : 0;
+    const page = curBook ? Math.min(this.state.page, total - 1) : 0;
+    const cur = curBook ? curBook.cases[page] : {};
 
     const rawSteps = [
       { num: "01", title: "Understand", body: "Ask better questions. Research context, users and business goals." },
@@ -665,7 +721,27 @@ class Component extends DCLogic {
         try { localStorage.setItem('ibbru-theme', t); } catch (e) {}
         return { theme: t };
       }),
-      projects, steps, people, insights,
+      services, books, steps, people, insights,
+      shelfOpen: ob == null,
+      bookOpen: ob != null,
+      curGroup: curBook ? curBook.group : "",
+      curNum: String(page + 1).padStart(2, "0"),
+      curTitle: cur.title || "",
+      curSummary: cur.summary || "",
+      curMetric: cur.metric || "",
+      curProblem: cur.problem || "",
+      curInsight: cur.insight || "",
+      curSolution: cur.solution || "",
+      curImpact: cur.impact || "",
+      pageLabel: total ? (String(page + 1).padStart(2, "0") + " / " + String(total).padStart(2, "0")) : "",
+      noPrev: page <= 0,
+      noNext: page >= total - 1,
+      nextPage: () => { this._dir = 1; this.setState(s => ({ page: Math.min(s.page + 1, total - 1) })); },
+      prevPage: () => { this._dir = -1; this.setState(s => ({ page: Math.max(s.page - 1, 0) })); },
+      closeBook: () => this.setState({ openBook: null, page: 0 }),
+      openA: () => { this._dir = 0; this.setState({ openBook: 0, page: 0 }); },
+      openB: () => { this._dir = 0; this.setState({ openBook: 1, page: 0 }); },
+      openC: () => { this._dir = 0; this.setState({ openBook: 2, page: 0 }); },
     };
   }
 
@@ -699,6 +775,21 @@ class Component extends DCLogic {
     window.addEventListener('scroll', this._onScroll, { passive: true });
     window.addEventListener('resize', this._onScroll, { passive: true });
     this._safety = setTimeout(() => els.forEach(show), 3000);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.openBook != null && prevState.openBook === this.state.openBook && prevState.page !== this.state.page && this._dir) {
+      const turn = document.querySelector('.ib-page-turn');
+      if (turn) {
+        const fwd = this._dir > 0;
+        turn.style.display = 'block';
+        const kf = fwd
+          ? [{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(-180deg)' }]
+          : [{ transform: 'rotateY(-180deg)' }, { transform: 'rotateY(0deg)' }];
+        const anim = turn.animate(kf, { duration: 560, easing: 'cubic-bezier(.4,.05,.25,1)' });
+        anim.onfinish = () => { turn.style.display = 'none'; };
+      }
+    }
   }
 
   componentWillUnmount() {
