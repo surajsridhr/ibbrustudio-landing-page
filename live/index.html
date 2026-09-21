@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IBBRU — Complexity, made simple.</title>
+<meta name="description" content="IBBRU is an independent product design studio. We help teams solve problems, design better experiences, and build usable products.">
+<meta property="og:title" content="IBBRU — Complexity, made simple.">
+<meta property="og:description" content="Independent product design studio — product strategy, enterprise UX, design systems, 0-to-1 product design and brand video.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<div class="ib-page-bg" data-theme="dark" style="font-family: var(--font-body); color: var(--color-text); background: radial-gradient(1200px 720px at 82% -180px, color-mix(in srgb, var(--color-accent-900) 72%, transparent), transparent 60%), radial-gradient(1100px 900px at -12% 102%, color-mix(in srgb, black 30%, transparent), transparent 55%), var(--color-bg); min-height: 100vh; overflow-x: hidden; text-wrap: pretty;">
+
+  <svg width="0" height="0" aria-hidden="true" style="position: absolute;">
+    <defs>
+      <linearGradient id="ib-bodyA" x1="0" y1="0" x2="0.35" y2="1">
+        <stop offset="0" stop-color="#a99cec"></stop>
+        <stop offset="1" stop-color="#7867cf"></stop>
+      </linearGradient>
+      <radialGradient id="ib-headA" cx="0.38" cy="0.34" r="0.75">
+        <stop offset="0" stop-color="#b8adf0"></stop>
+        <stop offset="1" stop-color="#8f81d8"></stop>
+      </radialGradient>
+      <linearGradient id="ib-bodyB" x1="0" y1="0" x2="0.35" y2="1">
+        <stop offset="0" stop-color="#e0b492"></stop>
+        <stop offset="1" stop-color="#bd8154"></stop>
+      </linearGradient>
+      <radialGradient id="ib-headB" cx="0.38" cy="0.34" r="0.75">
+        <stop offset="0" stop-color="#ecc6a5"></stop>
+        <stop offset="1" stop-color="#d19c72"></stop>
+      </radialGradient>
+      <symbol id="ib-dollA" viewBox="0 0 100 152">
+        <ellipse cx="50" cy="147" rx="26" ry="3.6" fill="#000" opacity="0.22"></ellipse>
+        <path d="M31,64 C31,50 69,50 69,64 L77,123 C78,134 70,141 59,141 L41,141 C30,141 22,134 23,123 Z" fill="url(#ib-bodyA)"></path>
+        <path d="M31,64 C31,50 69,50 69,64 L70,72 C57,77 43,77 30,72 Z" fill="#c4baf3" opacity="0.55"></path>
+        <path d="M50,50 C41,50 34,55 32,62 L30,72 C43,77 57,77 70,72 L68,62 C66,55 59,50 50,50 Z" fill="#8a7cd6" opacity="0.5"></path>
+        <ellipse cx="41" cy="94" rx="9" ry="22" fill="#fff" opacity="0.07"></ellipse>
+        <circle cx="50" cy="33" r="24" fill="url(#ib-headA)"></circle>
+        <ellipse cx="42" cy="26" rx="9" ry="6.5" fill="#fff" opacity="0.28"></ellipse>
+        <path d="M26,30 A24 24 0 0 1 74,30 Q50,20 26,30 Z" fill="#7867cf"></path>
+        <ellipse cx="35" cy="43" rx="4.2" ry="2.8" fill="#e79ac0" opacity="0.4"></ellipse>
+        <ellipse cx="65" cy="43" rx="4.2" ry="2.8" fill="#e79ac0" opacity="0.4"></ellipse>
+        <circle cx="40" cy="37" r="7.6" fill="#fbfaff" opacity="0.92"></circle>
+        <circle cx="60" cy="37" r="7.6" fill="#fbfaff" opacity="0.92"></circle>
+        <circle cx="40" cy="37" r="7.6" fill="none" stroke="#2c2846" stroke-width="2.3"></circle>
+        <circle cx="60" cy="37" r="7.6" fill="none" stroke="#2c2846" stroke-width="2.3"></circle>
+        <line x1="47.6" y1="37" x2="52.4" y2="37" stroke="#2c2846" stroke-width="2.3"></line>
+        <line x1="67.5" y1="34" x2="73" y2="31" stroke="#2c2846" stroke-width="2.1" stroke-linecap="round"></line>
+        <circle cx="40" cy="37.5" r="2.2" fill="#2c2846"></circle>
+        <circle cx="60" cy="37.5" r="2.2" fill="#2c2846"></circle>
+        <path d="M45,48 Q50,50.5 55,48" fill="none" stroke="#2c2846" stroke-width="1.9" stroke-linecap="round"></path>
+      </symbol>
+      <symbol id="ib-dollB" viewBox="0 0 100 152">
+        <ellipse cx="50" cy="147" rx="26" ry="3.6" fill="#000" opacity="0.22"></ellipse>
+        <path d="M31,64 C31,50 69,50 69,64 L77,123 C78,134 70,141 59,141 L41,141 C30,141 22,134 23,123 Z" fill="url(#ib-bodyB)"></path>
+        <path d="M31,64 C31,50 69,50 69,64 L70,72 C57,77 43,77 30,72 Z" fill="#eecaa9" opacity="0.55"></path>
+        <path d="M50,50 C41,50 34,55 32,62 L30,72 C43,77 57,77 70,72 L68,62 C66,55 59,50 50,50 Z" fill="#b57e50" opacity="0.5"></path>
+        <ellipse cx="41" cy="94" rx="9" ry="22" fill="#fff" opacity="0.07"></ellipse>
+        <circle cx="50" cy="33" r="24" fill="url(#ib-headB)"></circle>
+        <ellipse cx="42" cy="26" rx="9" ry="6.5" fill="#fff" opacity="0.28"></ellipse>
+        <path d="M27,24 Q38,7 52,13 Q68,6 73,24 Q64,17 50,19 Q37,17 27,24 Z" fill="#8a5a34"></path>
+        <path d="M49,10 Q56,6 58,13" fill="none" stroke="#8a5a34" stroke-width="3" stroke-linecap="round"></path>
+        <ellipse cx="35" cy="43" rx="4.4" ry="3" fill="#e06a4a" opacity="0.32"></ellipse>
+        <ellipse cx="65" cy="43" rx="4.4" ry="3" fill="#e06a4a" opacity="0.32"></ellipse>
+        <circle cx="41" cy="37.5" r="2.6" fill="#3a2a1c"></circle>
+        <circle cx="59" cy="37.5" r="2.6" fill="#3a2a1c"></circle>
+        <circle cx="41.9" cy="36.6" r="0.9" fill="#fff"></circle>
+        <circle cx="59.9" cy="36.6" r="0.9" fill="#fff"></circle>
+        <path d="M43,46 Q50,52 57,46" fill="none" stroke="#3a2a1c" stroke-width="2.1" stroke-linecap="round"></path>
+      </symbol>
+    </defs>
+  </svg>
+
+  <nav class="nav" style="position: sticky; top: 0px; z-index: 50; display: flex; align-items: center; gap: var(--space-5); padding: var(--space-3) clamp(20px,5vw,72px); backdrop-filter: blur(14px); background: color-mix(in srgb, var(--color-bg) 78%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--color-neutral-700) 70%, transparent);">
+    <a href="#top" style="font-family: var(--font-heading); font-weight: 700; font-size: 20px; letter-spacing: 0.02em; color: var(--color-text); text-decoration: none;">IBBRU</a>
+    <div style="flex: 1 1 0%;"></div>
+    <div class="ib-navlinks" style="display: none; align-items: center; gap: clamp(18px, 2vw, 30px); padding: 8px 16px;">
+      <a href="#work" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Work</a>
+      <a href="#services" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Services</a>
+      <a href="#about" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">About</a>
+      <a href="#focus" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Insights</a>
+      <a href="#contact" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Contact</a>
+    </div>
+    
+    <a href="#contact" class="btn btn-primary" style="text-decoration: none; white-space: nowrap; margin-left: 16px; margin-right: 16px;">Let's talk →</a>
+    <button type="button" aria-label="Menu" class="ib-burger" style="align-items: center; justify-content: center; width: 40px; height: 40px; background: transparent; border: 1px solid var(--color-neutral-700); border-radius: var(--radius-md); color: var(--color-text); cursor: pointer;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
+    </button><button type="button" aria-label="Toggle light and dark theme" class="ib-theme-toggle" style="padding-left: 0px; padding-right: 0px;">
+      <span class="ib-toggle-icons">
+        <svg class="ib-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.9" y1="4.9" x2="6.3" y2="6.3"></line><line x1="17.7" y1="17.7" x2="19.1" y2="19.1"></line><line x1="4.9" y1="19.1" x2="6.3" y2="17.7"></line><line x1="17.7" y1="6.3" x2="19.1" y2="4.9"></line></svg>
+        <svg class="ib-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.2 14.9A8.2 8.2 0 0 1 9.1 3.8a8.2 8.2 0 1 0 11.1 11.1Z"></path></svg>
+      </span>
+      <span class="ib-knob" aria-hidden="true"></span>
+    </button>
+  </nav>
+  <div id="ib-mobile-nav" style="display:none; position:fixed; inset:0; z-index:49; background: color-mix(in srgb, var(--color-bg) 96%, transparent); backdrop-filter: blur(8px); flex-direction: column; justify-content: center; gap: var(--space-4); padding: 0 clamp(24px,8vw,72px);">
+    <a href="#work" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Work</a>
+    <a href="#services" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Services</a>
+    <a href="#about" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">About</a>
+    <a href="#focus" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Insights</a>
+    <a href="#contact" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Contact</a>
+  </div>
+
+
+  
+
+  <main id="top" style="max-width: 1200px; margin: 0px auto; padding: 0px clamp(20px, 5vw, 72px);">
+
+    
+    <section class="ib-hero" aria-label="Complexity, made simple">
+      <div class="ib-hero-inner">
+        <div class="ib-hero-copy" data-reveal="1" style="">
+          <h1 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(44px, 6.4vw, 92px); line-height: 1.02; letter-spacing: -0.02em; margin: 0px; color: rgb(244, 242, 236);">
+            <span style="display: block;">Complexity,</span>
+            <span style="display: block; color: rgba(244, 242, 236, 0.62);">made simple.</span>
+          </h1>
+          <p style="font-size: clamp(16px, 1.4vw, 19px); line-height: 1.65; max-width: 44ch; margin: clamp(20px, 3vw, 30px) 0px 0px; color: rgba(244, 242, 236, 0.85);">We design digital products that make complicated things feel simple both for businesses and the people who use them.</p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: clamp(26px, 3.5vw, 36px);">
+            <a href="#work" class="ib-hero-btn">Explore our work ↗</a>
+            <a href="#about" class="ib-hero-btn-ghost">Meet IBBRU →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section id="services" style="padding: clamp(56px, 8vw, 104px) 0px;">
+      <div data-reveal="1" style="display: flex; align-items: center; gap: 16px; margin-bottom: clamp(28px, 4vw, 44px);">
+        <span style="width: 44px; height: 1px; background: var(--color-accent);"></span>
+        <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;">What we do</span>
+      </div>
+      <div class="ib-two-col" style="display: grid; grid-template-columns: minmax(0px, 0.95fr) minmax(0px, 1fr); gap: clamp(28px, 4vw, 64px); align-items: end;">
+        <h2 data-reveal="1" style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.015em; margin: 0px;">We help teams solve problems, design better experiences, and build usable products.</h2>
+        <p data-reveal="2" style="font-size: 16px; line-height: 1.7; margin: 0px; text-align: right; color: color-mix(in srgb, var(--color-text) 78%, transparent);">From complex enterprise workflows to everyday consumer experiences, we take ideas all the way to execution — across research, product design, systems, brand, graphics and motion.</p>
+      </div>
+
+      <div data-reveal="1" class="ib-svclist" style="">
+        
+          <div class="ib-svc-row">
+            <div class="ib-svc-lead">
+              <span class="ib-svc-n"><span class="sc-interp">01</span></span>
+              <h3 class="ib-svc-t"><span class="sc-interp">Product Strategy &amp; Architecture</span></h3>
+            </div>
+            <div class="ib-svc-tags">
+              
+                <span class="ib-cap"><span class="sc-interp">Product Discovery &amp; Definition</span></span>
+              
+                <span class="ib-cap"><span class="sc-interp">Information Architecture</span></span>
+              
+                <span class="ib-cap"><span class="sc-interp">UX Audits &amp; Heuristic Evaluations</span></span>
+              
+            </div>
+          </div>
+        
+          <div class="ib-svc-row">
+            <div class="ib-svc-lead">
+              <span class="ib-svc-n"><span class="sc-interp">02</span></span>
+              <h3 class="ib-svc-t"><span class="sc-interp">Complex Workflows &amp; Enterprise UX</span></h3>
+            </div>
+            <div class="ib-svc-tags">
+              
+                <span class="ib-cap"><span class="sc-interp">Dashboard &amp; Data Visualization</span></span>
+              
+                <span class="ib-cap"><span class="sc-interp">Enterprise Software Modernization</span></span>
+              
+                <span class="ib-cap"><span class="sc-interp">Hardware-Software Integration</span></span>
+              
+            </div>
+          </div>
+        
+          <div class="ib-svc-row">
+            <div class="ib-svc-lead">
+              <span class="ib-svc-n"><span class="sc-interp">03</span></span>
+              <h3 class="ib-svc-t"><span class="sc-interp">Design Systems &amp; Operations</span></h3>
+            </div>
+            <div class="ib-svc-tags">
+              
+                <span class="ib-cap"><span class="sc-interp">Design System Architecture</span></span>
+              
+                <span class="ib-cap"><span class="sc-interp">Advanced Figma Workflows</span></span>
+              
+                <span class="ib-cap"><span class="sc-interp">Design-to-Engineering Handoff</span></span>
+              
+            </div>
+          </div>
+        
+          <div class="ib-svc-row">
+            <div class="ib-svc-lead">
+              <span class="ib-svc-n"><span class="sc-interp">04</span></span>
+              <h3 class="ib-svc-t"><span class="sc-interp">End-to-End Product Design (0 to 1 &amp; Beyond)</span></h3>
+            </div>
+            <div class="ib-svc-tags">
+              
+                <span class="ib-cap"><span class="sc-interp">MVP Incubation</span></span>
+              
+                <span class="ib-cap"><span class="sc-interp">Cross-Platform Experience Design</span></span>
+              
+            </div>
+          </div>
+        
+          <div class="ib-svc-row">
+            <div class="ib-svc-lead">
+              <span class="ib-svc-n"><span class="sc-interp">05</span></span>
+              <h3 class="ib-svc-t"><span class="sc-interp">Brand &amp; Promotional Videos</span></h3>
+            </div>
+            <div class="ib-svc-tags">
+              
+                <span class="ib-cap"><span class="sc-interp">Brand Storytelling</span></span>
+              
+                <span class="ib-cap"><span class="sc-interp">Product Showcases</span></span>
+              
+            </div>
+          </div>
+        
+      </div>
+
+    </section>
+
+    <div style="height: 1px; background: linear-gradient(to right, transparent, var(--color-divider) 48px calc(100% - 48px), transparent);"></div>
+
+    
+    <section id="work" style="padding: clamp(56px, 8vw, 104px) 0px;">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: clamp(20px, 3vw, 32px);">
+        <div data-reveal="1" style="max-width: 44ch;">
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+            <span style="width: 44px; height: 1px; background: var(--color-accent);"></span>
+            <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">Selected work</span>
+          </div>
+          <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(32px, 4.2vw, 54px); line-height: 1.03; letter-spacing: -0.02em; margin: 0px;">A few problems we've solved.</h2>
+        </div>
+        <p data-reveal="2" style="color: color-mix(in srgb, var(--color-text) 62%, transparent); font-size: 14.5px; line-height: 1.6; max-width: 32ch; margin: 0px;">Three volumes of work. Open one to read the problems inside — page by page.</p>
+      </div>
+
+      
+        <div id="ib-reader" hidden aria-live="polite"></div>
+      <div class="ib-shelf" data-reveal="1" style="">
+          <button type="button" class="ib-book ib-book--a" aria-label="Open Designing for Clarity, 2 problems">
+            <span class="ib-book-inner">
+              <span>
+                <span class="ib-book-vol">Volume 01</span>
+                <h3 class="ib-book-title">Designing for Clarity</h3>
+              </span>
+              <svg class="ib-book-art" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                <circle cx="60" cy="60" r="47" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></circle>
+                <circle cx="60" cy="60" r="32" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></circle>
+                <circle cx="60" cy="60" r="17" stroke="var(--color-accent)" stroke-width="2.5"></circle>
+                <circle cx="60" cy="60" r="5" fill="var(--color-accent)"></circle>
+                <line x1="60" y1="6" x2="60" y2="20" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></line>
+                <line x1="60" y1="100" x2="60" y2="114" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></line>
+                <line x1="6" y1="60" x2="20" y2="60" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></line>
+                <line x1="100" y1="60" x2="114" y2="60" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></line>
+              </svg>
+              <span class="ib-book-foot">
+                <span class="ib-book-count">2 problems</span>
+                <span class="ib-book-open-cta">Open <span class="ib-arrow">→</span></span>
+              </span>
+            </span>
+          </button>
+          <button type="button" class="ib-book ib-book--b" aria-label="Open Designing for Evidence, 1 problem">
+            <span class="ib-book-inner">
+              <span>
+                <span class="ib-book-vol">Volume 02</span>
+                <h3 class="ib-book-title">Designing for Evidence</h3>
+              </span>
+              <svg class="ib-book-art" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                <line x1="20" y1="104" x2="104" y2="104" stroke="currentColor" stroke-opacity=".16" stroke-width="2"></line>
+                <rect x="28" y="66" width="16" height="38" rx="2" stroke="currentColor" stroke-opacity=".16" stroke-width="2"></rect>
+                <rect x="52" y="48" width="16" height="56" rx="2" stroke="currentColor" stroke-opacity=".16" stroke-width="2"></rect>
+                <rect x="76" y="30" width="16" height="74" rx="2" fill="var(--color-accent)" fill-opacity=".22" stroke="var(--color-accent)" stroke-width="2.5"></rect>
+                <path d="M30 40 l10 10 l22 -26" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <span class="ib-book-foot">
+                <span class="ib-book-count">1 problem</span>
+                <span class="ib-book-open-cta">Open <span class="ib-arrow">→</span></span>
+              </span>
+            </span>
+          </button>
+          <button type="button" class="ib-book ib-book--c" aria-label="Open Designing for Accessibility, 3 problems">
+            <span class="ib-book-inner">
+              <span>
+                <span class="ib-book-vol">Volume 03</span>
+                <h3 class="ib-book-title">Designing for Accessibility</h3>
+              </span>
+              <svg class="ib-book-art" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+                <circle cx="60" cy="60" r="47" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></circle>
+                <circle cx="60" cy="31" r="7" fill="var(--color-accent)"></circle>
+                <path d="M34 46 h52" stroke="var(--color-accent)" stroke-width="2.6" stroke-linecap="round"></path>
+                <path d="M60 44 v26" stroke="var(--color-accent)" stroke-width="2.6" stroke-linecap="round"></path>
+                <path d="M60 70 l-14 24 M60 70 l14 24" stroke="var(--color-accent)" stroke-width="2.6" stroke-linecap="round"></path>
+              </svg>
+              <span class="ib-book-foot">
+                <span class="ib-book-count">3 problems</span>
+                <span class="ib-book-open-cta">Open <span class="ib-arrow">→</span></span>
+              </span>
+            </span>
+          </button>
+        </div>
+      
+
+      
+    </section>
+
+    <div style="height: 1px; background: linear-gradient(to right, transparent, var(--color-divider) 48px calc(100% - 48px), transparent);"></div>
+
+    
+    <section style="padding: clamp(56px, 8vw, 104px) 0px;">
+      <div data-reveal="1" style="max-width: 46ch; margin-bottom: clamp(40px, 5vw, 60px);">
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+          <span style="width: 44px; height: 1px; background: var(--color-accent);"></span>
+          <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">How we work</span>
+        </div>
+        <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(32px, 4.2vw, 54px); line-height: 1.03; letter-spacing: -0.02em; margin: 0px;">Ask better questions. Ship better answers.</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 1px; background: color-mix(in srgb, var(--color-neutral-700) 55%, transparent); border: 1px solid color-mix(in srgb, var(--color-neutral-700) 55%, transparent); border-radius: var(--radius-lg); overflow: hidden;">
+        
+          <div data-reveal="1" style="background: var(--color-neutral-900); padding: clamp(24px, 2.6vw, 32px); position: relative; min-height: 210px; display: flex; flex-direction: column;">
+            <span style="font-family: var(--font-heading); font-size: 13px; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><span class="sc-interp">01</span></span>
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 21px; margin: 14px 0px 10px;"><span class="sc-interp">Understand</span></h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Ask better questions. Research context, users and business goals.</span></p>
+            
+          </div>
+        
+          <div data-reveal="1" style="background: var(--color-neutral-900); padding: clamp(24px, 2.6vw, 32px); position: relative; min-height: 210px; display: flex; flex-direction: column;">
+            <span style="font-family: var(--font-heading); font-size: 13px; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><span class="sc-interp">02</span></span>
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 21px; margin: 14px 0px 10px;"><span class="sc-interp">Frame</span></h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Find the problem worth solving. Synthesize insights, define opportunities.</span></p>
+            
+          </div>
+        
+          <div data-reveal="1" style="background: var(--color-neutral-900); padding: clamp(24px, 2.6vw, 32px); position: relative; min-height: 210px; display: flex; flex-direction: column;">
+            <span style="font-family: var(--font-heading); font-size: 13px; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><span class="sc-interp">03</span></span>
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 21px; margin: 14px 0px 10px;"><span class="sc-interp">Explore</span></h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Make ideas tangible. Flows, wireframes, prototypes and concepts.</span></p>
+            
+          </div>
+        
+          <div data-reveal="1" style="background: var(--color-neutral-900); padding: clamp(24px, 2.6vw, 32px); position: relative; min-height: 210px; display: flex; flex-direction: column;">
+            <span style="font-family: var(--font-heading); font-size: 13px; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><span class="sc-interp">04</span></span>
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 21px; margin: 14px 0px 10px;"><span class="sc-interp">Validate</span></h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Find out what actually works. Test, learn and iterate.</span></p>
+            
+          </div>
+        
+          <div data-reveal="1" style="background: var(--color-neutral-900); padding: clamp(24px, 2.6vw, 32px); position: relative; min-height: 210px; display: flex; flex-direction: column;">
+            <span style="font-family: var(--font-heading); font-size: 13px; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><span class="sc-interp">05</span></span>
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 21px; margin: 14px 0px 10px;"><span class="sc-interp">Refine</span></h3>
+            <p style="font-size: 14px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Make it useful, accessible and scalable. Final experience, system and handoff.</span></p>
+            
+              <svg class="ib-float" aria-hidden="true" style="position: absolute; right: 16px; bottom: 14px; width: 46px; height: auto;"><use href="#ib-dollA"></use></svg>
+            
+          </div>
+        
+      </div>
+    </section>
+
+    <div style="height: 1px; background: linear-gradient(to right, transparent, var(--color-divider) 48px calc(100% - 48px), transparent);"></div>
+
+    
+    <section id="about" style="padding: clamp(56px, 8vw, 104px) 0px;">
+      <div class="ib-two-col" style="display: grid; grid-template-columns: minmax(0px, 0.9fr) minmax(0px, 1.1fr); gap: clamp(32px, 5vw, 80px); align-items: center;">
+        <div data-reveal="1" style="">
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 22px;">
+            <span style="width: 44px; height: 1px; background: var(--color-accent);"></span>
+            <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">About Us</span>
+          </div>
+          <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(40px, 5.5vw, 72px); line-height: 1.02; letter-spacing: -0.02em; margin: 0px 0px 24px;">Two Perspectives. One Shared Vision.</h2>
+          <p style="font-size: 17px; line-height: 1.7; margin: 0px 0px 16px; color: color-mix(in srgb,var(--color-text) 82%,transparent); max-width: 46ch;">We are Suraj Sridhar and Keerthi G, two product and user experience design leaders who share a deep-rooted passion for crafting intuitive, high-impact digital experiences.</p>
+          <p style="font-size: 16px; line-height: 1.7; margin: 0px; color: color-mix(in srgb,var(--color-text) 72%,transparent); max-width: 48ch;">With over 16 years of industry experience each, we've spent our careers navigating the complexities of scaling products, shaping enterprise ecosystems, and solving hard design challenges for millions of users worldwide.</p>
+        </div>
+        <div data-reveal="2" style="position: relative; display: flex; justify-content: center; align-items: flex-end; gap: clamp(8px, 3vw, 40px); padding: clamp(24px, 4vw, 48px) 0px; background: radial-gradient(520px 320px at 50% 20%, color-mix(in srgb, var(--color-accent-900) 60%, transparent), transparent 70%); border-radius: var(--radius-lg);">
+          <svg class="ib-float" aria-hidden="true" style="width: clamp(120px, 15vw, 168px); height: auto; filter: drop-shadow(rgba(0, 0, 0, 0.4) 0px 16px 20px);"><use href="#ib-dollA"></use></svg>
+          <svg class="ib-float-b" aria-hidden="true" style="width: clamp(130px, 16vw, 184px); height: auto; filter: drop-shadow(rgba(0, 0, 0, 0.4) 0px 16px 20px);"><use href="#ib-dollB"></use></svg>
+        </div>
+      </div>
+
+      <p data-reveal="1" style="font-size: 15.5px; line-height: 1.6; margin: clamp(44px, 6vw, 72px) 0px 18px; color: color-mix(in srgb, var(--color-text) 74%, transparent);">Our collective journey spans world-class brands across consumer and enterprise landscapes:</p>
+      <div data-reveal="1" style="padding: clamp(22px, 3vw, 30px) clamp(22px, 3vw, 32px); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 55%, transparent);">
+        <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 22px; margin-bottom: 18px;">
+          <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">Experience</span>
+          <span style="font-size: 14.5px; line-height: 1.5; color: color-mix(in srgb,var(--color-text) 74%,transparent);">Across B2B enterprise and B2C products used by millions of people.</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px 36px; align-items: center;">
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">SAP Labs</span>
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">Victoria's Secret</span>
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">WayCool Foods</span>
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">OpenText</span>
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">ChargePoint</span>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(20px, 2.5vw, 28px);">
+        
+          <div data-reveal="1" class="card" style="padding: clamp(24px, 3vw, 32px); display: flex; gap: clamp(18px, 2.5vw, 26px); align-items: flex-start;">
+            <div style="flex: 0 0 auto; width: clamp(88px, 12vw, 116px); height: clamp(112px, 15vw, 148px); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-neutral-700); position: relative;">
+              <div class="ib-slot-ph" role="img" aria-label="Founder photo placeholder"><span>Founder photo</span></div>
+            </div>
+            <div>
+              <span style="font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.06em; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><span class="sc-interp">Co-founder</span></span>
+              <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(22px, 2.4vw, 28px); margin: 8px 0px 4px; letter-spacing: -0.01em;"><span class="sc-interp">Suraj Sridhar</span></h3>
+              <p style="font-size: 13px; letter-spacing: 0.02em; margin: 0px 0px 14px; color: var(--color-accent-300);"><span class="sc-interp">Product &amp; UX design leader</span></p>
+              <p style="font-size: 14.5px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 74%,transparent);"><span class="sc-interp">Brings deep domain expertise from shaping experiences at RedMart, Waymore, Victoria's Secret, and ChargePoint.</span></p>
+            </div>
+          </div>
+        
+          <div data-reveal="1" class="card" style="padding: clamp(24px, 3vw, 32px); display: flex; gap: clamp(18px, 2.5vw, 26px); align-items: flex-start;">
+            <div style="flex: 0 0 auto; width: clamp(88px, 12vw, 116px); height: clamp(112px, 15vw, 148px); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-neutral-700); position: relative;">
+              <div class="ib-slot-ph" role="img" aria-label="Founder photo placeholder"><span>Founder photo</span></div>
+            </div>
+            <div>
+              <span style="font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.06em; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><span class="sc-interp">Co-founder</span></span>
+              <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(22px, 2.4vw, 28px); margin: 8px 0px 4px; letter-spacing: -0.01em;"><span class="sc-interp">Keerthi G</span></h3>
+              <p style="font-size: 13px; letter-spacing: 0.02em; margin: 0px 0px 14px; color: var(--color-accent-300);"><span class="sc-interp">Product &amp; UX design leader</span></p>
+              <p style="font-size: 14.5px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 74%,transparent);"><span class="sc-interp">Brings extensive enterprise and systems design mastery from her work at SAP, Micro Focus, OpenText, and ChargePoint.</span></p>
+            </div>
+          </div>
+        
+      </div>
+
+      <div data-reveal="1" style="margin-top: clamp(36px, 4vw, 52px); padding: clamp(24px, 3vw, 34px) clamp(22px, 3vw, 36px); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 55%, transparent);">
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 14px;">
+          <span style="width: 32px; height: 1px; background: var(--color-accent);"></span>
+          <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">What Drives Us</span>
+        </div>
+        <p style="font-size: clamp(16px, 1.5vw, 18px); line-height: 1.7; margin: 0px; max-width: 80ch; color: color-mix(in srgb,var(--color-text) 84%,transparent);">We believe that great design isn't just about how things look—it's about architecting systems that scale, solving real operational problems, and creating meaningful clarity for users. Whether we are designing complex enterprise workflows or high-touch consumer experiences, we bring maturity, cross-functional leadership, and craft-driven execution to every project we take on.</p>
+      </div>
+    </section>
+
+    <div style="height: 1px; background: linear-gradient(to right, transparent, var(--color-divider) 48px calc(100% - 48px), transparent);"></div>
+
+    
+    <section id="insights" style="padding: clamp(56px, 8vw, 104px) 0px;">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: clamp(32px, 4vw, 48px);">
+        <div data-reveal="1" style="">
+          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
+            <span style="width: 44px; height: 1px; background: var(--color-accent);"></span>
+            <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">Focus</span>
+          </div>
+          <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px, 3.8vw, 48px); line-height: 1.04; letter-spacing: -0.02em; margin: 0px;">Our 4 main focus areas.</h2>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(20px, 2.5vw, 28px);">
+        
+          <div class="ib-card" style="color: inherit; display: flex; flex-direction: column; padding: clamp(22px, 2.6vw, 30px); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 70%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 60%, transparent); min-height: 220px;">
+            <span class="tag tag-accent" style="align-self: flex-start;"><span class="sc-interp">01</span></span>
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.2; letter-spacing: -0.01em; margin: 16px 0px 12px;"><span class="sc-interp">Smart AI</span></h3>
+            <p style="font-size: 14.5px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Creating experiences that predict user needs, streamline tasks, and help prevent issues before they become problems.</span></p>
+          </div>
+        
+          <div class="ib-card" style="color: inherit; display: flex; flex-direction: column; padding: clamp(22px, 2.6vw, 30px); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 70%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 60%, transparent); min-height: 220px;">
+            <span class="tag tag-accent" style="align-self: flex-start;"><span class="sc-interp">02</span></span>
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.2; letter-spacing: -0.01em; margin: 16px 0px 12px;"><span class="sc-interp">Actionable data and visibility</span></h3>
+            <p style="font-size: 14.5px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Transforming complex data into clear, actionable visual experiences that provide instant access to critical business insights.</span></p>
+          </div>
+        
+          <div class="ib-card" style="color: inherit; display: flex; flex-direction: column; padding: clamp(22px, 2.6vw, 30px); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 70%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 60%, transparent); min-height: 220px;">
+            <span class="tag tag-accent" style="align-self: flex-start;"><span class="sc-interp">03</span></span>
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.2; letter-spacing: -0.01em; margin: 16px 0px 12px;"><span class="sc-interp">Visual content and design</span></h3>
+            <p style="font-size: 14.5px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Making eye-catching pictures, layouts, and styles that tell a great story and look amazing.</span></p>
+          </div>
+        
+          <div class="ib-card" style="color: inherit; display: flex; flex-direction: column; padding: clamp(22px, 2.6vw, 30px); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 70%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 60%, transparent); min-height: 220px;">
+            <span class="tag tag-accent" style="align-self: flex-start;"><span class="sc-interp">04</span></span>
+            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.2; letter-spacing: -0.01em; margin: 16px 0px 12px;"><span class="sc-interp">Universal accessibility</span></h3>
+            <p style="font-size: 14.5px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Making sure our tools and screens are simple for all people to use, meeting official accessibility rules.</span></p>
+          </div>
+        
+      </div>
+    </section>
+
+  </main>
+
+  
+  <section id="contact" style="background: radial-gradient(900px 460px at 82% -10%, color-mix(in srgb, var(--color-section-glow) 68%, transparent), transparent 64%), var(--color-section); margin-top: clamp(40px, 6vw, 72px);">
+    <div style="max-width: 1200px; margin: 0px auto; padding: clamp(56px, 8vw, 104px) clamp(20px, 5vw, 72px);">
+      <div class="ib-two-col" style="display: grid; grid-template-columns: minmax(0px, 1fr) minmax(0px, 0.9fr); gap: clamp(36px, 5vw, 80px); align-items: center;">
+        <div data-reveal="1" style="">
+          <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(36px, 5vw, 64px); line-height: 1.02; letter-spacing: -0.02em; margin: 0px 0px 20px;">Have a problem worth solving?</h2>
+          <p style="font-size: 17px; line-height: 1.65; margin: 0px 0px 32px; max-width: 40ch; color: color-mix(in srgb,var(--color-text) 84%,transparent);">Tell us what's keeping you up at night. We'll bring the questions.</p>
+          <a href="#contact" class="btn btn-primary" style="text-decoration: none; white-space: nowrap;">Start a conversation →</a>
+          <p style="font-size: 13.5px; margin: 28px 0px 0px; color: color-mix(in srgb,var(--color-text) 62%,transparent);">There are two of us. Bring your problem.</p>
+        </div>
+        <div data-reveal="2" style="display: flex; justify-content: center; align-items: flex-end; gap: clamp(6px, 2vw, 24px); position: relative;">
+          <svg class="ib-float" aria-hidden="true" style="width: clamp(96px, 12vw, 140px); height: auto; filter: drop-shadow(rgba(0, 0, 0, 0.4) 0px 14px 18px);"><use href="#ib-dollA"></use></svg>
+          <div style="width: clamp(60px, 8vw, 96px); height: clamp(96px, 12vw, 132px); border: 1.5px dashed color-mix(in srgb,var(--color-text) 34%,transparent); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; text-align: center; font-size: 12px; color: color-mix(in srgb,var(--color-text) 55%,transparent); padding: 8px;">Your seat</div>
+          <svg class="ib-float-b" aria-hidden="true" style="width: clamp(104px, 13vw, 152px); height: auto; filter: drop-shadow(rgba(0, 0, 0, 0.4) 0px 14px 18px);"><use href="#ib-dollB"></use></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <footer style="max-width: 1200px; margin: 0px auto; padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 72px) clamp(32px, 4vw, 48px);">
+    <p style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(20px, 2.2vw, 26px); line-height: 1.3; letter-spacing: -0.01em; margin: 0px 0px clamp(32px, 4vw, 48px); max-width: 26ch; color: color-mix(in srgb,var(--color-text) 76%,transparent);">Let's make something better.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 32px; padding-bottom: clamp(32px, 4vw, 48px); border-bottom: 1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);">
+      <div>
+        <div style="font-family: var(--font-heading); font-weight: 700; font-size: 22px; margin-bottom: 8px;">IBBRU</div>
+        <p style="font-size: 13.5px; color: color-mix(in srgb,var(--color-text) 60%,transparent); margin: 0px;">An independent design studio turning complex problems into products people love.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: color-mix(in srgb,var(--color-text) 45%,transparent); margin-bottom: 4px;">Explore</span>
+        <a href="#work" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Work</a>
+        <a href="#services" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Services</a>
+        <a href="#about" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">About</a>
+        <a href="#insights" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Insights</a>
+        <a href="#contact" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Contact</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: color-mix(in srgb,var(--color-text) 45%,transparent); margin-bottom: 4px;">Connect</span>
+        <a href="#contact" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">hello@ibbru.studio</a>
+        <a href="#contact" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">LinkedIn</a>
+        <a href="#contact" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Instagram</a>
+      </div>
+      <div style="display: flex; align-items: flex-end; justify-content: flex-end;">
+        <svg aria-hidden="true" style="width: clamp(80px, 10vw, 120px); height: auto; opacity: 0.85;"><use href="#ib-dollA"></use></svg>
+        <svg aria-hidden="true" style="width: clamp(88px, 11vw, 132px); height: auto; opacity: 0.85; margin-left: -10px;"><use href="#ib-dollB"></use></svg>
+      </div>
+    </div>
+    <p style="font-size: 12.5px; color: color-mix(in srgb,var(--color-text) 45%,transparent); margin: 24px 0px 0px;">© 2026 IBBRU. An independent design studio.</p>
+  </footer>
+  </div></div></div>
+
+<script type="application/json" id="ib-data">[{"group": "Designing for Clarity", "cases": [{"title": "Improving Dashboard Decision-Making", "summary": "Helping users make faster, better decisions through thoughtful information design.", "problem": "Users rarely used the monitoring dashboard because it was overloaded with metrics, widgets, and information that made it difficult to know where to focus.", "insight": "Research and usage data showed that users felt overwhelmed and struggled to find the information needed to make decisions quickly.", "solution": "Simplified the dashboard by prioritizing key performance metrics, organizing related information into clear sections, and introducing diagnostic workflows that helped users move from insights to action.", "impact": "Transformed the dashboard from a data-heavy monitoring screen into a focused decision-making hub, improving adoption, usability, and task efficiency.", "slot": "ib-work-1", "doll": "#ib-dollA"}, {"title": "Making Irrigation Data Relatable", "summary": "Helping farmers understand irrigation needs through visuals that reflect what they see on their farms.", "problem": "Existing irrigation tools relied on meters and numbers that farmers found confusing, making it difficult to understand soil conditions and decide when to water.", "insight": "Competitor analysis revealed a gap between how tools presented data and how farmers understood their fields. Familiar visuals could make technical information more relatable and easier to act on.", "solution": "Redesigned Outgrow's Smart Irrigation Planner to visually represent crop stress and soil moisture, connecting data to conditions farmers recognise on their farms, with clear guidance on when and how much to irrigate.", "impact": "Testing with 15 farmers indicated that the visuals made soil moisture and irrigation needs easier to understand. Their feedback helped refine the design before development.", "metric": "15 farmers tested", "slot": "ib-work-2", "doll": "#ib-dollB"}]}, {"group": "Designing for Evidence", "cases": [{"title": "Learning the Cost of Assumptions", "summary": "Ensuring the product is built on real user needs.", "problem": "We redesigned a POS keyboard from QWERTY to an alphabetical layout based on internal assumptions rather than user research.", "insight": "Users were already highly familiar with QWERTY keyboards through everyday smartphone use and found the new layout frustrating.", "solution": "The keyboard was redesigned back to a standard QWERTY layout after validating user needs and behaviors.", "impact": "A costly hardware redesign reinforced a key design principle: validate assumptions with users before committing to major product changes.", "slot": "ib-work-3", "doll": "#ib-dollA"}]}, {"group": "Designing for Accessibility", "cases": [{"title": "Improving POS Visibility in Bright Environments", "summary": "Making screens readable in the harshest working conditions.", "problem": "Cashiers struggled to view the POS screen in direct sunlight, leading to lower product adoption and satisfaction.", "insight": "Field research revealed that screen glare, not the interface itself, was the primary usability barrier.", "solution": "Introduced a high-contrast mode and adaptive brightness controls for improved visibility.", "impact": "Increased daily application usage by 30% and improved user satisfaction.", "metric": "+30% daily usage", "slot": "ib-work-4", "doll": "#ib-dollB"}, {"title": "Making Mobile Data Entry Glove-Friendly", "summary": "Designing touch interactions for real-world hands.", "problem": "Field installers frequently made data-entry mistakes while wearing protective gloves.", "insight": "Small touch targets made interactions difficult in real working conditions.", "solution": "Enlarged interactive elements and optimized touch targets for gloved use.", "impact": "Reduced data-entry errors by approximately 65% and improved workflow efficiency.", "metric": "−65% data-entry errors", "slot": "ib-work-5", "doll": "#ib-dollA"}, {"title": "Improving Accessibility for All Users", "summary": "Accessibility as a baseline — not an afterthought.", "problem": "Critical information relied on color alone, and navigation was difficult for keyboard and screen-reader users.", "insight": "Accessibility reviews identified gaps that affected users with visual and motor impairments.", "solution": "Added text and icon-based status indicators, improved screen-reader support, and optimized keyboard navigation.", "impact": "Achieved a more inclusive experience aligned with accessibility best practices.", "slot": "ib-work-6", "doll": "#ib-dollB"}]}]</script>
+<script src="app.js" defer></script>
+<script>setTimeout(function(){document.querySelectorAll('[data-reveal]').forEach(function(e){e.classList.add('ib-in')})},3000);</script>
+</body>
+</html>
