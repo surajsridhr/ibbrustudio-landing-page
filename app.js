@@ -179,4 +179,51 @@
     pageIndex += nav.getAttribute("data-nav") === "next" ? 1 : -1;
     render();
   });
+
+  /* ---------------- contact modal ---------------- */
+  var modalRoot = document.getElementById("ib-modal-root");
+  if (modalRoot) {
+    var sentPanel = modalRoot.querySelector(".ib-modal-sent");
+    var formPanel = modalRoot.querySelector(".ib-modal-form");
+    var backdrop = modalRoot.querySelector(".ib-modal-backdrop");
+    var nameEl = modalRoot.querySelector("#ib-c-name");
+    var emailEl = modalRoot.querySelector("#ib-c-email");
+    var msgEl = modalRoot.querySelector("#ib-c-msg");
+
+    function showForm() { if (formPanel) formPanel.hidden = false; if (sentPanel) sentPanel.hidden = true; }
+    function showSent() { if (formPanel) formPanel.hidden = true; if (sentPanel) sentPanel.hidden = false; }
+    function openModal() {
+      modalRoot.hidden = false;
+      document.body.classList.add("ib-locked");
+      showForm();
+      if (nameEl) nameEl.focus();
+    }
+    function closeModal() {
+      modalRoot.hidden = true;
+      document.body.classList.remove("ib-locked");
+    }
+
+    [].slice.call(document.querySelectorAll("[data-open-contact]")).forEach(function (b) {
+      b.addEventListener("click", openModal);
+    });
+
+    modalRoot.addEventListener("click", function (e) {
+      if (e.target.closest('[data-modal="close"]')) { closeModal(); return; }
+      if (e.target.closest('[data-modal="submit"]')) {
+        var subject = encodeURIComponent("New enquiry from IBBRU website");
+        var body = encodeURIComponent(
+          "Name: " + (nameEl ? nameEl.value.trim() : "") +
+          "\nEmail: " + (emailEl ? emailEl.value.trim() : "") +
+          "\n\nMessage:\n" + (msgEl ? msgEl.value : ""));
+        window.open("mailto:ibbru.studio@gmail.com?subject=" + subject + "&body=" + body, "_blank");
+        showSent();
+        return;
+      }
+      if (e.target === backdrop) closeModal();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !modalRoot.hidden) closeModal();
+    });
+  }
 })();
