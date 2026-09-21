@@ -82,7 +82,7 @@ MOBILE_NAV = """
     <a href="#work" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Work</a>
     <a href="#services" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Services</a>
     <a href="#about" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">About</a>
-    <a href="#focus" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Insights</a>
+    <a href="#insights" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Insights</a>
     <a href="#contact" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Contact</a>
   </div>
 """
