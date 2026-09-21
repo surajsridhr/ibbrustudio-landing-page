@@ -28,10 +28,13 @@
     .ib-navlinks { display: flex !important; }
     .ib-burger { display: none !important; }
   }
-  .ib-hero { position:relative; width:100vw; margin-left:calc(50% - 50vw); min-height:clamp(460px,45vw,660px); background-image:url('uploads/hero2.gif'); background-size:cover; background-position:center right; background-repeat:no-repeat; background-color:#0c0c10; display:flex; align-items:center; }
+  .ib-hero { position:relative; width:100vw; margin-left:calc(50% - 50vw); min-height:clamp(460px,45vw,660px); background-color:#0c0c10; background-image:linear-gradient(180deg, #0c0c10 0%, rgba(12,12,16,.72) 13%, rgba(12,12,16,0) 30%), url('uploads/hero2.gif'); background-size:100% 100%, auto 78%; background-position:center top, right bottom; background-repeat:no-repeat; display:flex; align-items:center; }
   .ib-hero::before { content:""; position:absolute; inset:0; background:linear-gradient(90deg, rgba(10,10,14,.85) 0%, rgba(10,10,14,.35) 30%, rgba(10,10,14,0) 52%); pointer-events:none; }
   .ib-hero-inner { position:relative; width:100%; max-width:1200px; margin:0 auto; padding:clamp(28px,5vw,72px); }
   .ib-hero-copy { max-width:40ch; }
+  @media (max-width: 720px) {
+    .ib-hero { min-height:620px; align-items:flex-start; background-size:100% 100%, auto 40%; background-position:center top, center bottom; }
+  }
   .ib-hero-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:var(--radius-md); background:#5f50c9; color:#f6f4ff; text-decoration:none; font-size:15px; font-weight:500; white-space:nowrap; box-shadow:0 8px 22px rgba(0,0,0,.35); transition:background .2s ease; }
   .ib-hero-btn:hover { background:#6f60d9; }
   .ib-hero-btn:active { background:#5546b3; }
