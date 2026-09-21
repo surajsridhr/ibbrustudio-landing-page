@@ -223,6 +223,8 @@ body.ib-locked { overflow: hidden; }
 }
 @media (max-width: 860px) {
   .ib-proc-doll { display: none !important; }
+  /* the stat panels' desktop alignment offset is meaningless once stacked */
+  [style*="margin-top: 171px"] { margin-top: 0 !important; }
 }
 """
 (LIVE / "styles.css").write_text(css + EXTRA_CSS, encoding="utf-8")
