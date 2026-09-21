@@ -534,9 +534,6 @@
       <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%,320px),1fr)); gap: clamp(20px,2.5vw,28px);">
         <sc-for list="{{ people }}" as="person" hint-placeholder-count="2">
           <div data-reveal="1" class="card" style="padding: clamp(24px,3vw,32px); display:flex; gap: clamp(18px,2.5vw,26px); align-items:flex-start;">
-            <div style="flex:none; width: clamp(88px,12vw,116px); height: clamp(112px,15vw,148px); border-radius: var(--radius-md); overflow:hidden; border:1px solid var(--color-neutral-700); position:relative;">
-              <image-slot id="{{ person.slot }}" shape="rect" placeholder="Founder photo"></image-slot>
-            </div>
             <div>
               <span style="font-family: var(--font-heading); font-size:12px; letter-spacing:0.06em; color: var(--color-accent); font-feature-settings:'tnum' 1;">{{ person.num }}</span>
               <h3 style="font-family: var(--font-heading); font-weight:600; font-size: clamp(22px,2.4vw,28px); margin: 8px 0 4px; letter-spacing:-0.01em;">{{ person.role }}</h3>
@@ -594,7 +591,6 @@
         </div>
         <div data-reveal="2" style="display:flex; justify-content:center; align-items:flex-end; gap: clamp(6px,2vw,24px); position:relative;">
           <svg class="ib-float" style="width: clamp(96px,12vw,140px); height:auto; filter: drop-shadow(0 14px 18px rgba(0,0,0,.4));" aria-hidden="true"><use href="#ib-dollA"></use></svg>
-          <div style="width: clamp(60px,8vw,96px); height: clamp(96px,12vw,132px); border:1.5px dashed color-mix(in srgb,var(--color-text) 34%,transparent); border-radius: var(--radius-md); display:flex; align-items:center; justify-content:center; text-align:center; font-size:12px; color: color-mix(in srgb,var(--color-text) 55%,transparent); padding:8px;">Your seat</div>
           <svg class="ib-float-b" style="width: clamp(104px,13vw,152px); height:auto; filter: drop-shadow(0 14px 18px rgba(0,0,0,.4));" aria-hidden="true"><use href="#ib-dollB"></use></svg>
         </div>
       </div>

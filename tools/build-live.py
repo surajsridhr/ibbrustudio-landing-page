@@ -52,6 +52,8 @@ css = (
     "   ============================================================ */\n\n"
     + ds_css + "\n\n/* ===== Part 2: IBBRU page styles ===== */\n" + inline_css
 )
+# asset URLs in the stylesheet (hero background) must point at live/assets/
+css = css.replace("uploads/hero2.gif", "assets/hero.gif").replace("uploads/", "assets/")
 
 # ---------------------------------------------------------------- body content
 i = dump.index('<div data-dc-tpl="9" class="ib-page-bg"')
@@ -67,14 +69,12 @@ content = content.replace(" opacity: 0; transform: translateY(26px);", "")
 content = re.sub(r'<template[^>]*id="__bundler_thumbnail".*?</template>', "", content, flags=re.S)
 
 
-def slot_repl(m):
-    pm = re.search(r'placeholder="([^"]*)"', m.group(1))
-    label = pm.group(1) if pm else "Image"
-    return ('<div class="ib-slot-ph" role="img" aria-label="%s placeholder"><span>%s</span></div>'
-            % (label, label))
-
-
-content = re.sub(r"<image-slot([^>]*)>\s*</image-slot>", slot_repl, content)
+# placeholders are removed entirely: founder photo frames, the dashed "seat", stray slots
+content = re.sub(
+    r'<div[^>]*style="flex:\s*0 0 auto;[^"]*"[^>]*>\s*<image-slot[^>]*>\s*</image-slot>\s*</div>',
+    "", content)
+content = re.sub(r'<div[^>]*1\.5px dashed[^>]*>Your seat</div>', "", content)
+content = re.sub(r"<image-slot[^>]*>\s*</image-slot>", "", content)
 content = content.replace("uploads/hero2.gif", "assets/hero.gif").replace("uploads/", "assets/")
 
 MOBILE_NAV = """
@@ -109,10 +109,6 @@ EXTRA_CSS = """
 @media (prefers-reduced-motion: reduce) {
   .js [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
 }
-.ib-slot-ph { display:flex; align-items:center; justify-content:center; width:100%; height:100%;
-  border:1.5px dashed color-mix(in srgb, var(--color-text) 30%, transparent); border-radius: var(--radius-md);
-  font-size:12px; line-height:1.3; text-align:center; padding:8px;
-  color: color-mix(in srgb, var(--color-text) 55%, transparent); }
 #ib-reader[hidden], .ib-shelf[hidden] { display: none !important; }
 body.ib-locked { overflow: hidden; }
 #ib-reader .ib-open { margin-top: 0; }
