@@ -128,7 +128,9 @@ def mark_proc_doll(m):
 content = re.sub(r"<svg[^>]*>", mark_proc_doll, content)
 
 # ---- contact modal trigger ----
-content = re.sub(r"<button([^>]*)>(Start a conversation)", r"<button data-open-contact\1>\2", content, count=1)
+# every in-page CTA that opens the contact modal
+for label in ("Start a conversation", "Let's talk"):
+    content = re.sub(r"<button([^>]*)>(" + re.escape(label) + ")", r"<button data-open-contact\1>\2", content, count=1)
 
 # ---------------------------------------------------------------- contact modal
 MODAL = """
