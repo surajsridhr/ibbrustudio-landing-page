@@ -17,7 +17,7 @@
   }
   var saved = null;
   try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
-  setTheme(saved === "light" || saved === "dark" ? saved : "dark");
+  setTheme(saved === "light" || saved === "dark" ? saved : "light");
 
   var themeBtn = document.querySelector(".ib-theme-toggle");
   if (themeBtn) {

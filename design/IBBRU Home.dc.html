@@ -28,6 +28,14 @@
     .ib-navlinks { display: flex !important; }
     .ib-burger { display: none !important; }
   }
+  .ib-process-dolls-mobile { display: none; }
+  @media (max-width: 480px) {
+    .ib-founder-card { border-right: none !important; border-bottom: 1px solid color-mix(in srgb,var(--color-neutral-700) 55%,transparent) !important; }
+  }
+  @media (max-width: 600px) {
+    .ib-process-doll-a, .ib-process-doll-b { display: none !important; }
+    .ib-process-dolls-mobile { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 12px; }
+  }
   .ib-hero { position:relative; width:100vw; margin-left:calc(50% - 50vw); min-height:clamp(540px,52vw,760px); background-color:#0c0c10; display:flex; align-items:center; overflow:hidden; }
   .ib-hero-inner { isolation:isolate; }
   .ib-hero-media { position:absolute; inset:0; display:flex; justify-content:center; overflow:hidden; pointer-events:none; }
@@ -37,7 +45,16 @@
   .ib-hero-inner { position:relative; width:100%; max-width:1440px; margin:0 auto; padding:clamp(28px,5vw,72px); }
   .ib-hero-copy { max-width:40ch; }
   @media (max-width: 720px) {
-    .ib-hero { min-height:620px; align-items:flex-start; background-size:100% 100%, auto 40%; background-position:center top, center bottom; }
+    .ib-hero { display:flex; flex-direction:column; min-height:0 !important; align-items:stretch; }
+    .ib-hero-media { position:relative !important; inset:auto !important; width:100% !important; }
+    .ib-hero-media-inner { position:relative !important; width:100% !important; height:auto !important; max-width:100% !important; }
+    .ib-hero-img { position:relative !important; top:auto !important; left:auto !important; right:auto !important; bottom:auto !important; width:100% !important; height:auto !important; object-fit:contain !important; opacity:1 !important; }
+    .ib-hero-fade { display:none !important; }
+    .ib-hero-inner { position:relative !important; width:100% !important; height:auto !important; padding-top:clamp(24px,7vw,36px) !important; padding-bottom:clamp(32px,9vw,44px) !important; }
+    .ib-hero-copy { max-width:100%; }
+  }
+  @media (max-width: 600px) {
+    .ib-nav-cta { display:none !important; }
   }
   .ib-hero-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 22px; border-radius:var(--radius-md); background:#5f50c9; color:#f6f4ff; text-decoration:none; font-size:15px; font-weight:500; white-space:nowrap; box-shadow:0 8px 22px rgba(0,0,0,.35); transition:background .2s ease; }
   .ib-hero-btn:hover { background:#6f60d9; }
@@ -54,6 +71,8 @@
   .ib-modal-field input:focus, .ib-modal-field textarea:focus { border-color:var(--color-accent); }
   .ib-modal-actions { display:flex; gap:12px; margin-top:24px; justify-content:flex-end; }
   .ib-modal-sent { text-align:center; padding:24px 0; }
+  .ib-page-bg .btn { padding:12px 22px; font-size:15px; }
+  .ib-page-bg .btn.btn-icon { padding:0; }
   .ib-page-bg .btn-primary { background:#5f50c9; border-color:#5f50c9; color:#f6f4ff; }
   .ib-page-bg .btn-primary:hover { background:#6f60d9; border-color:#6f60d9; }
   .ib-page-bg .btn-primary:active { background:#5546b3; border-color:#5546b3; }
@@ -105,6 +124,7 @@
 
   @media (max-width: 860px) {
     .ib-two-col { grid-template-columns: 1fr !important; gap: clamp(24px,5vw,36px) !important; }
+    .ib-intro-p { text-align: left !important; }
     .ib-svc-head { grid-template-columns: 34px minmax(0,1fr) 24px; gap: 12px; }
     .ib-svc-count { display: none; }
     .ib-svc-body { grid-template-columns: 1fr; gap: 16px; padding-left: clamp(20px,2.6vw,32px); }
@@ -296,14 +316,14 @@
     <a href="#top" style="font-family: var(--font-heading); font-weight: 700; font-size: 20px; letter-spacing: 0.02em; color: var(--color-text); text-decoration: none;">IBBRU</a>
     <div style="flex: 1;"></div>
     <div class="ib-navlinks" style="display: none; align-items: center; gap: clamp(18px, 2vw, 30px); padding-top: 8px; padding-right: 16px; padding-bottom: 8px; padding-left: 16px">
-      <a href="#work" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Work</a>
-      <a href="#services" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Services</a>
+      <a href="#services" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Services</a><a href="#work" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Work</a>
+      
       <a href="#about" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">About</a>
       <a href="#insights" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Focus</a>
       <a href="#contact" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Contact</a>
     </div>
     
-    <button type="button" class="btn btn-primary" onClick="{{ openContact }}" style="white-space: nowrap; margin-left: 16px; margin-right: 16px">Let's talk →</button>
+    <button type="button" class="btn btn-primary ib-nav-cta" onClick="{{ openContact }}" style="white-space: nowrap; margin-left: 16px; margin-right: 16px">Let's talk →</button>
     <button type="button" aria-label="Menu" onClick="{{ toggleNav }}" class="ib-burger" style="align-items:center; justify-content:center; width:40px; height:40px; background:transparent; border:1px solid var(--color-neutral-700); border-radius: var(--radius-md); color: var(--color-text); cursor:pointer;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
     </button><button type="button" aria-label="Toggle light and dark theme" onClick="{{ toggleTheme }}" class="ib-theme-toggle" style="padding-left: 0px; padding-right: 0px">
@@ -334,8 +354,8 @@
             </div>
             <button type="button" class="btn btn-ghost btn-icon" onClick="{{ closeContact }}" aria-label="Close" style="flex:none;">✕</button>
           </div>
-          <div class="ib-modal-field"><label>Your name</label><input type="text" placeholder="e.g. Alex" value="{{ contactName }}" onInput="{{ onContactName }}"></input></div>
-          <div class="ib-modal-field"><label>Your email</label><input type="email" placeholder="you@company.com" value="{{ contactEmail }}" onInput="{{ onContactEmail }}"></input></div>
+          <div class="ib-modal-field"><label>Your name</label><input type="text" placeholder="e.g. Alex" value="{{ contactName }}" onInput="{{ onContactName }}"></div>
+          <div class="ib-modal-field"><label>Your email</label><input type="email" placeholder="you@company.com" value="{{ contactEmail }}" onInput="{{ onContactEmail }}"></div>
           <div class="ib-modal-field"><label>What's keeping you up at night?</label><textarea rows="4" placeholder="Tell us about the problem…" value="{{ contactMsg }}" onInput="{{ onContactMsg }}"></textarea></div>
           <div class="ib-modal-actions">
             <button type="button" class="btn btn-secondary" onClick="{{ closeContact }}">Cancel</button>
@@ -389,7 +409,7 @@
       </div>
       <div style="display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr); gap: clamp(28px,4vw,64px); align-items: end;" class="ib-two-col">
         <h2 data-reveal="1" style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px,3.6vw,46px); line-height: 1.08; letter-spacing: -0.015em; margin: 0;">We help teams solve problems, design better experiences, and build usable products.</h2>
-        <p data-reveal="2" style="font-size: 16px; line-height: 1.7; margin: 0; text-align: right; color: color-mix(in srgb, var(--color-text) 78%, transparent);">From complex enterprise workflows to everyday consumer experiences, we take ideas all the way to execution across&nbsp; &nbsp;research, product design, systems, brand, graphics and motion.</p>
+        <p data-reveal="2" class="ib-intro-p" style="font-size: 16px; line-height: 1.7; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent); text-align: right">From enterprise workflows to consumer apps — we take ideas all the way to execution: research, product design, systems, brand, graphics, and motion.</p>
       </div>
 
       <div data-reveal="1" class="ib-svclist">
@@ -548,7 +568,13 @@
           </div>
         </sc-for>
       </div>
-    <svg class="ib-float" style="width: clamp(48px,6vw,72px); height: auto; align-self: flex-start; position: absolute; left: -12px; top: 260px" aria-hidden="true"><use href="#ib-dollA"></use></svg><svg class="ib-float-b" style="width: clamp(52px,6.5vw,78px); height: auto; align-self: flex-start; position: absolute; left: 988px; top: 258px" aria-hidden="true"><use href="#ib-dollB"></use></svg></section>
+    <svg class="ib-float ib-process-doll-a" style="width: clamp(48px,6vw,72px); height: auto; align-self: flex-start; position: absolute; left: -12px; top: 260px" aria-hidden="true"><use href="#ib-dollA"></use></svg>
+    <svg class="ib-float-b ib-process-doll-b" style="width: clamp(52px,6.5vw,78px); height: auto; align-self: flex-start; position: absolute; left: 988px; top: 258px" aria-hidden="true"><use href="#ib-dollB"></use></svg>
+    <div class="ib-process-dolls-mobile" aria-hidden="true">
+      <svg class="ib-float" style="width:56px; height:auto;"><use href="#ib-dollA"></use></svg>
+      <svg class="ib-float-b" style="width:60px; height:auto;"><use href="#ib-dollB"></use></svg>
+    </div>
+    </section>
 
     <div style="height:1px; background: linear-gradient(to right, transparent, var(--color-divider) 48px calc(100% - 48px), transparent);"></div>
 
@@ -559,13 +585,12 @@
           <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 22px;">
             <span style="width:44px;height:1px;background:var(--color-accent);"></span>
             <span style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color: var(--color-accent);">About Us</span>
-          </div><h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(40px,5.5vw,72px); line-height: 1.02; letter-spacing: -0.02em; margin: 0 0 24px; width: 608px">Two Perspectives. One Shared Vision.</h2>
+          </div><h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(40px,5.5vw,72px); line-height: 1.02; letter-spacing: -0.02em; margin: 0 0 24px; width: auto; max-width: 100%">Two Perspectives. One Shared Vision.</h2>
           
           <p style="font-size:17px; line-height:1.7; margin:0 0 16px; color: color-mix(in srgb,var(--color-text) 82%,transparent); max-width: 46ch;">We are Suraj Sridhar and Keerthi G, two product and user experience design leaders who share a deep-rooted passion for crafting intuitive, high-impact digital experiences.</p>
           <p style="font-size:16px; line-height:1.7; margin:0; color: color-mix(in srgb,var(--color-text) 72%,transparent); max-width: 48ch;">With over 16 years of industry experience each, we've spent our careers navigating the complexities of scaling products, shaping enterprise ecosystems, and solving hard design challenges for millions of users worldwide.</p>
-        </div>
-        <div data-reveal="2" style="display: grid; grid-template-columns: 1fr 1fr; border: 1px solid color-mix(in srgb,var(--color-neutral-700) 55%,transparent); border-radius: var(--radius-lg); overflow: hidden; border-color: #00000000">
-          <div style="padding: clamp(24px,3vw,38px); border-right: 1px solid color-mix(in srgb,var(--color-neutral-700) 55%,transparent); display: block; flex-direction: column; justify-content: space-between; gap: 32px; background: color-mix(in srgb,var(--color-neutral-900) 55%,transparent); margin-top: 171px; border-radius: 8px">
+        </div><div data-reveal="2" style="display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,220px),1fr)); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 55%,transparent); border-radius: var(--radius-lg); overflow: visible; border-color: #00000000; margin-top: 268px">
+          <div class="ib-founder-card" style="padding: clamp(24px,3vw,38px); border-right: 1px solid color-mix(in srgb,var(--color-neutral-700) 55%,transparent); display: block; flex-direction: column; justify-content: space-between; gap: 32px; background: color-mix(in srgb,var(--color-neutral-900) 55%,transparent); margin-top: 0px; border-radius: 8px">
             <div>
               
               <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(26px,3vw,38px); line-height:1.05; letter-spacing:-0.02em; margin:10px 0 0;">Suraj<br>Sridhar</h3>
@@ -578,7 +603,7 @@
               <svg class="ib-float" style="width:clamp(52px,7vw,80px); height:auto;" aria-hidden="true"><use href="#ib-dollA"></use></svg>
             </div>
           </div>
-          <div style="padding: clamp(24px,3vw,38px); display: block; flex-direction: column; justify-content: space-between; gap: 32px; z-index: 0; position: static; flex-wrap: nowrap; margin-top: 171px; border-radius: 8px; background-color: #EDE8DB">
+          <div style="padding: clamp(24px,3vw,38px); display: block; flex-direction: column; justify-content: space-between; gap: 32px; z-index: 0; position: static; flex-wrap: nowrap; margin-top: 0px; border-radius: 8px; background-color: #EDE8DB">
             <div>
               
               <h3 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(26px,3vw,38px); line-height:1.05; letter-spacing:-0.02em; margin:10px 0 0;">Keerthi<br>G</h3>
@@ -592,6 +617,7 @@
             </div>
           </div>
         </div>
+        
       </div>
 
       <p data-reveal="1" style="font-size:15.5px; line-height:1.6; margin: clamp(44px,6vw,72px) 0 18px; color: color-mix(in srgb, var(--color-text) 74%, transparent);">Our collective journey spans world-class brands across consumer and enterprise landscapes:</p>
@@ -604,7 +630,7 @@
           <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">SAP Labs</span>
           <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">Victoria's Secret</span>
           <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">WayCool Foods</span>
-          <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">OpenText</span>
+          <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">OpenText</span><span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">Micro Focus</span>
           <span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);" data-om-label="RedMart">RedMart</span><span style="font-family: var(--font-heading); font-weight:600; font-size: clamp(16px,1.7vw,20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">ChargePoint</span>
         </div>
       </div>
@@ -684,10 +710,10 @@
       </div>
       <div style="display:flex; flex-direction:column; gap:10px;">
         <span style="font-size:12px; text-transform:uppercase; letter-spacing:0.06em; color: color-mix(in srgb,var(--color-text) 45%,transparent); margin-bottom:4px;">Explore</span>
-        <a href="#work" class="ib-link" style="font-size:14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration:none;">Work</a>
-        <a href="#services" class="ib-link" style="font-size:14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration:none;">Services</a>
+        <a href="#services" class="ib-link" style="font-size:14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration:none;">Services</a><a href="#work" class="ib-link" style="font-size:14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration:none;">Work</a>
+        
         <a href="#about" class="ib-link" style="font-size:14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration:none;">About</a>
-        <a href="#insights" class="ib-link" style="font-size:14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration:none;">Insights</a>
+        <a href="#insights" class="ib-link" style="font-size:14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration:none;">Focus</a>
         <a href="#contact" class="ib-link" style="font-size:14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration:none;">Contact</a>
       </div>
       <div style="display:flex; flex-direction:column; gap:10px;">
@@ -710,9 +736,9 @@
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;'dark'|'light'&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'dark'|'light'&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
 class Component extends DCLogic {
-  state = { navOpen: false, openBook: null, page: 0, contactOpen: false, contactSent: false, contactName: '', contactEmail: '', contactMsg: '', theme: (() => { try { return localStorage.getItem('ibbru-theme'); } catch (e) { return null; } })() || 'dark' };
+  state = { navOpen: false, openBook: null, page: 0, contactOpen: false, contactSent: false, contactName: '', contactEmail: '', contactMsg: '', theme: (() => { try { return localStorage.getItem('ibbru-theme'); } catch (e) { return null; } })() || 'light' };
 
   renderVals() {
     const rawWork = [

@@ -70,10 +70,11 @@ content = content.replace('style="position: static;"', "").replace(" position: s
 
 
 def map_styles(html, marker, fn):
-    """Rewrite every style attribute whose value contains `marker`."""
+    """Rewrite every style attribute matching the `marker` regex."""
+    pat = re.compile(marker)
     def sub(m):
         v = m.group(1)
-        return 'style="%s"' % (fn(v) if marker in v else v)
+        return 'style="%s"' % (fn(v) if pat.search(v) else v)
     return re.sub(r'style="([^"]*)"', sub, html)
 
 
@@ -100,14 +101,16 @@ content = re.sub(r'(<div[^>]*class="ib-hero-inner"[^>]*?)\s+style="[^"]*"', r"\1
 content = re.sub(r'(<div[^>]*class="ib-hero-copy"[^>]*?)\s+style="[^"]*"', r"\1", content)
 # about stat panels: fixed height / offset / broken border longhands, and display:block
 content = map_styles(
-    content, "grid-template-columns: 1fr 1fr;",
-    lambda v: "display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius-lg); overflow: hidden;")
+    content, r"repeat\(auto-fit,\s*minmax\(min\(100%,\s*220px\),\s*1fr\)\)",
+    lambda v: "display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,220px),1fr)); "
+              "border-radius: var(--radius-lg); overflow: hidden;")
 content = map_styles(
     content, "justify-content: space-between; gap: 32px;",
     lambda v: v.replace("display: block", "display: flex")
                .replace("margin-top: 0px;", "").replace("border-radius: 8px;", ""))
 # process-section dolls: fixed left offset -> pinned right (and hidden on phones)
 content = map_styles(content, "left: 988px;", lambda v: v.replace("left: 988px;", "right: -12px;"))
+content = map_styles(content, r"minmax\(0(?:px)?,\s*0\.9fr\)\s*minmax\(0(?:px)?,\s*1\.1fr\)", lambda v: v.replace("align-items: center", "align-items: end"))
 # about stat panel #2: the editor baked in a light-mode background colour
 def _panel_bg(v):
     if "background-color:" in v and "justify-content: space-between" in v:
@@ -117,15 +120,7 @@ def _panel_bg(v):
 content = re.sub(r'style="([^"]*)"', lambda m: 'style="%s"' % _panel_bg(m.group(1)), content)
 
 
-def mark_proc_doll(m):
-    tag = m.group(0)
-    if "position: absolute" in tag and re.search(r"top: 25[89]px", tag):
-        return tag.replace('class="ib-float-b"', 'class="ib-float-b ib-proc-doll"').replace(
-            'class="ib-float"', 'class="ib-float ib-proc-doll"')
-    return tag
-
-
-content = re.sub(r"<svg[^>]*>", mark_proc_doll, content)
+# process dolls are positioned by the design now (.ib-process-doll-a/b)
 
 # ---- contact modal trigger ----
 # every in-page CTA that opens the contact modal
@@ -214,20 +209,11 @@ EXTRA_CSS = """
 .ib-modal-sent[hidden], .ib-modal-form[hidden] { display: none !important; }
 body.ib-locked { overflow: hidden; }
 #ib-reader .ib-open { margin-top: 0; }
-/* hero artwork: editor px geometry translated to a proportional, responsive band */
+/* hero artwork on desktop: editor px geometry translated to a proportional band.
+   Below 720px the design stacks the hero itself. */
 .ib-hero-img { top: 9%; right: 0; left: auto; bottom: auto; width: min(1300px, 84%); height: auto; object-fit: contain;
   -webkit-mask-image: linear-gradient(to right, transparent 0, #000 15%);
   mask-image: linear-gradient(to right, transparent 0, #000 15%); }
-@media (max-width: 720px) {
-  .ib-hero-inner { max-width: none; }
-  .ib-hero-media-inner { max-width: none; }
-  .ib-hero-img { width: 100%; height: 46%; top: auto; bottom: 0; object-fit: cover; }
-}
-@media (max-width: 860px) {
-  .ib-proc-doll { display: none !important; }
-  /* the stat panels' desktop alignment offset is meaningless once stacked */
-  [style*="margin-top: 171px"] { margin-top: 0 !important; }
-}
 """
 (LIVE / "styles.css").write_text(css + EXTRA_CSS, encoding="utf-8")
 
