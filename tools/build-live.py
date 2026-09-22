@@ -111,6 +111,10 @@ content = map_styles(
 # process-section dolls: fixed left offset -> pinned right (and hidden on phones)
 content = map_styles(content, "left: 988px;", lambda v: v.replace("left: 988px;", "right: -12px;"))
 content = map_styles(content, r"minmax\(0(?:px)?,\s*0\.9fr\)\s*minmax\(0(?:px)?,\s*1\.1fr\)", lambda v: v.replace("align-items: center", "align-items: end"))
+# process headline: editor viewport snapshot (width 527px) overflows phones
+content = map_styles(content, "width: 527px", lambda v: (
+    v.replace("width: 527px; ", "").replace("width: 527px;", "")
+     .replace("margin: 0px 0px 60px;", "margin: 0 0 clamp(28px, 4vw, 60px);")))
 # about stat panel #2: the editor baked in a light-mode background colour
 def _panel_bg(v):
     if "background-color:" in v and "justify-content: space-between" in v:
