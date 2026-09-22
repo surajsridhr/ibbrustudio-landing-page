@@ -16,7 +16,7 @@
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-<div class="ib-page-bg" data-theme="dark" style="font-family: var(--font-body); color: var(--color-text); background: radial-gradient(1200px 720px at 82% -180px, color-mix(in srgb, var(--color-accent-900) 72%, transparent), transparent 60%), radial-gradient(1100px 900px at -12% 102%, color-mix(in srgb, black 30%, transparent), transparent 55%), var(--color-bg); min-height: 100vh; overflow-x: hidden; text-wrap: pretty;">
+<div class="ib-page-bg" data-theme="light" style="font-family: var(--font-body); color: var(--color-text); background: radial-gradient(1200px 720px at 82% -180px, color-mix(in srgb, var(--color-accent-900) 72%, transparent), transparent 60%), radial-gradient(1100px 900px at -12% 102%, color-mix(in srgb, black 30%, transparent), transparent 55%), var(--color-bg); min-height: 100vh; overflow-x: hidden; text-wrap: pretty;">
 
   <svg width="0" height="0" aria-hidden="true" style="position: absolute;">
     <defs>
@@ -81,14 +81,14 @@
     <a href="#top" style="font-family: var(--font-heading); font-weight: 700; font-size: 20px; letter-spacing: 0.02em; color: var(--color-text); text-decoration: none;">IBBRU</a>
     <div style="flex: 1 1 0%;"></div>
     <div class="ib-navlinks" style="display: none; align-items: center; gap: clamp(18px, 2vw, 30px); padding: 8px 16px;">
-      <a href="#work" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Work</a>
-      <a href="#services" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Services</a>
+      <a href="#services" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Services</a><a href="#work" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Work</a>
+      
       <a href="#about" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">About</a>
       <a href="#insights" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Focus</a>
       <a href="#contact" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Contact</a>
     </div>
     
-    <button data-open-contact type="button" class="btn btn-primary" style="white-space: nowrap; margin-left: 16px; margin-right: 16px;">Let's talk →</button>
+    <button data-open-contact type="button" class="btn btn-primary ib-nav-cta" style="white-space: nowrap; margin-left: 16px; margin-right: 16px;">Let's talk →</button>
     <button type="button" aria-label="Menu" class="ib-burger" style="align-items: center; justify-content: center; width: 40px; height: 40px; background: transparent; border: 1px solid var(--color-neutral-700); border-radius: var(--radius-md); color: var(--color-text); cursor: pointer;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
     </button><button type="button" aria-label="Toggle light and dark theme" class="ib-theme-toggle" style="padding-left: 0px; padding-right: 0px;">
@@ -145,7 +145,7 @@
       </div>
       <div class="ib-two-col" style="display: grid; grid-template-columns: minmax(0px, 0.95fr) minmax(0px, 1fr); gap: clamp(28px, 4vw, 64px); align-items: end;">
         <h2 data-reveal="1" style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.015em; margin: 0px;">We help teams solve problems, design better experiences, and build usable products.</h2>
-        <p data-reveal="2" style="font-size: 16px; line-height: 1.7; margin: 0px; text-align: right; color: color-mix(in srgb, var(--color-text) 78%, transparent);">From complex enterprise workflows to everyday consumer experiences, we take ideas all the way to execution across&nbsp; &nbsp;research, product design, systems, brand, graphics and motion.</p>
+        <p data-reveal="2" class="ib-intro-p" style="font-size: 16px; line-height: 1.7; margin: 0px; color: color-mix(in srgb, var(--color-text) 78%, transparent); text-align: right;">From enterprise workflows to consumer apps — we take ideas all the way to execution: research, product design, systems, brand, graphics, and motion.</p>
       </div>
 
       <div data-reveal="1" class="ib-svclist" style="">
@@ -367,24 +367,29 @@
           </div>
         
       </div>
-    <svg class="ib-float" aria-hidden="true" style="width: clamp(48px, 6vw, 72px); height: auto; align-self: flex-start; position: absolute; left: -12px; top: 260px;"><use href="#ib-dollA"></use></svg><svg class="ib-float-b ib-proc-doll" aria-hidden="true" style="width: clamp(52px, 6.5vw, 78px); height: auto; align-self: flex-start; position: absolute; right: -12px; top: 258px;"><use href="#ib-dollB"></use></svg></section>
+    <svg class="ib-float ib-process-doll-a" aria-hidden="true" style="width: clamp(48px, 6vw, 72px); height: auto; align-self: flex-start; position: absolute; left: -12px; top: 260px;"><use href="#ib-dollA"></use></svg>
+    <svg class="ib-float-b ib-process-doll-b" aria-hidden="true" style="width: clamp(52px, 6.5vw, 78px); height: auto; align-self: flex-start; position: absolute; right: -12px; top: 258px;"><use href="#ib-dollB"></use></svg>
+    <div class="ib-process-dolls-mobile" aria-hidden="true">
+      <svg class="ib-float" style="width: 56px; height: auto;"><use href="#ib-dollA"></use></svg>
+      <svg class="ib-float-b" style="width: 60px; height: auto;"><use href="#ib-dollB"></use></svg>
+    </div>
+    </section>
 
     <div style="height: 1px; background: linear-gradient(to right, transparent, var(--color-divider) 48px calc(100% - 48px), transparent);"></div>
 
     
     <section id="about" style="padding: clamp(56px, 8vw, 104px) 0px;">
-      <div class="ib-two-col" style="display: grid; grid-template-columns: minmax(0px, 0.9fr) minmax(0px, 1.1fr); gap: clamp(32px, 5vw, 80px); align-items: center;">
+      <div class="ib-two-col" style="display: grid; grid-template-columns: minmax(0px, 0.9fr) minmax(0px, 1.1fr); gap: clamp(32px, 5vw, 80px); align-items: end;">
         <div data-reveal="1" style="">
           <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 22px;">
             <span style="width: 44px; height: 1px; background: var(--color-accent);"></span>
             <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">About Us</span>
-          </div><h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(40px, 5.5vw, 72px); line-height: 1.02; letter-spacing: -0.02em; margin: 0px 0px 24px; width: 608px;">Two Perspectives. One Shared Vision.</h2>
+          </div><h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(40px, 5.5vw, 72px); line-height: 1.02; letter-spacing: -0.02em; margin: 0px 0px 24px; width: auto; max-width: 100%;">Two Perspectives. One Shared Vision.</h2>
           
           <p style="font-size: 17px; line-height: 1.7; margin: 0px 0px 16px; color: color-mix(in srgb,var(--color-text) 82%,transparent); max-width: 46ch;">We are Suraj Sridhar and Keerthi G, two product and user experience design leaders who share a deep-rooted passion for crafting intuitive, high-impact digital experiences.</p>
           <p style="font-size: 16px; line-height: 1.7; margin: 0px; color: color-mix(in srgb,var(--color-text) 72%,transparent); max-width: 48ch;">With over 16 years of industry experience each, we've spent our careers navigating the complexities of scaling products, shaping enterprise ecosystems, and solving hard design challenges for millions of users worldwide.</p>
-        </div>
-        <div data-reveal="2" style="display: grid; grid-template-columns: 1fr 1fr; border-radius: var(--radius-lg); overflow: hidden;">
-          <div style="padding: clamp(24px, 3vw, 38px); border-right: 1px solid color-mix(in srgb,var(--color-neutral-700) 55%,transparent); display: flex; flex-direction: column; justify-content: space-between; gap: 32px; background: color-mix(in srgb,var(--color-neutral-900) 55%,transparent); margin-top: 171px; ">
+        </div><div data-reveal="2" style="display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,220px),1fr)); border-radius: var(--radius-lg); overflow: hidden;">
+          <div class="ib-founder-card" style="padding: clamp(24px, 3vw, 38px); border-right: 1px solid color-mix(in srgb,var(--color-neutral-700) 55%,transparent); display: flex; flex-direction: column; justify-content: space-between; gap: 32px; background: color-mix(in srgb,var(--color-neutral-900) 55%,transparent);  ">
             <div>
               
               <h3 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(26px, 3vw, 38px); line-height: 1.05; letter-spacing: -0.02em; margin: 10px 0px 0px;">Suraj<br>Sridhar</h3>
@@ -397,7 +402,7 @@
               <svg class="ib-float" aria-hidden="true" style="width: clamp(52px, 7vw, 80px); height: auto;"><use href="#ib-dollA"></use></svg>
             </div>
           </div>
-          <div style="padding: clamp(24px, 3vw, 38px); display: flex; flex-flow: column; justify-content: space-between; gap: 32px; z-index: 0; margin-top: 171px;  background: color-mix(in srgb, var(--color-neutral-900) 55%, transparent);">
+          <div style="padding: clamp(24px, 3vw, 38px); display: flex; flex-flow: column; justify-content: space-between; gap: 32px; z-index: 0;   background: color-mix(in srgb, var(--color-neutral-900) 55%, transparent);">
             <div>
               
               <h3 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(26px, 3vw, 38px); line-height: 1.05; letter-spacing: -0.02em; margin: 10px 0px 0px;">Keerthi<br>G</h3>
@@ -411,6 +416,7 @@
             </div>
           </div>
         </div>
+        
       </div>
 
       <p data-reveal="1" style="font-size: 15.5px; line-height: 1.6; margin: clamp(44px, 6vw, 72px) 0px 18px; color: color-mix(in srgb, var(--color-text) 74%, transparent);">Our collective journey spans world-class brands across consumer and enterprise landscapes:</p>
@@ -423,7 +429,7 @@
           <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">SAP Labs</span>
           <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">Victoria's Secret</span>
           <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">WayCool Foods</span>
-          <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">OpenText</span>
+          <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">OpenText</span><span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">Micro Focus</span>
           <span data-om-label="RedMart" style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">RedMart</span><span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">ChargePoint</span>
         </div>
       </div>
@@ -530,10 +536,10 @@
       </div>
       <div style="display: flex; flex-direction: column; gap: 10px;">
         <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: color-mix(in srgb,var(--color-text) 45%,transparent); margin-bottom: 4px;">Explore</span>
-        <a href="#work" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Work</a>
-        <a href="#services" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Services</a>
+        <a href="#services" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Services</a><a href="#work" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Work</a>
+        
         <a href="#about" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">About</a>
-        <a href="#insights" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Insights</a>
+        <a href="#insights" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Focus</a>
         <a href="#contact" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Contact</a>
       </div>
       <div style="display: flex; flex-direction: column; gap: 10px;">
