@@ -126,12 +126,18 @@
             '<h4 class="ib-p-title">' + esc(c.title) + "</h4>" +
             '<p class="ib-p-summary">' + esc(c.summary) + "</p>" +
             (c.metric ? '<span class="ib-p-metric">' + esc(c.metric) + "</span>" : "") +
+            (c.image ?
+              '<figure class="ib-p-figure"><img src="' + esc(c.image) + '" alt="' + esc(c.imageCaption || "") + '" loading="lazy">' +
+              (c.imageCaption ? "<figcaption>" + esc(c.imageCaption) + "</figcaption>" : "") + "</figure>" : "") +
           "</div>" +
           '<div class="ib-page ib-page-right">' +
             field("Problem", c.problem) +
             field("Insight", c.insight) +
             field("Solution", c.solution) +
             field("Impact", c.impact) +
+            (c.fullCaseUrl ?
+              '<a class="ib-p-fullcase" href="' + esc(c.fullCaseUrl) + '" target="_blank" rel="noopener">' +
+              "Read the full case study <span class=\"ib-arrow\">→</span></a>" : "") +
           "</div>" +
           '<div class="ib-page-turn" aria-hidden="true"></div>' +
         "</div>" +

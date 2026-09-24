@@ -213,11 +213,7 @@ EXTRA_CSS = """
 .ib-modal-sent[hidden], .ib-modal-form[hidden] { display: none !important; }
 body.ib-locked { overflow: hidden; }
 #ib-reader .ib-open { margin-top: 0; }
-/* hero artwork on desktop: editor px geometry translated to a proportional band.
-   Below 720px the design stacks the hero itself. */
-.ib-hero-img { top: 9%; right: 0; left: auto; bottom: auto; width: min(1300px, 84%); height: auto; object-fit: contain;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 15%);
-  mask-image: linear-gradient(to right, transparent 0, #000 15%); }
+/* hero: Ibbru5's framed two-column grid handles itself at every width */
 """
 (LIVE / "styles.css").write_text(css + EXTRA_CSS, encoding="utf-8")
 
