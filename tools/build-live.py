@@ -187,10 +187,12 @@ tmp_js.write_text("const rawWork = " + m.group(1) + ";console.log(JSON.stringify
 work = json.loads(subprocess.check_output(["node", str(tmp_js)]).decode())
 
 # ---------------------------------------------------------------- assets
+# scan markup, css AND the extracted case data (case images live only in the data blob)
+work_json = json.dumps(work, ensure_ascii=False).replace("</", "<\\/")
 (LIVE / "assets").mkdir(parents=True, exist_ok=True)
 for stale in (LIVE / "assets").glob("*"):
     stale.unlink()
-refs = sorted(set(re.findall(r"uploads/([A-Za-z0-9_.\- ]+)", content + css)))
+refs = sorted(set(re.findall(r"uploads/([A-Za-z0-9_.\- ]+)", content + css + work_json)))
 for ref in refs:
     src = DESIGN / "uploads" / ref
     if src.exists():
@@ -199,6 +201,7 @@ for ref in refs:
         print("  ! referenced asset missing:", ref)
 content = content.replace("uploads/", "assets/")
 css = css.replace("uploads/", "assets/")
+work_json = work_json.replace("uploads/", "assets/")
 
 # ---------------------------------------------------------------- write live/
 EXTRA_CSS = """
@@ -236,7 +239,7 @@ html = """<!DOCTYPE html>
 </head>
 <body>
 """ + content + MODAL + """
-<script type="application/json" id="ib-data">""" + json.dumps(work, ensure_ascii=False).replace("</", "<\\/") + """</script>
+<script type="application/json" id="ib-data">""" + work_json + """</script>
 <script src="app.js" defer></script>
 <script>setTimeout(function(){document.querySelectorAll('[data-reveal]').forEach(function(e){e.classList.add('ib-in')})},3000);</script>
 </body>
