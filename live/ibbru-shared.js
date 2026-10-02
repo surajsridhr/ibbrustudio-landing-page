@@ -18,7 +18,8 @@
     { num: "02", name: "Complex Workflows & Enterprise UX", caps: ["Dashboard & Data Visualization", "Enterprise Software Modernization", "Hardware-Software Integration"] },
     { num: "03", name: "Design Systems & Operations", caps: ["Design System Architecture", "Advanced Figma Workflows", "Design-to-Engineering Handoff"] },
     { num: "04", name: "End-to-End Product Design", name2: "(0 to 1 & Beyond)", caps: ["MVP Incubation", "Cross-Platform Experience Design"] },
-    { num: "05", name: "Brand & Promotional Videos", caps: ["Brand Storytelling", "Product Showcases"] },
+    { num: "05", name: "Brand Identity", caps: ["Logo & Visual Identity", "Brand Guidelines", "Brand Storytelling"] },
+    { num: "06", name: "Motion & Video", caps: ["Promotional Videos", "Product Showcases", "Motion Graphics"] },
   ];
   const steps = [
     { num: "01", title: "Understand", body: "Ask better questions. Research context, users and business goals." },
