@@ -1,593 +1,338 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IBBRU: Complexity, made simple.</title>
 <meta name="description" content="IBBRU is an independent product design studio. We help teams solve problems, design better experiences, and build usable products.">
-<meta property="og:title" content="IBBRU: Complexity, made simple.">
-<meta property="og:description" content="Independent product design studio: product strategy, enterprise UX, design systems, 0-to-1 product design and brand video.">
-<meta property="og:type" content="website">
-<link rel="icon" href="assets/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap">
-<link rel="stylesheet" href="styles.css">
-<script>document.documentElement.classList.add('js');</script>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<script src="./support.js"></script>
 </head>
 <body>
-<div class="ib-page-bg" data-theme="light" style="font-family: var(--font-body); color: var(--color-text); background: radial-gradient(1200px 720px at 82% -180px, color-mix(in srgb, var(--color-accent-900) 72%, transparent), transparent 60%), radial-gradient(1100px 900px at -12% 102%, color-mix(in srgb, black 30%, transparent), transparent 55%), var(--color-bg); min-height: 100vh; overflow-x: hidden; text-wrap: pretty;">
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,500&amp;family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<script src="./ibbru-shared.js"></script>
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FAFAFA}
+body:has([data-theme="dark"]){background:#0A0A0A}
+a{color:#FFFFFF}
+a:hover{color:var(--acc,#D4FF3A)}
+::selection{background:var(--acc,#D4FF3A);color:#0A0A0A}
+[data-theme="light"]{--gEDEDED:#111111;--g0A0A0A:#FAFAFA;--g242424:#DBDBDB;--gA3A3A3:#555555;--gFFFFFF:#000000;--g141414:#EBEBEB;--g2A2A2A:#D5D5D5;--g383838:#C7C7C7;--g000:#FFFFFF;--g1C1C1C:#E3E3E3;--g8A8A8A:#6B6B6B;--g5E5E5E:#8C8C8C;--gBDBDBD:#3D3D3D;--g6E6E6E:#7A7A7A;--g0F0F0F:#F0F0F0;--g1A1A1A:#E5E5E5;--g0E0E0E:#F1F1F1;--g050505:#FCFCFC;--g181818:#E7E7E7;--gF5F5F5:#0E0E0E;--g131313:#ECECEC;--g222222:#DDDDDD;--gF2F2F2:#F2F2F2;--g1D1D1D:#E2E2E2;--g111111:#EEEEEE;--acc:#C6F000;--acc-ink:#4A6600;--glw:0,0,0;--sh:60,60,60;--navrgb:250,250,250}
+body:has([data-theme="light"]){background:#FAFAFA}
+</style>
+</helmet>
+<div data-theme="{{ theme }}" style="font-family:'Nunito',sans-serif;color:var(--gEDEDED,#EDEDED);background:var(--g0A0A0A,#0A0A0A);min-height:100vh;text-wrap:pretty;overflow-x:hidden">
 
-  <svg width="0" height="0" aria-hidden="true" style="position: absolute;">
-    <defs>
-      <linearGradient id="ib-bodyA" x1="0" y1="0" x2="0.35" y2="1">
-        <stop offset="0" stop-color="#a99cec"></stop>
-        <stop offset="1" stop-color="#7867cf"></stop>
-      </linearGradient>
-      <radialGradient id="ib-headA" cx="0.38" cy="0.34" r="0.75">
-        <stop offset="0" stop-color="#b8adf0"></stop>
-        <stop offset="1" stop-color="#8f81d8"></stop>
-      </radialGradient>
-      <linearGradient id="ib-bodyB" x1="0" y1="0" x2="0.35" y2="1">
-        <stop offset="0" stop-color="#e0b492"></stop>
-        <stop offset="1" stop-color="#bd8154"></stop>
-      </linearGradient>
-      <radialGradient id="ib-headB" cx="0.38" cy="0.34" r="0.75">
-        <stop offset="0" stop-color="#ecc6a5"></stop>
-        <stop offset="1" stop-color="#d19c72"></stop>
-      </radialGradient>
-      <symbol id="ib-dollA" viewBox="0 0 100 152">
-        <ellipse cx="50" cy="147" rx="26" ry="3.6" fill="#000" opacity="0.22"></ellipse>
-        <path d="M31,64 C31,50 69,50 69,64 L77,123 C78,134 70,141 59,141 L41,141 C30,141 22,134 23,123 Z" fill="url(#ib-bodyA)"></path>
-        <path d="M31,64 C31,50 69,50 69,64 L70,72 C57,77 43,77 30,72 Z" fill="#c4baf3" opacity="0.55"></path>
-        <path d="M50,50 C41,50 34,55 32,62 L30,72 C43,77 57,77 70,72 L68,62 C66,55 59,50 50,50 Z" fill="#8a7cd6" opacity="0.5"></path>
-        <ellipse cx="41" cy="94" rx="9" ry="22" fill="#fff" opacity="0.07"></ellipse>
-        <circle cx="50" cy="33" r="24" fill="url(#ib-headA)"></circle>
-        <ellipse cx="42" cy="26" rx="9" ry="6.5" fill="#fff" opacity="0.28"></ellipse>
-        <path d="M26,30 A24 24 0 0 1 74,30 Q50,20 26,30 Z" fill="#7867cf"></path>
-        <ellipse cx="35" cy="43" rx="4.2" ry="2.8" fill="#e79ac0" opacity="0.4"></ellipse>
-        <ellipse cx="65" cy="43" rx="4.2" ry="2.8" fill="#e79ac0" opacity="0.4"></ellipse>
-        <circle cx="40" cy="37" r="7.6" fill="#fbfaff" opacity="0.92"></circle>
-        <circle cx="60" cy="37" r="7.6" fill="#fbfaff" opacity="0.92"></circle>
-        <circle cx="40" cy="37" r="7.6" fill="none" stroke="#2c2846" stroke-width="2.3"></circle>
-        <circle cx="60" cy="37" r="7.6" fill="none" stroke="#2c2846" stroke-width="2.3"></circle>
-        <line x1="47.6" y1="37" x2="52.4" y2="37" stroke="#2c2846" stroke-width="2.3"></line>
-        <line x1="67.5" y1="34" x2="73" y2="31" stroke="#2c2846" stroke-width="2.1" stroke-linecap="round"></line>
-        <circle cx="40" cy="37.5" r="2.2" fill="#2c2846"></circle>
-        <circle cx="60" cy="37.5" r="2.2" fill="#2c2846"></circle>
-        <path d="M45,48 Q50,50.5 55,48" fill="none" stroke="#2c2846" stroke-width="1.9" stroke-linecap="round"></path>
-      </symbol>
-      <symbol id="ib-dollB" viewBox="0 0 100 152">
-        <ellipse cx="50" cy="147" rx="26" ry="3.6" fill="#000" opacity="0.22"></ellipse>
-        <path d="M31,64 C31,50 69,50 69,64 L77,123 C78,134 70,141 59,141 L41,141 C30,141 22,134 23,123 Z" fill="url(#ib-bodyB)"></path>
-        <path d="M31,64 C31,50 69,50 69,64 L70,72 C57,77 43,77 30,72 Z" fill="#eecaa9" opacity="0.55"></path>
-        <path d="M50,50 C41,50 34,55 32,62 L30,72 C43,77 57,77 70,72 L68,62 C66,55 59,50 50,50 Z" fill="#b57e50" opacity="0.5"></path>
-        <ellipse cx="41" cy="94" rx="9" ry="22" fill="#fff" opacity="0.07"></ellipse>
-        <circle cx="50" cy="33" r="24" fill="url(#ib-headB)"></circle>
-        <ellipse cx="42" cy="26" rx="9" ry="6.5" fill="#fff" opacity="0.28"></ellipse>
-
-        <ellipse cx="35" cy="43" rx="4.4" ry="3" fill="#e06a4a" opacity="0.32"></ellipse>
-        <ellipse cx="65" cy="43" rx="4.4" ry="3" fill="#e06a4a" opacity="0.32"></ellipse>
-        <circle cx="41" cy="37.5" r="2.6" fill="#3a2a1c"></circle>
-        <circle cx="59" cy="37.5" r="2.6" fill="#3a2a1c"></circle>
-        <circle cx="41.9" cy="36.6" r="0.9" fill="#fff"></circle>
-        <circle cx="59.9" cy="36.6" r="0.9" fill="#fff"></circle>
-        <path d="M43,46 Q50,52 57,46" fill="none" stroke="#3a2a1c" stroke-width="2.1" stroke-linecap="round"></path>
-      </symbol>
-    </defs>
-  </svg>
-
-  <nav class="nav" style="position: sticky; top: 0px; z-index: 50; display: flex; align-items: center; gap: var(--space-5); padding: var(--space-3) clamp(20px,5vw,72px); backdrop-filter: blur(14px); background: color-mix(in srgb, var(--color-bg) 78%, transparent); border-bottom: 1px solid color-mix(in srgb, var(--color-neutral-700) 70%, transparent);">
-    <a href="#top" style="font-family: var(--font-heading); font-weight: 700; font-size: 20px; letter-spacing: 0.02em; color: var(--color-text); text-decoration: none;">IBBRU</a>
-    <div style="flex: 1 1 0%;"></div>
-    <div class="ib-navlinks" style="display: none; align-items: center; gap: clamp(20px, 2vw, 32px); padding: 8px 16px;">
-      <a href="#services" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Services</a><a href="#work" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Work</a>
-      
-      <a href="#about" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">About</a>
-      <a href="#insights" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Focus</a>
-      <a href="#contact" class="ib-link" style="color: color-mix(in srgb, var(--color-text) 82%, transparent); text-decoration: none; font-size: 14px; letter-spacing: 0.02em;">Contact</a>
+<nav style="position:sticky;top:0;z-index:50;background:rgba(var(--navrgb,10,10,10),.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--g242424,#242424)">
+  <div style="max-width:1320px;margin:0 auto;padding:14px clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:12px 32px">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;color:var(--gEDEDED,#EDEDED);text-decoration:none"><span style="width:8px;height:8px;border-radius:50%;background:var(--acc,#D4FF3A)"></span><span style="font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:15px;letter-spacing:.24em">IBBRU</span></a>
+    <div style="flex:1"></div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px 26px;font-size:14px">
+      <a href="#services" style="color:var(--gA3A3A3,#A3A3A3);text-decoration:none" style-hover="color:var(--gEDEDED,#EDEDED)">Services</a>
+      <a href="#work" style="color:var(--gA3A3A3,#A3A3A3);text-decoration:none" style-hover="color:var(--gEDEDED,#EDEDED)">Work</a>
+      <a href="#about" style="color:var(--gA3A3A3,#A3A3A3);text-decoration:none" style-hover="color:var(--gEDEDED,#EDEDED)">About</a>
+      <a href="#insights" style="color:var(--gA3A3A3,#A3A3A3);text-decoration:none" style-hover="color:var(--gEDEDED,#EDEDED)">Focus</a>
+      <a href="#contact" style="color:var(--gA3A3A3,#A3A3A3);text-decoration:none" style-hover="color:var(--gEDEDED,#EDEDED)">Contact</a>
     </div>
-    
-    <button data-open-contact type="button" class="btn btn-primary ib-nav-cta" style="white-space: nowrap; margin-left: 16px; margin-right: 16px;">Let's talk →</button>
-    <button type="button" aria-label="Menu" class="ib-burger" style="align-items: center; justify-content: center; width: 40px; height: 40px; background: transparent; border: 1px solid var(--color-neutral-700); border-radius: var(--radius-md); color: var(--color-text); cursor: pointer;">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="7" x2="21" y2="7"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="17" x2="21" y2="17"></line></svg>
-    </button><button type="button" aria-label="Toggle light and dark theme" class="ib-theme-toggle" style="padding-left: 0px; padding-right: 0px;">
-      <span class="ib-toggle-icons">
-        <svg class="ib-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.9" y1="4.9" x2="6.3" y2="6.3"></line><line x1="17.7" y1="17.7" x2="19.1" y2="19.1"></line><line x1="4.9" y1="19.1" x2="6.3" y2="17.7"></line><line x1="17.7" y1="6.3" x2="19.1" y2="4.9"></line></svg>
-        <svg class="ib-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.2 14.9A8.2 8.2 0 0 1 9.1 3.8a8.2 8.2 0 1 0 11.1 11.1Z"></path></svg>
-      </span>
-      <span class="ib-knob" aria-hidden="true"></span>
-    </button>
-  </nav>
-  <div id="ib-mobile-nav" style="display:none; position:fixed; inset:0; z-index:49; background: color-mix(in srgb, var(--color-bg) 96%, transparent); backdrop-filter: blur(8px); flex-direction: column; justify-content: center; gap: var(--space-4); padding: 0 clamp(24px,8vw,72px);">
-    <a href="#services" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Services</a>
-    <a href="#work" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Work</a>
-    <a href="#about" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">About</a>
-    <a href="#insights" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Focus</a>
-    <a href="#contact" style="font-family: var(--font-heading); font-size: 34px; color: var(--color-text); text-decoration: none;">Contact</a>
+    <button type="button" onClick="{{ toggleTheme }}" aria-label="{{ themeLabel }}" title="{{ themeLabel }}" style="font:inherit;width:38px;height:38px;display:grid;place-items:center;border-radius:6px;border:1px solid var(--g383838,#383838);background:transparent;color:var(--gEDEDED,#EDEDED);cursor:pointer" style-hover="border-color:var(--acc-ink,#D4FF3A)"><sc-if value="{{ isDark }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></sc-if><sc-if value="{{ isLight }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></sc-if></button>
+    <button type="button" onClick="{{ openContact }}" style="font:inherit;font-size:14px;font-weight:500;padding:9px 16px;border-radius:6px;border:1px solid var(--gFFFFFF,#FFFFFF);background:transparent;color:var(--gFFFFFF,#FFFFFF);cursor:pointer" style-hover="background:var(--gFFFFFF,#FFFFFF);color:var(--g0A0A0A,#0A0A0A)">Let's talk →</button>
   </div>
+</nav>
 
-
-  
-
-  
-
-  <main id="top" style="max-width: 1200px; margin: 0px auto; padding: 0px clamp(20px, 5vw, 72px);">
-
-    
-    <section class="ib-hero" aria-label="Complexity, made simple" style="background-color: rgb(0, 0, 0);">
-      <div class="ib-hero-frame">
-      <div class="ib-hero-inner">
-        <div class="ib-hero-copy" data-reveal="1">
-          <h1 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(40px, 5vw, 72px); line-height: 1.02; letter-spacing: -0.02em; margin: 0px; color: rgb(244, 242, 236);">
-            <span style="display: block;">Complexity,</span>
-            <span style="display: block; color: rgba(244, 242, 236, 0.62);">made simple.</span>
-          </h1>
-          <p style="font-size: clamp(16px, 1.4vw, 19px); line-height: 1.65; max-width: 44ch; margin: clamp(20px, 3vw, 32px) 0px 0px; color: rgba(244, 242, 236, 0.85);">We design digital products that make complicated things feel simple both for businesses and the people who use them.</p>
-          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: clamp(28px, 3.5vw, 36px);">
-            <a href="#work" class="ib-hero-btn">Explore our work ↗</a>
-            <a href="#about" class="ib-hero-btn-ghost">Meet IBBRU →</a>
-          </div>
+<sc-if value="{{ contactOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeContact }}" role="dialog" aria-modal="true" aria-label="Contact form" style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px">
+    <div onClick="{{ stopProp }}" style="background:var(--g141414,#141414);border:1px solid var(--g2A2A2A,#2A2A2A);width:100%;max-width:520px;padding:clamp(24px,4vw,40px);border-radius:12px;box-shadow:0 40px 100px rgba(var(--sh,0,0,0),.6)">
+      <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:20px 0">
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:44px;margin:0 0 8px">Message sent.</h3>
+          <p style="margin:0 0 24px;color:var(--gA3A3A3,#A3A3A3)">We'll get back to you soon.</p>
+          <button type="button" onClick="{{ closeContact }}" style="font:inherit;padding:10px 18px;border-radius:6px;border:1px solid var(--g383838,#383838);background:transparent;color:var(--gEDEDED,#EDEDED);cursor:pointer">Close</button>
         </div>
-      </div>
-      <div class="ib-hero-media">
-        <div class="ib-hero-media-inner">
-          <img src="assets/hero5-mudw3v8v-t1zd.gif" alt="Two IBBRU characters at a workstation with a redesigned analytics dashboard and high-contrast point-of-sale terminals." class="ib-hero-img">
+      </sc-if>
+      <sc-if value="{{ contactNotSent }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start">
+          <div>
+            <h3 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:40px;line-height:1;margin:0">Start a conversation</h3>
+            <p style="margin:8px 0 0;color:var(--gA3A3A3,#A3A3A3);font-size:14px">We'll read every message personally.</p>
+          </div>
+          <button type="button" onClick="{{ closeContact }}" aria-label="Close" style="font:inherit;font-size:18px;width:40px;height:40px;border:none;background:transparent;cursor:pointer;color:var(--gEDEDED,#EDEDED)">✕</button>
         </div>
-      </div>
-      </div>
-    </section>
-
-    
-    <section id="services" style="padding: clamp(56px, 8vw, 104px) 0px;">
-      <div data-reveal="1" style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
-        <span style="width: 44px; height: 1px; background: var(--color-accent);"></span>
-        <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;">What we do</span>
-      </div>
-      <div class="ib-two-col" style="display: grid; grid-template-columns: minmax(0px, 0.95fr) minmax(0px, 1fr); gap: clamp(28px, 4vw, 64px); align-items: end;">
-        <h2 data-reveal="1" style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px, 3.6vw, 46px); line-height: 1.08; letter-spacing: -0.015em; margin: 0px;">We help teams solve problems, design better experiences, and build usable products.</h2>
-        <p data-reveal="2" class="ib-intro-p" style="font-size: 16px; line-height: 1.7; margin: 0px; color: color-mix(in srgb, var(--color-text) 78%, transparent); text-align: right;">From enterprise workflows to consumer apps, we take ideas all the way to execution: research, product design, systems, brand, graphics, and motion.</p>
-      </div>
-
-      <div data-reveal="1" class="ib-svclist" style="">
-        
-          <div class="ib-svc-row">
-            <div class="ib-svc-lead">
-              <span class="ib-svc-n"><span class="sc-interp">01</span></span>
-              <h3 class="ib-svc-t"><span class="sc-interp">Product Strategy &amp; Architecture</span></h3>
-            </div>
-            <div class="ib-svc-tags">
-              
-                <span class="ib-cap"><span class="sc-interp">Product Discovery &amp; Definition</span></span>
-              
-                <span class="ib-cap"><span class="sc-interp">Information Architecture</span></span>
-              
-                <span class="ib-cap"><span class="sc-interp">UX Audits &amp; Heuristic Evaluations</span></span>
-              
-            </div>
-          </div>
-        
-          <div class="ib-svc-row">
-            <div class="ib-svc-lead">
-              <span class="ib-svc-n"><span class="sc-interp">02</span></span>
-              <h3 class="ib-svc-t"><span class="sc-interp">Complex Workflows &amp; Enterprise UX</span></h3>
-            </div>
-            <div class="ib-svc-tags">
-              
-                <span class="ib-cap"><span class="sc-interp">Dashboard &amp; Data Visualization</span></span>
-              
-                <span class="ib-cap"><span class="sc-interp">Enterprise Software Modernization</span></span>
-              
-                <span class="ib-cap"><span class="sc-interp">Hardware-Software Integration</span></span>
-              
-            </div>
-          </div>
-        
-          <div class="ib-svc-row">
-            <div class="ib-svc-lead">
-              <span class="ib-svc-n"><span class="sc-interp">03</span></span>
-              <h3 class="ib-svc-t"><span class="sc-interp">Design Systems &amp; Operations</span></h3>
-            </div>
-            <div class="ib-svc-tags">
-              
-                <span class="ib-cap"><span class="sc-interp">Design System Architecture</span></span>
-              
-                <span class="ib-cap"><span class="sc-interp">Advanced Figma Workflows</span></span>
-              
-                <span class="ib-cap"><span class="sc-interp">Design-to-Engineering Handoff</span></span>
-              
-            </div>
-          </div>
-        
-          <div class="ib-svc-row">
-            <div class="ib-svc-lead">
-              <span class="ib-svc-n"><span class="sc-interp">04</span></span>
-              <h3 class="ib-svc-t"><span class="sc-interp">End-to-End Product Design</span><br><span class="sc-interp">(0 to 1 &amp; Beyond)</span></h3>
-            </div>
-            <div class="ib-svc-tags">
-              
-                <span class="ib-cap"><span class="sc-interp">MVP Incubation</span></span>
-              
-                <span class="ib-cap"><span class="sc-interp">Cross-Platform Experience Design</span></span>
-              
-            </div>
-          </div>
-        
-          <div class="ib-svc-row">
-            <div class="ib-svc-lead">
-              <span class="ib-svc-n"><span class="sc-interp">05</span></span>
-              <h3 class="ib-svc-t"><span class="sc-interp">Brand &amp; Promotional Videos</span></h3>
-            </div>
-            <div class="ib-svc-tags">
-              
-                <span class="ib-cap"><span class="sc-interp">Brand Storytelling</span></span>
-              
-                <span class="ib-cap"><span class="sc-interp">Product Showcases</span></span>
-              
-            </div>
-          </div>
-        
-      </div>
-
-    </section>
-
-    <div style="height: 1px; background: linear-gradient(to right, transparent, var(--color-divider) 48px calc(100% - 48px), transparent);"></div>
-
-    
-    <section id="work" style="padding: clamp(56px, 8vw, 104px) 0px;">
-      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: clamp(20px, 3vw, 32px);">
-        <div data-reveal="1" style="max-width: 44ch;">
-          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
-            <span style="width: 44px; height: 1px; background: var(--color-accent);"></span>
-            <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">Selected work</span>
-          </div>
-          <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(32px, 4.2vw, 54px); line-height: 1.03; letter-spacing: -0.02em; margin: 0px;">A few problems we've solved.</h2>
+        <div style="display:grid;gap:16px;margin-top:24px">
+          <label style="display:grid;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gA3A3A3,#A3A3A3)">Your name<input type="text" placeholder="e.g. Alex" value="{{ contactName }}" onInput="{{ onContactName }}" style="font:15px 'Nunito',sans-serif;letter-spacing:0;text-transform:none;color:var(--gEDEDED,#EDEDED);background:var(--g0A0A0A,#0A0A0A);border:1px solid var(--g2A2A2A,#2A2A2A);border-radius:6px;padding:11px 13px;outline:none"></label>
+          <label style="display:grid;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gA3A3A3,#A3A3A3)">Your email<input type="email" placeholder="you@company.com" value="{{ contactEmail }}" onInput="{{ onContactEmail }}" style="font:15px 'Nunito',sans-serif;letter-spacing:0;text-transform:none;color:var(--gEDEDED,#EDEDED);background:var(--g0A0A0A,#0A0A0A);border:1px solid var(--g2A2A2A,#2A2A2A);border-radius:6px;padding:11px 13px;outline:none"></label>
+          <label style="display:grid;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gA3A3A3,#A3A3A3)">What's keeping you up at night?<textarea rows="4" placeholder="Tell us about the problem…" value="{{ contactMsg }}" onInput="{{ onContactMsg }}" style="font:15px 'Nunito',sans-serif;letter-spacing:0;text-transform:none;color:var(--gEDEDED,#EDEDED);background:var(--g0A0A0A,#0A0A0A);border:1px solid var(--g2A2A2A,#2A2A2A);border-radius:6px;padding:11px 13px;outline:none;resize:none"></textarea></label>
         </div>
-        <p data-reveal="2" style="color: color-mix(in srgb, var(--color-text) 62%, transparent); font-size: 14.5px; line-height: 1.6; max-width: 32ch; margin: 0px;">Three volumes of work. Open one to read the problems inside, page by page.</p>
-      </div>
-
-      
-        <div id="ib-reader" hidden aria-live="polite"></div>
-      <div class="ib-shelf" data-reveal="1" style="">
-          <button type="button" class="ib-book ib-book--a" aria-label="Open Designing for Clarity, 2 problems">
-            <span class="ib-book-inner">
-              <span>
-                <span class="ib-book-vol">Volume 01</span>
-                <h3 class="ib-book-title">Designing for Clarity</h3>
-              </span>
-              <svg class="ib-book-art" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-                <circle cx="60" cy="60" r="47" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></circle>
-                <circle cx="60" cy="60" r="32" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></circle>
-                <circle cx="60" cy="60" r="17" stroke="var(--color-accent)" stroke-width="2.5"></circle>
-                <circle cx="60" cy="60" r="5" fill="var(--color-accent)"></circle>
-                <line x1="60" y1="6" x2="60" y2="20" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></line>
-                <line x1="60" y1="100" x2="60" y2="114" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></line>
-                <line x1="6" y1="60" x2="20" y2="60" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></line>
-                <line x1="100" y1="60" x2="114" y2="60" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></line>
-              </svg>
-              <span class="ib-book-foot">
-                <span class="ib-book-count">2 problems</span>
-                <span class="ib-book-open-cta">Open <span class="ib-arrow">→</span></span>
-              </span>
-            </span>
-          </button>
-          <button type="button" class="ib-book ib-book--b" aria-label="Open Designing for Evidence, 1 problem">
-            <span class="ib-book-inner">
-              <span>
-                <span class="ib-book-vol">Volume 02</span>
-                <h3 class="ib-book-title">Designing with Evidence</h3>
-              </span>
-              <svg class="ib-book-art" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-                <line x1="20" y1="104" x2="104" y2="104" stroke="currentColor" stroke-opacity=".16" stroke-width="2"></line>
-                <rect x="28" y="66" width="16" height="38" rx="2" stroke="currentColor" stroke-opacity=".16" stroke-width="2"></rect>
-                <rect x="52" y="48" width="16" height="56" rx="2" stroke="currentColor" stroke-opacity=".16" stroke-width="2"></rect>
-                <rect x="76" y="30" width="16" height="74" rx="2" fill="var(--color-accent)" fill-opacity=".22" stroke="var(--color-accent)" stroke-width="2.5"></rect>
-                <path d="M30 40 l10 10 l22 -26" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-              <span class="ib-book-foot">
-                <span class="ib-book-count">1 problem</span>
-                <span class="ib-book-open-cta">Open <span class="ib-arrow">→</span></span>
-              </span>
-            </span>
-          </button>
-          <button type="button" class="ib-book ib-book--c" aria-label="Open Designing for Accessibility, 3 problems">
-            <span class="ib-book-inner">
-              <span>
-                <span class="ib-book-vol">Volume 03</span>
-                <h3 class="ib-book-title">Designing for Accessibility</h3>
-              </span>
-              <svg class="ib-book-art" viewBox="0 0 120 120" fill="none" aria-hidden="true">
-                <circle cx="60" cy="60" r="47" stroke="currentColor" stroke-opacity=".14" stroke-width="2"></circle>
-                <circle cx="60" cy="31" r="7" fill="var(--color-accent)"></circle>
-                <path d="M34 46 h52" stroke="var(--color-accent)" stroke-width="2.6" stroke-linecap="round"></path>
-                <path d="M60 44 v26" stroke="var(--color-accent)" stroke-width="2.6" stroke-linecap="round"></path>
-                <path d="M60 70 l-14 24 M60 70 l14 24" stroke="var(--color-accent)" stroke-width="2.6" stroke-linecap="round"></path>
-              </svg>
-              <span class="ib-book-foot">
-                <span class="ib-book-count">3 problems</span>
-                <span class="ib-book-open-cta">Open <span class="ib-arrow">→</span></span>
-              </span>
-            </span>
-          </button>
+        <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:26px">
+          <button type="button" onClick="{{ closeContact }}" style="font:inherit;padding:11px 18px;border-radius:6px;border:1px solid var(--g383838,#383838);background:transparent;cursor:pointer;color:var(--gEDEDED,#EDEDED)">Cancel</button>
+          <button type="button" onClick="{{ submitContact }}" style="font:inherit;font-weight:600;padding:11px 20px;border-radius:6px;border:1px solid var(--gFFFFFF,#FFFFFF);background:var(--gFFFFFF,#FFFFFF);color:var(--g0A0A0A,#0A0A0A);cursor:pointer" style-hover="background:var(--acc,#D4FF3A)">Send message →</button>
         </div>
-      
-
-      
-    </section>
-
-    <div style="height: 1px; background: linear-gradient(to right, transparent, var(--color-divider) 48px calc(100% - 48px), transparent);"></div>
-
-    
-    <section style="padding: clamp(56px, 8vw, 104px) 0px; position: relative;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: clamp(72px, 15vw, 208px);">
-
-        <div data-reveal="1" style="text-align: left; flex: 1 1 0%;">
-        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
-          <span style="width: 44px; height: 1px; background: var(--color-accent);"></span>
-          <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">How we work</span>
-        </div>
-        <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(36px, 5.4vw, 76px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; text-align: left;">Ask better questions.<br>Ship better answers.</h2>
-        </div>
-        
-      </div>
-      <div style="position: relative;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 1px; background: color-mix(in srgb, var(--color-neutral-700) 55%, transparent); border: 1px solid color-mix(in srgb, var(--color-neutral-700) 55%, transparent); border-radius: var(--radius-lg); overflow: hidden;">
-
-          <div data-reveal="1" style="background: var(--color-neutral-900); padding: clamp(24px, 2.6vw, 32px); position: relative; min-height: 210px; display: flex; flex-direction: column; margin-top: 0px;">
-            <span style="font-family: var(--font-heading); font-size: 13px; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><span class="sc-interp">01</span></span>
-            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 21px; margin: 16px 0px 12px;"><span class="sc-interp">Understand</span></h3>
-            <p style="font-size: 14px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Ask better questions. Research context, users and business goals.</span></p>
-
-          </div>
-        
-          <div data-reveal="1" style="background: var(--color-neutral-900); padding: clamp(24px, 2.6vw, 32px); position: relative; min-height: 210px; display: flex; flex-direction: column; margin-top: 0px;">
-            <span style="font-family: var(--font-heading); font-size: 13px; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><span class="sc-interp">02</span></span>
-            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 21px; margin: 16px 0px 12px;"><span class="sc-interp">Frame</span></h3>
-            <p style="font-size: 14px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Find the problem worth solving. Synthesize insights, define opportunities.</span></p>
-
-          </div>
-        
-          <div data-reveal="1" style="background: var(--color-neutral-900); padding: clamp(24px, 2.6vw, 32px); position: relative; min-height: 210px; display: flex; flex-direction: column; margin-top: 0px;">
-            <span style="font-family: var(--font-heading); font-size: 13px; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><span class="sc-interp">03</span></span>
-            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 21px; margin: 16px 0px 12px;"><span class="sc-interp">Explore</span></h3>
-            <p style="font-size: 14px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Make ideas tangible. Flows, wireframes, prototypes and concepts.</span></p>
-
-          </div>
-        
-          <div data-reveal="1" style="background: var(--color-neutral-900); padding: clamp(24px, 2.6vw, 32px); position: relative; min-height: 210px; display: flex; flex-direction: column; margin-top: 0px;">
-            <span style="font-family: var(--font-heading); font-size: 13px; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><span class="sc-interp">04</span></span>
-            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 21px; margin: 16px 0px 12px;"><span class="sc-interp">Validate</span></h3>
-            <p style="font-size: 14px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Find out what actually works. Test, learn and iterate.</span></p>
-
-          </div>
-        
-          <div data-reveal="1" style="background: var(--color-neutral-900); padding: clamp(24px, 2.6vw, 32px); position: relative; min-height: 210px; display: flex; flex-direction: column; margin-top: 0px;">
-            <span style="font-family: var(--font-heading); font-size: 13px; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><span class="sc-interp">05</span></span>
-            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 21px; margin: 16px 0px 12px;"><span class="sc-interp">Refine</span></h3>
-            <p style="font-size: 14px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Make it useful, accessible and scalable. Final experience, system and handoff.</span></p>
-
-          </div>
-        
-      </div>
-      <svg class="ib-float ib-process-doll-a" aria-hidden="true" style="width: clamp(56px, 6vw, 78px); height: auto; position: absolute; left: -8px; bottom: 100%; margin-bottom: -28px;"><use href="#ib-dollA"></use></svg>
-      <svg class="ib-float-b ib-process-doll-b" aria-hidden="true" style="width: clamp(60px, 6.5vw, 84px); height: auto; position: absolute; right: -8px; bottom: 100%; margin-bottom: -28px;"><use href="#ib-dollB"></use></svg>
-      </div>
-    <div class="ib-process-dolls-mobile" aria-hidden="true">
-      <svg class="ib-float" style="width: 56px; height: auto;"><use href="#ib-dollA"></use></svg>
-      <svg class="ib-float-b" style="width: 60px; height: auto;"><use href="#ib-dollB"></use></svg>
+      </sc-if>
     </div>
-    </section>
+  </div>
+</sc-if>
 
-    <div style="height: 1px; background: linear-gradient(to right, transparent, var(--color-divider) 48px calc(100% - 48px), transparent);"></div>
-
-    
-    <section id="about" style="padding: clamp(56px, 8vw, 104px) 0px;">
-      <div class="ib-two-col" style="display: grid; grid-template-columns: minmax(0px, 0.9fr) minmax(0px, 1.1fr); gap: clamp(32px, 5vw, 80px); align-items: end;">
-        <div data-reveal="1" style="">
-          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
-            <span style="width: 44px; height: 1px; background: var(--color-accent);"></span>
-            <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">About Us</span>
-          </div><h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(40px, 5.5vw, 72px); line-height: 1.02; letter-spacing: -0.02em; margin: 0px 0px 24px; width: auto; max-width: 100%;">Two Perspectives. One Shared Vision.</h2>
-          
-          <p style="font-size: 17px; line-height: 1.7; margin: 0px 0px 16px; color: color-mix(in srgb,var(--color-text) 82%,transparent); max-width: 46ch;">We are Suraj Sridhar and Keerthi G, two product and user experience design leaders who share a deep-rooted passion for crafting intuitive, high-impact digital experiences.</p>
-          <p style="font-size: 16px; line-height: 1.7; margin: 0px; color: color-mix(in srgb,var(--color-text) 72%,transparent); max-width: 48ch;">With over 16 years of industry experience each, we've spent our careers navigating the complexities of scaling products, shaping enterprise ecosystems, and solving hard design challenges for millions of users worldwide.</p>
-        </div><div data-reveal="2" style="display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,220px),1fr)); border-radius: var(--radius-lg); overflow: hidden;">
-          <div class="ib-founder-card" style="padding: clamp(24px, 3vw, 40px); border-right: 1px solid color-mix(in srgb,var(--color-neutral-700) 55%,transparent); display: flex; flex-direction: column; justify-content: space-between; gap: 32px; background: color-mix(in srgb,var(--color-neutral-900) 55%,transparent);  ">
-            <div>
-              
-              <h3 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(26px, 3vw, 38px); line-height: 1.05; letter-spacing: -0.02em; margin: 12px 0px 0px;">Suraj<br>Sridhar</h3>
-            </div>
-            <div style="display: flex; align-items: flex-end; justify-content: space-between;">
-              <div>
-                <div style="font-family: var(--font-heading); font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--color-accent);">16+</div>
-                <div style="font-size: 12px; color: color-mix(in srgb,var(--color-text) 55%,transparent); margin-top: 4px;">years experience</div>
-              </div>
-              <svg class="ib-float" aria-hidden="true" style="width: clamp(52px, 7vw, 80px); height: auto;"><use href="#ib-dollA"></use></svg>
-            </div>
-          </div>
-          <div style="padding: clamp(24px, 3vw, 40px); display: flex; flex-flow: column; justify-content: space-between; gap: 32px; z-index: 0;   background: color-mix(in srgb, var(--color-neutral-900) 55%, transparent);">
-            <div>
-              
-              <h3 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(26px, 3vw, 38px); line-height: 1.05; letter-spacing: -0.02em; margin: 12px 0px 0px;">Keerthi<br>G</h3>
-            </div>
-            <div style="display: flex; align-items: flex-end; justify-content: space-between;">
-              <div>
-                <div style="font-family: var(--font-heading); font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--color-accent);">16+</div>
-                <div style="font-size: 12px; color: color-mix(in srgb,var(--color-text) 55%,transparent); margin-top: 4px;">years experience</div>
-              </div>
-              <svg class="ib-float-b" aria-hidden="true" style="width: clamp(52px, 7vw, 80px); height: auto;"><use href="#ib-dollB"></use></svg>
-            </div>
+<main id="top">
+  <!-- HERO -->
+  <section style="background:var(--g000,#000);border-bottom:1px solid var(--g1C1C1C,#1C1C1C)">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(56px,9vw,136px) clamp(20px,4vw,56px) clamp(40px,5vw,64px)">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--g8A8A8A,#8A8A8A)">Independent design studio</div>
+      <h1 style="font-family:'Poppins',sans-serif; font-weight: 500; font-size: clamp(48px, 16vw, 208px); line-height: 0.94; letter-spacing: -0.05em; margin: clamp(28px,4vw,56px) 0 0; color: var(--gEDEDED,#EDEDED)">Complexity,<br><span style="color:var(--g5E5E5E,#5E5E5E)">made simple</span><span style="color:var(--acc,#D4FF3A)">.</span></h1>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:36px clamp(40px,7vw,120px);margin-top:clamp(56px,7vw,104px);padding-top:28px;border-top:1px solid var(--g2A2A2A,#2A2A2A);align-items:start">
+        <div>
+          <p style="font-size:clamp(18px,1.5vw,21px);line-height:1.55;max-width:38ch;margin:0;color:var(--gBDBDBD,#BDBDBD)">We design digital products that make complicated things feel simple both for businesses and the people who use them.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center;margin-top:30px">
+            <a href="#work" style="display:inline-flex;gap:8px;padding:14px 22px;border-radius:6px;background:var(--gFFFFFF,#FFFFFF);color:var(--g0A0A0A,#0A0A0A);text-decoration:none;font-weight:600" style-hover="background:var(--acc,#D4FF3A);color:#0A0A0A">Explore our work ↗</a>
+            <a href="#about" style="color:var(--gEDEDED,#EDEDED);text-decoration:none;border-bottom:1px solid var(--g6E6E6E,#6E6E6E);padding-bottom:3px" style-hover="border-color:var(--acc-ink,#D4FF3A)">Meet IBBRU →</a>
           </div>
         </div>
-        
-      </div>
-
-      <p data-reveal="1" style="font-size: 15.5px; line-height: 1.6; margin: clamp(44px, 6vw, 72px) 0px 20px; color: color-mix(in srgb, var(--color-text) 74%, transparent);">Our collective journey spans world-class brands across consumer and enterprise landscapes:</p>
-      <div data-reveal="1" style="margin-bottom: 16px; padding: clamp(24px, 3vw, 32px) clamp(24px, 3vw, 32px); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 55%, transparent);">
-        <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; margin-bottom: 20px;">
-          <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">Experience</span>
-          <span style="font-size: 14.5px; line-height: 1.5; color: color-mix(in srgb,var(--color-text) 74%,transparent);">Across B2B enterprise and B2C products used by millions of people.</span>
-        </div>
-        <div style="display: flex; flex-wrap: wrap; gap: 16px 36px; align-items: center;">
-          <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">SAP Labs</span>
-          <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">Victoria's Secret</span>
-          <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">WayCool Foods</span>
-          <span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">OpenText</span><span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">Micro Focus</span>
-          <span data-om-label="RedMart" style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">RedMart</span><span data-om-label="RedMart" style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">Lazada</span><span style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(16px, 1.7vw, 20px); color: color-mix(in srgb,var(--color-text) 90%,transparent);">ChargePoint</span>
-        </div>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(20px, 2.5vw, 28px); margin-top: 32px;">
-        
-          <div data-reveal="1" class="card" style="padding: 16px; display: flex; gap: clamp(20px, 2.5vw, 28px); align-items: flex-start;">
-            <div style="margin-top: var(--radius-md);">
-              <span style="font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.06em; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><br></span>
-              <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(22px, 2.4vw, 28px); margin: 8px 0px 4px; letter-spacing: -0.01em;"><span class="sc-interp">Suraj Sridhar</span></h3>
-              <p style="font-size: 13px; letter-spacing: 0.02em; margin: 0px 0px 16px; color: var(--color-accent-300);"><span class="sc-interp">Product &amp; UX design leader</span></p>
-              <p style="font-size: 14.5px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 74%,transparent);"><span class="sc-interp">Brings deep domain expertise from shaping experiences at RedMart, WayCool, Victoria's Secret, and ChargePoint.</span></p>
-            </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g8A8A8A,#8A8A8A);margin-bottom:14px">Experience across</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px 22px">
+            <sc-for list="{{ clients }}" as="c" hint-placeholder-count="8"><span style="font-size:clamp(17px,1.5vw,20px);font-weight:500;letter-spacing:-.02em;color:var(--gEDEDED,#EDEDED)">{{ c }}</span></sc-for>
           </div>
-        
-          <div data-reveal="1" class="card" style="padding: 16px; display: flex; gap: clamp(20px, 2.5vw, 28px); align-items: flex-start;">
-            <div style="margin-top: var(--radius-md);">
-              <span style="font-family: var(--font-heading); font-size: 12px; letter-spacing: 0.06em; color: var(--color-accent); font-feature-settings: &quot;tnum&quot;;"><br></span>
-              <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(22px, 2.4vw, 28px); margin: 8px 0px 4px; letter-spacing: -0.01em;"><span class="sc-interp">Keerthi G</span></h3>
-              <p style="font-size: 13px; letter-spacing: 0.02em; margin: 0px 0px 16px; color: var(--color-accent-300);"><span class="sc-interp">Product &amp; UX design leader</span></p>
-              <p style="font-size: 14.5px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 74%,transparent);"><span class="sc-interp">Brings extensive enterprise and systems design mastery from her work at SAP, Micro Focus, OpenText, and ChargePoint.</span></p>
-            </div>
-          </div>
-        
-      </div>
-
-      <div data-reveal="1" style="margin-top: 32px; padding: clamp(24px, 3vw, 36px) clamp(24px, 3vw, 36px); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 55%, transparent);">
-        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-          <span style="width: 32px; height: 1px; background: var(--color-accent);"></span>
-          <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">What Drives Us</span>
-        </div>
-        <p style="font-size: clamp(16px, 1.5vw, 18px); line-height: 1.7; margin: 0px; max-width: 80ch; color: color-mix(in srgb,var(--color-text) 84%,transparent);">We believe that great design isn't just about how things look. It's about architecting systems that scale, solving real operational problems, and creating meaningful clarity for users. Whether we are designing complex enterprise workflows or high-touch consumer experiences, we bring maturity, cross-functional leadership, and craft-driven execution to every project we take on.</p>
-      </div>
-    </section>
-
-    <div style="height: 1px; background: linear-gradient(to right, transparent, var(--color-divider) 48px calc(100% - 48px), transparent);"></div>
-
-    
-    <section id="insights" style="padding: clamp(56px, 8vw, 104px) 0px;">
-      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 32px;">
-        <div data-reveal="1" style="">
-          <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 20px;">
-            <span style="width: 44px; height: 1px; background: var(--color-accent);"></span>
-            <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent);">Focus</span>
-          </div>
-          <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(30px, 3.8vw, 48px); line-height: 1.04; letter-spacing: -0.02em; margin: 0px;">Our 4 main focus areas.</h2>
-        </div>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(20px, 2.5vw, 28px);">
-        
-          <div class="ib-card" style="color: inherit; display: flex; flex-direction: column; padding: clamp(24px, 2.6vw, 32px); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 70%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 60%, transparent); min-height: 220px;">
-            <span class="tag tag-accent" style="align-self: flex-start;"><span class="sc-interp">01</span></span>
-            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.2; letter-spacing: -0.01em; margin: 16px 0px 12px;"><span class="sc-interp">Smart AI</span></h3>
-            <p style="font-size: 14.5px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Creating experiences that predict user needs, streamline tasks, and help prevent issues before they become problems.</span></p>
-          </div>
-        
-          <div class="ib-card" style="color: inherit; display: flex; flex-direction: column; padding: clamp(24px, 2.6vw, 32px); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 70%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 60%, transparent); min-height: 220px;">
-            <span class="tag tag-accent" style="align-self: flex-start;"><span class="sc-interp">02</span></span>
-            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.2; letter-spacing: -0.01em; margin: 16px 0px 12px;"><span class="sc-interp">Actionable data and visibility</span></h3>
-            <p style="font-size: 14.5px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Transforming complex data into clear, actionable visual experiences that provide instant access to critical business insights.</span></p>
-          </div>
-        
-          <div class="ib-card" style="color: inherit; display: flex; flex-direction: column; padding: clamp(24px, 2.6vw, 32px); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 70%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 60%, transparent); min-height: 220px;">
-            <span class="tag tag-accent" style="align-self: flex-start;"><span class="sc-interp">03</span></span>
-            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.2; letter-spacing: -0.01em; margin: 16px 0px 12px;"><span class="sc-interp">Visual content and design</span></h3>
-            <p style="font-size: 14.5px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Making eye-catching pictures, layouts, and styles that tell a great story and look amazing.</span></p>
-          </div>
-        
-          <div class="ib-card" style="color: inherit; display: flex; flex-direction: column; padding: clamp(24px, 2.6vw, 32px); border: 1px solid color-mix(in srgb,var(--color-neutral-700) 70%,transparent); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-neutral-900) 60%, transparent); min-height: 220px;">
-            <span class="tag tag-accent" style="align-self: flex-start;"><span class="sc-interp">04</span></span>
-            <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: clamp(18px, 1.9vw, 22px); line-height: 1.2; letter-spacing: -0.01em; margin: 16px 0px 12px;"><span class="sc-interp">Universal accessibility</span></h3>
-            <p style="font-size: 14.5px; line-height: 1.6; margin: 0px; color: color-mix(in srgb,var(--color-text) 70%,transparent);"><span class="sc-interp">Making sure our tools and screens are simple for all people to use, meeting official accessibility rules.</span></p>
-          </div>
-        
-      </div>
-    </section>
-
-  </main>
-
-  
-  <section id="contact" style="background: radial-gradient(900px 460px at 82% -10%, color-mix(in srgb, var(--color-section-glow) 68%, transparent), transparent 64%), var(--color-section); margin-top: clamp(40px, 6vw, 72px);">
-    <div style="max-width: 1200px; margin: 0px auto; padding: clamp(56px, 8vw, 104px) clamp(20px, 5vw, 72px);">
-      <div class="ib-two-col" style="display: grid; grid-template-columns: minmax(0px, 1fr) minmax(0px, 0.9fr); gap: clamp(36px, 5vw, 80px); align-items: center;">
-        <div data-reveal="1" style="">
-          <h2 style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(36px, 5vw, 64px); line-height: 1.02; letter-spacing: -0.02em; margin: 0px 0px 20px;">Have a problem worth solving?</h2>
-          <p style="font-size: 17px; line-height: 1.65; margin: 0px 0px 32px; max-width: 40ch; color: color-mix(in srgb,var(--color-text) 84%,transparent);">Tell us what's keeping you up at night. We'll bring the questions.</p>
-          <button data-open-contact type="button" class="btn btn-primary" style="white-space: nowrap;">Start a conversation →</button>
-          <p style="font-size: 13.5px; margin: 28px 0px 0px; color: color-mix(in srgb,var(--color-text) 62%,transparent);">There are two of us. Bring your problem.</p>
-        </div>
-        <div data-reveal="2" style="display: flex; justify-content: center; align-items: flex-end; gap: clamp(8px, 2vw, 24px); position: relative;">
-          <svg class="ib-float" aria-hidden="true" style="width: clamp(96px, 12vw, 140px); height: auto; filter: drop-shadow(rgba(0, 0, 0, 0.4) 0px 14px 18px);"><use href="#ib-dollA"></use></svg>
-          <svg class="ib-float-b" aria-hidden="true" style="width: clamp(104px, 13vw, 152px); height: auto; filter: drop-shadow(rgba(0, 0, 0, 0.4) 0px 14px 18px);"><use href="#ib-dollB"></use></svg>
         </div>
       </div>
     </div>
   </section>
 
-  
-  <footer style="max-width: 1200px; margin: 0px auto; padding: clamp(48px, 7vw, 88px) clamp(20px, 5vw, 72px) clamp(32px, 4vw, 48px);">
-    <p style="font-family: var(--font-heading); font-weight: var(--font-heading-weight); font-size: clamp(20px, 2.2vw, 26px); line-height: 1.3; letter-spacing: -0.01em; margin: 0px 0px clamp(32px, 4vw, 48px); max-width: 26ch; color: color-mix(in srgb,var(--color-text) 76%,transparent);">Let's make something better.</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 32px; padding-bottom: clamp(32px, 4vw, 48px); border-bottom: 1px solid color-mix(in srgb,var(--color-neutral-700) 60%,transparent);">
-      <div>
-        <div style="font-family: var(--font-heading); font-weight: 700; font-size: 22px; margin-bottom: 8px;">IBBRU</div>
-        <p style="font-size: 13.5px; color: color-mix(in srgb,var(--color-text) 70%,transparent); margin: 0px;">An independent design studio turning complex problems into products people love.</p>
+  <!-- SERVICES -->
+  <section id="services" style="max-width:1320px;margin:0 auto;padding:clamp(64px,9vw,128px) clamp(20px,4vw,56px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px clamp(32px,5vw,80px)">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF)">01 / What we do</div>
+      <div style="grid-column:span 2;min-width:0">
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:clamp(38px,4.8vw,68px);line-height:1;letter-spacing:-.01em;margin:0">We help teams solve problems, design better experiences, and build usable products.</h2>
+        <p style="font-size:17px;line-height:1.7;margin:24px 0 0;color:var(--gA3A3A3,#A3A3A3);max-width:56ch">From enterprise workflows to consumer apps — we take ideas all the way to execution: research, product design, systems, brand, graphics, and motion.</p>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 12px;">
-        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: color-mix(in srgb,var(--color-text) 70%,transparent); margin-bottom: 4px;">Explore</span>
-        <a href="#services" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Services</a><a href="#work" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Work</a>
-        
-        <a href="#about" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">About</a>
-        <a href="#insights" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Focus</a>
-        <a href="#contact" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Contact</a>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 12px;">
-        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: color-mix(in srgb,var(--color-text) 70%,transparent); margin-bottom: 4px;">Connect</span>
-        <a href="#contact" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">ibbru.studio@gmail.com</a>
-        <a href="#contact" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">LinkedIn</a>
-        <a href="#contact" class="ib-link" style="font-size: 14px; color: color-mix(in srgb,var(--color-text) 78%,transparent); text-decoration: none;">Instagram</a>
-      </div>
-      <div></div>
     </div>
-    <p style="font-size: 12.5px; color: color-mix(in srgb,var(--color-text) 70%,transparent); margin: 24px 0px 0px;">© 2026 IBBRU. An independent design studio.</p>
-  </footer>
-  </div></div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:var(--g242424,#242424);border:1px solid var(--g242424,#242424);border-radius:14px;overflow:hidden;margin-top:clamp(48px,6vw,80px)">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
+        <div style="background:var(--g0A0A0A,#0A0A0A);padding:28px 26px 30px;min-height:240px;display:flex;flex-direction:column;transition:background .3s" style-hover="background:var(--g141414,#141414)">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gFFFFFF,#FFFFFF)">{{ s.num }}</span>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.04em;font-size:30px;line-height:1.05;margin:18px 0 0">{{ s.name }}<sc-if value="{{ s.name2 }}" hint-placeholder-val="{{ false }}"><br><em style="color:var(--gA3A3A3,#A3A3A3);font-size:22px">{{ s.name2 }}</em></sc-if></h3>
+          <ul style="list-style:none;padding:0;margin:auto 0 0;padding-top:24px;display:grid;gap:8px">
+            <sc-for list="{{ s.caps }}" as="c" hint-placeholder-count="3"><li style="font-size:13.5px;line-height:1.4;color:var(--gBDBDBD,#BDBDBD);display:flex;gap:10px"><span style="color:var(--gFFFFFF,#FFFFFF)">—</span>{{ c }}</li></sc-for>
+          </ul>
+        </div>
+      </sc-for>
+    </div>
+  </section>
 
-<div id="ib-modal-root" hidden>
-  <div class="ib-modal-backdrop" role="dialog" aria-modal="true" aria-label="Contact form">
-    <div class="ib-modal">
-      <div class="ib-modal-sent" hidden>
-        <div style="font-size:32px; margin-bottom:12px;">✓</div>
-        <h3 style="margin:0 0 8px;">Message sent!</h3>
-        <p style="font-size:15px; color:color-mix(in srgb,var(--color-text) 68%,transparent); margin:0 0 24px;">We'll get back to you soon.</p>
-        <button type="button" class="btn btn-secondary" data-modal="close">Close</button>
+  <!-- WORK -->
+  <section id="work" style="border-top:1px solid var(--g1C1C1C,#1C1C1C);background:linear-gradient(var(--g0A0A0A,#0A0A0A),var(--g0F0F0F,#0F0F0F))">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(64px,9vw,128px) clamp(20px,4vw,56px)">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 40px">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-bottom:22px">02 / Selected work</div>
+          <h2 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:clamp(48px,6.4vw,96px);line-height:.92;letter-spacing:-.02em;margin:0">A few problems<br><span style="color:var(--g6E6E6E,#6E6E6E)">we've solved.</span></h2>
+        </div>
+        <p style="max-width:32ch;margin:0;color:var(--gA3A3A3,#A3A3A3);line-height:1.6">Three volumes of work. Open one to read the problems inside — page by page.</p>
       </div>
-      <div class="ib-modal-form">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
-          <div>
-            <h3>Start a conversation</h3>
-            <p style="font-size:14px; color:color-mix(in srgb,var(--color-text) 60%,transparent); margin:8px 0 0;">We'll read every message personally.</p>
+
+      <sc-if value="{{ shelfOpen }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(16px,2.4vw,32px);margin-top:clamp(48px,6vw,72px)">
+          <button type="button" onClick="{{ books.0.open }}" aria-label="{{ books.0.aria }}" style="all:unset;cursor:pointer;display:grid;grid-template-rows:1fr auto 1fr;aspect-ratio:3/4;max-height:480px;border-radius:6px 16px 16px 6px;overflow:hidden;background:#2336C9;box-shadow:inset 14px 0 0 rgba(0,0,0,0.18);box-sizing:border-box;transition:transform .35s cubic-bezier(.22,.61,.36,1)" style-hover="transform:translateY(-10px) rotate(-1.5deg)">
+            <span style="padding:22px 22px 0 34px;color:#F4F1EA;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px">{{ books.0.vol }}</span>
+            <span style="background: #F4F1EA; color: #141414; padding: 22px 22px 22px 34px; font-family: 'Poppins',sans-serif; font-weight: 600; font-size: clamp(30px,2.8vw,40px); line-height: 1.09; letter-spacing: -.045em">{{ books.0.group }}</span>
+            <span style="padding:0 22px 22px 34px;display:flex;justify-content:space-between;align-items:flex-end;color:#F4F1EA;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px"><span>{{ books.0.count }}</span><span style="width:44px;height:44px;border-radius:50%;background:#F5B800;color:#141414;display:grid;place-items:center;font-size:18px">→</span></span>
+          </button>
+          <button type="button" onClick="{{ books.1.open }}" aria-label="{{ books.1.aria }}" style="all:unset;cursor:pointer;display:grid;grid-template-rows:1fr auto 1fr;aspect-ratio:3/4;max-height:480px;border-radius:6px 16px 16px 6px;overflow:hidden;background:#EE5A2F;box-shadow:inset 14px 0 0 rgba(0,0,0,0.15);box-sizing:border-box;transition:transform .35s cubic-bezier(.22,.61,.36,1)" style-hover="transform:translateY(-10px) rotate(1.2deg)">
+            <span style="padding:22px 22px 0 34px;color:#141414;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px">{{ books.1.vol }}</span>
+            <span style="background: #F4F1EA; color: #141414; padding: 22px 22px 22px 34px; font-family: 'Poppins',sans-serif; font-weight: 600; font-size: clamp(30px,2.8vw,40px); line-height: 1.09; letter-spacing: -.045em">{{ books.1.group }}</span>
+            <span style="padding:0 22px 22px 34px;display:flex;justify-content:space-between;align-items:flex-end;color:#141414;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px"><span>{{ books.1.count }}</span><span style="width:44px;height:44px;border-radius:50%;background:#141414;color:#F4F1EA;display:grid;place-items:center;font-size:18px">→</span></span>
+          </button>
+          <button type="button" onClick="{{ books.2.open }}" aria-label="{{ books.2.aria }}" style="all:unset;cursor:pointer;display:grid;grid-template-rows:1fr auto 1fr;aspect-ratio:3/4;max-height:480px;border-radius:6px 16px 16px 6px;overflow:hidden;background:#F5B800;box-shadow:inset 14px 0 0 rgba(0,0,0,0.12);box-sizing:border-box;transition:transform .35s cubic-bezier(.22,.61,.36,1)" style-hover="transform:translateY(-10px) rotate(-1deg)">
+            <span style="padding:22px 22px 0 34px;color:#141414;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px">{{ books.2.vol }}</span>
+            <span style="background: #F4F1EA; color: #141414; padding: 22px 22px 22px 34px; font-family: 'Poppins',sans-serif; font-weight: 600; font-size: clamp(30px,2.8vw,40px); line-height: 1.09; letter-spacing: -.045em">{{ books.2.group }}</span>
+            <span style="padding:0 22px 22px 34px;display:flex;justify-content:space-between;align-items:flex-end;color:#141414;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px"><span>{{ books.2.count }}</span><span style="width:44px;height:44px;border-radius:50%;background:#2336C9;color:#F4F1EA;display:grid;place-items:center;font-size:18px">→</span></span>
+          </button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ bookOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:clamp(40px,5vw,64px)">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px">
+            <div style="display:flex;align-items:baseline;gap:16px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF)">{{ curVol }}</span><span style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.03em;font-size:clamp(26px,2.6vw,36px)">{{ curGroup }}</span></div>
+            <button type="button" onClick="{{ closeBook }}" style="font:inherit;font-size:14px;padding:9px 16px;border-radius:6px;border:1px solid var(--g383838,#383838);background:transparent;color:var(--gEDEDED,#EDEDED);cursor:pointer" style-hover="border-color:var(--gFFFFFF,#FFFFFF);color:var(--gFFFFFF,#FFFFFF)">← Back to shelf</button>
           </div>
-          <button type="button" class="btn btn-ghost btn-icon" data-modal="close" aria-label="Close" style="flex:none;">✕</button>
+          <div data-spread="1" style="position:relative;perspective:2000px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));background:var(--g131313,#131313);border:1px solid var(--g2A2A2A,#2A2A2A);border-radius:14px;overflow:hidden;box-shadow:0 40px 100px rgba(var(--sh,0,0,0),.55)">
+            <div style="padding:clamp(24px,3.6vw,56px);display:flex;flex-direction:column;background:linear-gradient(to left,rgba(var(--sh,0,0,0),.35),transparent 48px);border-right:1px solid var(--g222222,#222222)">
+              <span style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:88px;line-height:.8;color:var(--gFFFFFF,#FFFFFF)">{{ curNum }}</span>
+              <h3 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.04em;font-size:clamp(34px,3.4vw,50px);line-height:1;margin:22px 0 18px">{{ curTitle }}</h3>
+              <p style="font-size:17px;line-height:1.6;margin:0;color:var(--gBDBDBD,#BDBDBD)">{{ curSummary }}</p>
+              <sc-if value="{{ curMetric }}" hint-placeholder-val="{{ false }}"><span style="align-self:flex-start;margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;padding:7px 12px;border:1px solid var(--acc-ink,#D4FF3A);color:var(--acc-ink,#D4FF3A);border-radius:999px">{{ curMetric }}</span></sc-if>
+              <sc-if value="{{ curImage }}" hint-placeholder-val="{{ false }}">
+                <figure style="margin:28px 0 0"><img src="{{ curImage }}" alt="{{ curImageCaption }}" loading="lazy" style="display:block;width:100%;height:auto;border-radius:8px;background:var(--gF2F2F2,#F2F2F2)"><figcaption style="margin-top:10px;font-size:12.5px;color:var(--g8A8A8A,#8A8A8A)">{{ curImageCaption }}</figcaption></figure>
+              </sc-if>
+            </div>
+            <div style="padding:clamp(24px,3.6vw,56px);display:flex;flex-direction:column;gap:24px;justify-content:center;background:linear-gradient(to right,rgba(var(--sh,0,0,0),.35),transparent 48px)">
+              <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-bottom:7px">Problem</div><p style="margin:0;font-size:15px;line-height:1.65;color:var(--gBDBDBD,#BDBDBD)">{{ curProblem }}</p></div>
+              <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-bottom:7px">Insight</div><p style="margin:0;font-size:15px;line-height:1.65;color:var(--gBDBDBD,#BDBDBD)">{{ curInsight }}</p></div>
+              <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-bottom:7px">Solution</div><p style="margin:0;font-size:15px;line-height:1.65;color:var(--gBDBDBD,#BDBDBD)">{{ curSolution }}</p></div>
+              <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-bottom:7px">Impact</div><p style="margin:0;font-size:15px;line-height:1.65;color:var(--gEDEDED,#EDEDED)">{{ curImpact }}</p></div>
+              <sc-if value="{{ hasFullCase }}" hint-placeholder-val="{{ false }}"><a href="{{ curFullCaseUrl }}" target="_blank" rel="noopener" style="align-self:flex-start;display:inline-flex;gap:8px;padding:12px 20px;border-radius:6px;background:var(--gFFFFFF,#FFFFFF);color:var(--g0A0A0A,#0A0A0A);text-decoration:none;font-weight:600" style-hover="background:var(--acc,#D4FF3A);color:#0A0A0A">Read the full case study →</a></sc-if>
+            </div>
+            <div data-page-turn="1" aria-hidden="true" style="display:none;position:absolute;top:0;bottom:0;left:50%;right:0;transform-origin:left center;background:linear-gradient(135deg,var(--g1D1D1D,#1D1D1D),var(--g131313,#131313));box-shadow:0 0 50px rgba(var(--sh,0,0,0),.6);backface-visibility:hidden;z-index:4"></div>
+          </div>
+          <div style="display:flex;justify-content:center;align-items:center;gap:24px;margin-top:26px">
+            <button type="button" onClick="{{ prevPage }}" disabled="{{ noPrev }}" style="font:inherit;font-size:14px;padding:10px 18px;border-radius:6px;border:1px solid var(--g383838,#383838);background:transparent;color:var(--gEDEDED,#EDEDED);cursor:pointer" style-hover="border-color:var(--gFFFFFF,#FFFFFF);color:var(--gFFFFFF,#FFFFFF)">← Prev</button>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gA3A3A3,#A3A3A3);min-width:72px;text-align:center">{{ pageLabel }}</span>
+            <button type="button" onClick="{{ nextPage }}" disabled="{{ noNext }}" style="font:inherit;font-size:14px;padding:10px 18px;border-radius:6px;border:1px solid var(--g383838,#383838);background:transparent;color:var(--gEDEDED,#EDEDED);cursor:pointer" style-hover="border-color:var(--gFFFFFF,#FFFFFF);color:var(--gFFFFFF,#FFFFFF)">Next →</button>
+          </div>
         </div>
-        <div class="ib-modal-field"><label for="ib-c-name">Your name</label><input id="ib-c-name" type="text" placeholder="e.g. Alex"></div>
-        <div class="ib-modal-field"><label for="ib-c-email">Your email</label><input id="ib-c-email" type="email" placeholder="you@company.com"></div>
-        <div class="ib-modal-field"><label for="ib-c-msg">What's keeping you up at night?</label><textarea id="ib-c-msg" rows="4" placeholder="Tell us about the problem…"></textarea></div>
-        <div class="ib-modal-actions">
-          <button type="button" class="btn btn-secondary" data-modal="close">Cancel</button>
-          <button type="button" class="btn btn-primary" data-modal="submit">Send message →</button>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="max-width:1320px;margin:0 auto;padding:clamp(64px,9vw,128px) clamp(20px,4vw,56px)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-bottom:22px">03 / How we work</div>
+    <h2 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:clamp(44px,5.8vw,84px);line-height:.95;letter-spacing:-.015em;margin:0;max-width:18ch">Ask better questions. <em style="color:var(--g6E6E6E,#6E6E6E);font-style:normal">Ship better answers.</em></h2>
+    <ol style="list-style:none;padding:0;margin:clamp(48px,6vw,80px) 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:0">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+        <li style="position:relative;padding:28px 24px 0 0;border-top:1px solid var(--g2A2A2A,#2A2A2A)">
+          <span style="position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--acc,#D4FF3A)"></span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--g8A8A8A,#8A8A8A)">{{ s.num }}</span>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.04em;font-size:34px;margin:10px 0 10px">{{ s.title }}</h3>
+          <p style="margin:0 0 28px;font-size:14.5px;line-height:1.6;color:var(--gA3A3A3,#A3A3A3)">{{ s.body }}</p>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="border-top:1px solid var(--g1C1C1C,#1C1C1C)">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(64px,9vw,128px) clamp(20px,4vw,56px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:32px clamp(40px,6vw,96px);align-items:end">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-bottom:22px">04 / About us</div>
+          <h2 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:clamp(52px,7vw,108px);line-height:.88;letter-spacing:-.02em;margin:0">Two Perspectives.<br><em style="color:var(--g6E6E6E,#6E6E6E);font-style:normal">One Shared Vision.</em></h2>
+        </div>
+        <div>
+          <p style="font-size:19px;line-height:1.6;margin:0 0 16px;color:var(--gEDEDED,#EDEDED)">We are Suraj Sridhar and Keerthi G, two product and user experience design leaders who share a deep-rooted passion for crafting intuitive, high-impact digital experiences.</p>
+          <p style="font-size:16px;line-height:1.7;margin:0;color:var(--gA3A3A3,#A3A3A3)">With over 16 years of industry experience each, we've spent our careers navigating the complexities of scaling products, shaping enterprise ecosystems, and solving hard design challenges for millions of users worldwide.</p>
         </div>
       </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:20px;margin-top:clamp(48px,6vw,80px)">
+        <sc-for list="{{ people }}" as="p" hint-placeholder-count="2">
+          <div style="padding:clamp(24px,3vw,40px);border:1px solid var(--g2A2A2A,#2A2A2A);border-radius:14px;background:linear-gradient(160deg,var(--g141414,#141414),var(--g0A0A0A,#0A0A0A))">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px">
+              <div>
+                <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g8A8A8A,#8A8A8A)">Co-founder</div>
+                <h3 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.04em;font-size:clamp(40px,4vw,56px);line-height:1.2;margin:12px 0 0">{{ p.first }}<br>{{ p.last }}</h3>
+              </div>
+              <div style="text-align:right"><div style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:64px;line-height:.9;color:var(--gFFFFFF,#FFFFFF)">16+</div><div style="font-size:12px;color:var(--g8A8A8A,#8A8A8A);margin-top:4px">years experience</div></div>
+            </div>
+            <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--g222222,#222222)">
+              <div style="font-size:14px;color:var(--gFFFFFF,#FFFFFF);margin-bottom:8px">{{ p.focus }}</div>
+              <p style="margin:0;font-size:15px;line-height:1.6;color:var(--gBDBDBD,#BDBDBD)">{{ p.bio }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px clamp(32px,5vw,80px)">
+        <div>
+          <p style="margin:0 0 10px;font-size:15.5px;line-height:1.6;color:var(--gBDBDBD,#BDBDBD)">Our collective journey spans world-class brands across consumer and enterprise landscapes:</p>
+          <p style="margin:0;font-size:14px;line-height:1.6;color:var(--g8A8A8A,#8A8A8A)"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-right:8px">Experience</span>Across B2B enterprise and B2C products used by millions of people.</p>
+        </div>
+        <div style="grid-column:span 2;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--g222222,#222222);border:1px solid var(--g222222,#222222);border-radius:10px;overflow:hidden">
+          <sc-for list="{{ clients }}" as="c" hint-placeholder-count="8"><div style="background:var(--g0A0A0A,#0A0A0A);padding:20px 18px;font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.03em;font-size:24px;color:var(--gEDEDED,#EDEDED);text-align:center" style-hover="color:var(--gFFFFFF,#FFFFFF)">{{ c }}</div></sc-for>
+        </div>
+      </div>
+      <div style="margin-top:clamp(56px,7vw,96px);padding:clamp(28px,4vw,56px);border-radius:14px;background:radial-gradient(700px 300px at 0% 0%,rgba(var(--glw,255,255,255),.12),transparent 60%),var(--g111111,#111111);border:1px solid var(--g2A2A2A,#2A2A2A)">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-bottom:18px">What drives us</div>
+        <p style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:clamp(24px,2.4vw,34px);line-height:1.3;margin:0;max-width:60ch;color:var(--gEDEDED,#EDEDED)">We believe that great design isn't just about how things look—it's about architecting systems that scale, solving real operational problems, and creating meaningful clarity for users. Whether we are designing complex enterprise workflows or high-touch consumer experiences, we bring maturity, cross-functional leadership, and craft-driven execution to every project we take on.</p>
+      </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<script type="application/json" id="ib-data">[{"group": "Designing for Clarity", "cases": [{"title": "Improving Dashboard Decision-Making", "summary": "Helping users make faster, better decisions through thoughtful information design.", "problem": "Users rarely used the monitoring dashboard because it was overloaded with metrics, widgets, and information that made it difficult to know where to focus.", "insight": "Research and usage data showed that users felt overwhelmed and struggled to find the information needed to make decisions quickly.", "solution": "Simplified the dashboard by prioritizing key performance metrics, organizing related information into clear sections, and introducing diagnostic workflows that helped users move from insights to action.", "impact": "Transformed the dashboard from a data-heavy monitoring screen into a focused decision-making hub, improving adoption, usability, and task efficiency.", "image": "assets/dashboard-case.png", "imageCaption": "Two monitoring dashboards cleaned for clarity and focused decision-making", "fullCaseUrl": "#", "slot": "ib-work-1", "doll": "#ib-dollA"}, {"title": "Making Irrigation Data Relatable", "summary": "Helping farmers understand irrigation needs through visuals that reflect what they see on their farms.", "problem": "Existing irrigation tools relied on meters and numbers that farmers found confusing, making it difficult to understand soil conditions and decide when to water.", "insight": "Competitor analysis revealed a gap between how tools presented data and how farmers understood their fields. Familiar visuals could make technical information more relatable and easier to act on.", "solution": "Redesigned Outgrow's Smart Irrigation Planner to visually represent crop stress and soil moisture, connecting data to conditions farmers recognise on their farms, with clear guidance on when and how much to irrigate.", "impact": "Testing with 15 farmers indicated that the visuals made soil moisture and irrigation needs easier to understand. Their feedback helped refine the design before development.", "metric": "15 farmers tested", "image": "assets/irrigation-synopsis.png", "imageCaption": "Competitor UI vs. the redesigned Smart Irrigation Planner", "fullCaseUrl": "#", "slot": "ib-work-2", "doll": "#ib-dollB"}]}, {"group": "Designing with Evidence", "cases": [{"title": "Learning the Cost of Assumptions", "summary": "Ensuring the product is built on real user needs.", "problem": "We redesigned a POS keyboard from QWERTY to an alphabetical layout based on internal assumptions rather than user research.", "insight": "Users were already highly familiar with QWERTY keyboards through everyday smartphone use and found the new layout frustrating.", "solution": "The keyboard was redesigned back to a standard QWERTY layout after validating user needs and behaviors.", "impact": "A costly hardware redesign reinforced a key design principle: validate assumptions with users before committing to major product changes.", "fullCaseUrl": "#", "slot": "ib-work-3", "doll": "#ib-dollA"}]}, {"group": "Designing for Accessibility", "cases": [{"title": "Improving POS Visibility in Bright Environments", "summary": "Making screens readable in the harshest working conditions.", "problem": "Cashiers struggled to view the POS screen in direct sunlight, leading to lower product adoption and satisfaction.", "insight": "Field research revealed that screen glare, not the interface itself, was the primary usability barrier.", "solution": "Introduced a high-contrast mode and adaptive brightness controls for improved visibility.", "impact": "Increased daily application usage by 30% and improved user satisfaction.", "metric": "+30% daily usage", "fullCaseUrl": "#", "slot": "ib-work-4", "doll": "#ib-dollB"}, {"title": "Making Mobile Data Entry Glove-Friendly", "summary": "Designing touch interactions for real-world hands.", "problem": "Field installers frequently made data-entry mistakes while wearing protective gloves.", "insight": "Small touch targets made interactions difficult in real working conditions.", "solution": "Enlarged interactive elements and optimized touch targets for gloved use.", "impact": "Reduced data-entry errors by approximately 65% and improved workflow efficiency.", "metric": "−65% data-entry errors", "fullCaseUrl": "#", "slot": "ib-work-5", "doll": "#ib-dollA"}, {"title": "Improving Accessibility for All Users", "summary": "Accessibility as a baseline, not an afterthought.", "problem": "Critical information relied on color alone, and navigation was difficult for keyboard and screen-reader users.", "insight": "Accessibility reviews identified gaps that affected users with visual and motor impairments.", "solution": "Added text and icon-based status indicators, improved screen-reader support, and optimized keyboard navigation.", "impact": "Achieved a more inclusive experience aligned with accessibility best practices.", "fullCaseUrl": "#", "slot": "ib-work-6", "doll": "#ib-dollB"}]}]</script>
-<script src="app.js" defer></script>
-<script>setTimeout(function(){document.querySelectorAll('[data-reveal]').forEach(function(e){e.classList.add('ib-in')})},3000);</script>
+  <!-- FOCUS -->
+  <section id="insights" style="max-width:1320px;margin:0 auto;padding:clamp(48px,7vw,104px) clamp(20px,4vw,56px) clamp(64px,9vw,128px)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-bottom:22px">05 / Focus</div>
+    <h2 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:clamp(44px,5.4vw,80px);line-height:.95;letter-spacing:-.015em;margin:0">Our 4 main focus areas.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;margin-top:clamp(40px,5vw,64px)">
+      <sc-for list="{{ insights }}" as="a" hint-placeholder-count="4">
+        <div style="padding:28px 26px 32px;border:1px solid var(--g2A2A2A,#2A2A2A);border-radius:14px;min-height:240px;display:flex;flex-direction:column;transition:border-color .3s,transform .3s" style-hover="border-color:var(--gFFFFFF,#FFFFFF);transform:translateY(-4px)">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gFFFFFF,#FFFFFF)">{{ a.n }}</span>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.04em;font-size:32px;line-height:1.02;margin:auto 0 12px;padding-top:40px">{{ a.title }}</h3>
+          <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--gA3A3A3,#A3A3A3)">{{ a.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="position:relative;overflow:hidden;background:radial-gradient(1000px 500px at 50% 120%,rgba(var(--glw,255,255,255),.22),transparent 65%),var(--g000,#000);border-top:1px solid var(--g1C1C1C,#1C1C1C)">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(80px,11vw,160px) clamp(20px,4vw,56px);text-align:center;display:flex;flex-direction:column;align-items:center">
+      <h2 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:clamp(56px,8.4vw,132px);line-height:.88;letter-spacing:-.02em;margin:0;max-width:13ch">Have a problem <em style="color:var(--g6E6E6E,#6E6E6E);font-style:normal">worth solving?</em></h2>
+      <p style="font-size:19px;line-height:1.55;margin:32px 0 36px;max-width:36ch;color:var(--gBDBDBD,#BDBDBD)">Tell us what's keeping you up at night. We'll bring the questions.</p>
+      <button type="button" onClick="{{ openContact }}" style="font:inherit;font-size:16px;font-weight:600;padding:16px 28px;border-radius:6px;border:none;background:var(--gFFFFFF,#FFFFFF);color:var(--g0A0A0A,#0A0A0A);cursor:pointer;box-shadow:0 0 60px rgba(var(--glw,255,255,255),.35)" style-hover="background:var(--acc,#D4FF3A)">Start a conversation →</button>
+      <span style="margin-top:22px;font-size:14px;color:var(--g8A8A8A,#8A8A8A)">There are two of us. Bring your problem.</span>
+    </div>
+  <div data-peek="1" aria-hidden="true" style="position:absolute;bottom:0;left:clamp(8px,18vw,360px);width:clamp(120px,13vw,200px);transform:translateY(100%);transition:transform .7s cubic-bezier(.34,1.4,.5,1);z-index:1"><svg viewBox="0 0 160 140" style="display:block;width:100%;height:auto;overflow:visible;transform:rotate(-4deg);transform-origin:bottom center"><path d="M30,140 C26,110 20,80 32,52 C46,20 98,8 122,34 C142,56 140,98 130,140" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path><path d="M54,60 C62,52 74,52 80,58 L79,88 C78,95 88,97 93,92" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path><circle cx="66" cy="74" r="10" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></circle><g data-pupil="1" data-max="4.9"><circle cx="66" cy="74" r="3.6" fill="var(--gEDEDED,#EDEDED)"></circle></g><circle cx="106" cy="70" r="12" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></circle><g data-pupil="1" data-max="6.5"><circle cx="106" cy="70" r="4" fill="var(--gEDEDED,#EDEDED)"></circle></g><path d="M8,110 C8,96 20,96 20,110 M20,110 C20,94 32,94 32,110 M32,110 C32,97 43,97 43,110" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path><path d="M117,110 C117,97 128,97 128,110 M128,110 C128,94 140,94 140,110 M140,110 C140,96 152,96 152,110" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path></svg></div>
+    <div data-peek="1" aria-hidden="true" style="position:absolute;bottom:0;right:clamp(8px,18vw,360px);width:clamp(120px,13vw,200px);transform:translateY(100%);transition:transform .7s cubic-bezier(.34,1.4,.5,1);z-index:1"><svg viewBox="0 0 160 140" style="display:block;width:100%;height:auto;overflow:visible;transform:rotate(5deg);transform-origin:bottom center"><path d="M30,140 L30,62 C30,38 42,26 64,26 L102,26 C126,26 136,40 136,62 L136,140" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path><path d="M44,50 L82,46" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path><path d="M92,52 C98,48 110,48 116,54" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path><circle cx="62" cy="70" r="14" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></circle><g data-pupil="1" data-max="8.1"><circle cx="62" cy="70" r="4.4" fill="var(--acc,#D4FF3A)"></circle></g><circle cx="106" cy="72" r="8" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></circle><g data-pupil="1" data-max="3.5"><circle cx="106" cy="72" r="3" fill="var(--acc,#D4FF3A)"></circle></g><path d="M86,62 L86,94 L97,94" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path><path d="M12,110 C12,96 24,96 24,110 M24,110 C24,94 36,94 36,110 M36,110 C36,97 47,97 47,110" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path><path d="M119,110 C119,97 130,97 130,110 M130,110 C130,94 142,94 142,110 M142,110 C142,96 154,96 154,110" fill="none" stroke="var(--gEDEDED,#EDEDED)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path></svg></div>
+  </section>
+</main>
+
+<footer style="max-width:1320px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(20px,4vw,56px) 32px">
+  <p style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.04em;font-size:clamp(30px,3.4vw,48px);line-height:1;margin:0 0 40px">Let's make something better.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:32px;padding-bottom:32px;border-bottom:1px solid var(--g222222,#222222)">
+    <div><div style="font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:15px;letter-spacing:.24em;margin-bottom:12px">IBBRU</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--g8A8A8A,#8A8A8A);max-width:30ch">An independent design studio turning complex problems into products people love.</p></div>
+    <div style="display:grid;gap:8px;align-content:start;font-size:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g8A8A8A,#8A8A8A);margin-bottom:4px">Explore</span><a href="#services" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Services</a><a href="#work" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Work</a><a href="#about" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">About</a><a href="#insights" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Focus</a><a href="#contact" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Contact</a></div>
+    <div style="display:grid;gap:8px;align-content:start;font-size:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g8A8A8A,#8A8A8A);margin-bottom:4px">Connect</span><a href="mailto:ibbru.studio@gmail.com" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">ibbru.studio@gmail.com</a><a href="#contact" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">LinkedIn</a><a href="#contact" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Instagram</a></div>
+  </div>
+  <p style="font-size:12.5px;color:var(--g6E6E6E,#6E6E6E);margin:20px 0 0">© 2026 IBBRU. An independent design studio.</p>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = (window.IBBRU && { ...window.IBBRU.initialState }) || { navOpen: false, openBook: null, page: 0, contactOpen: false, contactSent: false, contactName: '', contactEmail: '', contactMsg: '' };
+  componentDidMount() { this._peek(); try { const t = localStorage.getItem('ibbru-mono-theme'); if (t) this.setState({ theme: t }); } catch (e) {} if (!window.IBBRU) this._t = setInterval(() => { if (window.IBBRU) { clearInterval(this._t); this.forceUpdate(); } }, 40); }
+  componentDidUpdate(p, s) { if (window.IBBRU) window.IBBRU.turn(this, s); }
+  componentWillUnmount() { clearInterval(this._t); clearTimeout(this._pt); this._io && this._io.disconnect(); this._mm && window.removeEventListener('mousemove', this._mm); }
+  _peek() {
+    const figs = [...document.querySelectorAll('[data-peek]')];
+    const sec = document.getElementById('contact');
+    if (!figs.length || !sec) { this._pt = setTimeout(() => this._peek(), 200); return; }
+    const UP = 'translateY(21%)', DOWN = 'translateY(100%)', DUCK = 'translateY(80%)';
+    let visible = false;
+    figs.forEach((f, i) => {
+      f.style.transitionDelay = (i * 0.12) + 's';
+      f.addEventListener('mouseenter', () => { f.style.transitionDelay = '0s'; f.style.transform = DUCK; });
+      f.addEventListener('mouseleave', () => { clearTimeout(f._t); f._t = setTimeout(() => { if (visible) f.style.transform = UP; }, 650); });
+    });
+    this._io = new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+      figs.forEach((f, i) => { f.style.transitionDelay = (i * 0.12) + 's'; f.style.transform = visible ? UP : DOWN; });
+    }, { threshold: 0.35 });
+    this._io.observe(sec);
+    const pupils = [...document.querySelectorAll('[data-pupil]')];
+    let raf = 0, mx = 0, my = 0;
+    const update = () => {
+      raf = 0;
+      pupils.forEach(p => {
+        const c = p.firstElementChild, r = c.getBoundingClientRect();
+        const dx = mx - (r.left + r.width / 2), dy = my - (r.top + r.height / 2);
+        const d = Math.hypot(dx, dy) || 1, max = +p.dataset.max, k = Math.min(max, d / 30) / d;
+        p.setAttribute('transform', `translate(${(dx * k).toFixed(2)} ${(dy * k).toFixed(2)})`);
+      });
+    };
+    this._mm = (e) => { mx = e.clientX; my = e.clientY; if (!raf) raf = requestAnimationFrame(update); };
+    window.addEventListener('mousemove', this._mm);
+  }
+  renderVals() {
+    const v = window.IBBRU ? window.IBBRU.vals(this) : {};
+    const theme = this.state.theme || 'light';
+    return { ...v, theme, isDark: theme === 'dark', isLight: theme === 'light', themeLabel: theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode',
+      toggleTheme: () => { const t = theme === 'dark' ? 'light' : 'dark'; try { localStorage.setItem('ibbru-mono-theme', t); } catch (e) {} this.setState({ theme: t }); } };
+  }
+}
+</script>
 </body>
 </html>
