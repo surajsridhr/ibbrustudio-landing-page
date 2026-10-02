@@ -51,9 +51,13 @@ body:has([data-theme="light"]){background:#FAFAFA}
   [data-m="work-grid"]{margin-top:40px!important}
 
   [data-m="steps"]{margin-top:40px!important}
-  [data-m="step"]{padding:24px 0 0!important}
+  [data-m="step"]{padding:0 0 0 32px!important;border-top:0!important}
+  [data-m="step"]::before{content:"";position:absolute;left:4px;top:12px;bottom:-12px;width:1px;background:var(--g2A2A2A,#2A2A2A)}
+  [data-m="step"]:last-child::before{display:none}
+  [data-m="step"]>span:first-child{top:7.5px!important}
   [data-m="step"] h3{font-size:30px!important;margin:8px 0!important}
-  [data-m="step"] p{margin-bottom:24px!important}
+  [data-m="step"] p{margin-bottom:32px!important}
+  [data-m="step"]:last-child p{margin-bottom:0!important}
 
   [data-m="people"]{margin-top:40px!important;gap:16px!important}
   [data-m="person-name"]{line-height:1.05!important;font-size:36px!important}
