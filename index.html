@@ -25,24 +25,77 @@ a:hover{color:var(--acc,#D4FF3A)}
 ::selection{background:var(--acc,#D4FF3A);color:#0A0A0A}
 [data-theme="light"]{--gEDEDED:#111111;--g0A0A0A:#FAFAFA;--g242424:#DBDBDB;--gA3A3A3:#555555;--gFFFFFF:#000000;--g141414:#EBEBEB;--g2A2A2A:#D5D5D5;--g383838:#C7C7C7;--g000:#FFFFFF;--g1C1C1C:#E3E3E3;--g8A8A8A:#6B6B6B;--g5E5E5E:#8C8C8C;--gBDBDBD:#3D3D3D;--g6E6E6E:#7A7A7A;--g0F0F0F:#F0F0F0;--g1A1A1A:#E5E5E5;--g0E0E0E:#F1F1F1;--g050505:#FCFCFC;--g181818:#E7E7E7;--gF5F5F5:#0E0E0E;--g131313:#ECECEC;--g222222:#DDDDDD;--gF2F2F2:#F2F2F2;--g1D1D1D:#E2E2E2;--g111111:#EEEEEE;--acc:#C6F000;--acc-ink:#4A6600;--glw:0,0,0;--sh:60,60,60;--navrgb:250,250,250}
 body:has([data-theme="light"]){background:#FAFAFA}
+
+/* ---- Mobile spacing pass (≤640px). Desktop is untouched. ---- */
+[data-m="nav-menu"],[data-m="nav-panel"]{display:none}
+@media (max-width:640px){
+  [data-m="nav-row"]{flex-wrap:nowrap!important;gap:8px!important;padding:8px 20px!important}
+  [data-m="nav-links"]{display:none!important}
+  [data-m="nav-icon"]{width:44px!important;height:44px!important}
+  [data-m="nav-cta"]{min-height:44px;padding:0 14px!important;white-space:nowrap}
+  [data-m="nav-menu"]{display:grid}
+  [data-m="nav-panel"]{display:block;padding:4px 20px 12px;border-top:1px solid var(--g242424,#242424)}
+  [data-m="nav-panel"] a{display:block;padding:12px 0;font-size:17px;color:var(--gEDEDED,#EDEDED);text-decoration:none;border-bottom:1px solid var(--g1C1C1C,#1C1C1C)}
+  [data-m="nav-panel"] a:last-child{border-bottom:0}
+
+  [data-m="hero-in"]{padding:40px 20px 48px!important}
+  [data-m="hero-in"] h1{margin-top:20px!important}
+  [data-m="hero-grid"]{margin-top:40px!important;padding-top:24px!important;gap:32px!important}
+  [data-m="hero-ctas"]{margin-top:24px!important;gap:8px 24px!important}
+  [data-m="hero-link"]{display:inline-flex;align-items:center;min-height:44px;padding:0!important;border-bottom:0!important;text-decoration:underline!important;text-underline-offset:5px;text-decoration-color:var(--g6E6E6E,#6E6E6E)!important}
+
+  [data-m="svc-head"]{gap:16px!important}
+  [data-m="svc-grid"]{margin-top:40px!important}
+  [data-m="svc-card"]{min-height:0!important;padding:24px 20px!important}
+  [data-m="svc-card"] h3{font-size:28px!important;margin-top:12px!important}
+  [data-m="svc-card"] ul{padding-top:20px!important}
+  [data-m="svc-card"] li{font-size:15px!important}
+
+  [data-m="work-grid"]{margin-top:40px!important}
+  [data-m="book"]{aspect-ratio:4/3!important}
+
+  [data-m="steps"]{margin-top:40px!important}
+  [data-m="step"]{padding:24px 0 0!important}
+  [data-m="step"] h3{font-size:30px!important;margin:8px 0!important}
+  [data-m="step"] p{margin-bottom:24px!important}
+
+  [data-m="people"]{margin-top:40px!important;gap:16px!important}
+  [data-m="person-name"]{line-height:1.05!important;font-size:36px!important}
+  [data-m="stat"]{font-size:48px!important}
+  [data-m="clients"]{margin-top:48px!important}
+  [data-m="client"]{display:grid;place-items:center;min-height:64px;padding:12px!important;font-size:18px!important;line-height:1.2}
+  [data-m="quote"]{margin-top:48px!important;padding:24px 20px!important}
+  [data-m="quote"] p{font-size:20px!important;line-height:1.4!important;letter-spacing:-.03em!important}
+
+  [data-m="focus-grid"]{margin-top:40px!important;gap:16px!important}
+  [data-m="focus-card"]{min-height:0!important;padding:24px 20px 28px!important}
+  [data-m="focus-card"] h3{padding-top:24px!important;font-size:28px!important}
+
+  [data-m="foot-col"]{gap:0!important}
+  [data-m="foot-col"] a{padding:11px 0;font-size:16px}
+}
 </style>
 </helmet>
-<div data-theme="{{ theme }}" style="font-family:'Nunito',sans-serif;color:var(--gEDEDED,#EDEDED);background:var(--g0A0A0A,#0A0A0A);min-height:100vh;text-wrap:pretty;overflow-x:hidden">
+<div data-theme="{{ theme }}" style="font-family:'Nunito',sans-serif;color:var(--gEDEDED,#EDEDED);background:var(--g0A0A0A,#0A0A0A);min-height:100vh;text-wrap:pretty;overflow-x:clip">
 
 <nav style="position:sticky;top:0;z-index:50;background:rgba(var(--navrgb,10,10,10),.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--g242424,#242424)">
-  <div style="max-width:1320px;margin:0 auto;padding:14px clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:12px 32px">
+  <div data-m="nav-row" style="max-width:1320px;margin:0 auto;padding:14px clamp(20px,4vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:12px 32px">
     <a href="#top" style="display:flex;align-items:center;gap:10px;color:var(--gEDEDED,#EDEDED);text-decoration:none"><span style="width:8px;height:8px;border-radius:50%;background:var(--acc,#D4FF3A)"></span><span style="font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:15px;letter-spacing:.24em">IBBRU</span></a>
     <div style="flex:1"></div>
-    <div style="display:flex;flex-wrap:wrap;gap:6px 26px;font-size:14px">
+    <div data-m="nav-links" style="display:flex;flex-wrap:wrap;gap:6px 26px;font-size:14px">
       <a href="#services" style="color:var(--gA3A3A3,#A3A3A3);text-decoration:none" style-hover="color:var(--gEDEDED,#EDEDED)">Services</a>
       <a href="#work" style="color:var(--gA3A3A3,#A3A3A3);text-decoration:none" style-hover="color:var(--gEDEDED,#EDEDED)">Work</a>
       <a href="#about" style="color:var(--gA3A3A3,#A3A3A3);text-decoration:none" style-hover="color:var(--gEDEDED,#EDEDED)">About</a>
       <a href="#insights" style="color:var(--gA3A3A3,#A3A3A3);text-decoration:none" style-hover="color:var(--gEDEDED,#EDEDED)">Focus</a>
       <a href="#contact" style="color:var(--gA3A3A3,#A3A3A3);text-decoration:none" style-hover="color:var(--gEDEDED,#EDEDED)">Contact</a>
     </div>
-    <button type="button" onClick="{{ toggleTheme }}" aria-label="{{ themeLabel }}" title="{{ themeLabel }}" style="font:inherit;width:38px;height:38px;display:grid;place-items:center;border-radius:6px;border:1px solid var(--g383838,#383838);background:transparent;color:var(--gEDEDED,#EDEDED);cursor:pointer" style-hover="border-color:var(--acc-ink,#D4FF3A)"><sc-if value="{{ isDark }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></sc-if><sc-if value="{{ isLight }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></sc-if></button>
-    <button type="button" onClick="{{ openContact }}" style="font:inherit;font-size:14px;font-weight:500;padding:9px 16px;border-radius:6px;border:1px solid var(--gFFFFFF,#FFFFFF);background:transparent;color:var(--gFFFFFF,#FFFFFF);cursor:pointer" style-hover="background:var(--gFFFFFF,#FFFFFF);color:var(--g0A0A0A,#0A0A0A)">Let's talk →</button>
+    <button type="button" data-m="nav-icon" onClick="{{ toggleTheme }}" aria-label="{{ themeLabel }}" title="{{ themeLabel }}" style="font:inherit;width:38px;height:38px;display:grid;place-items:center;border-radius:6px;border:1px solid var(--g383838,#383838);background:transparent;color:var(--gEDEDED,#EDEDED);cursor:pointer" style-hover="border-color:var(--acc-ink,#D4FF3A)"><sc-if value="{{ isDark }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg></sc-if><sc-if value="{{ isLight }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></sc-if></button>
+    <button type="button" data-m="nav-cta" onClick="{{ openContact }}" style="font:inherit;font-size:14px;font-weight:500;padding:9px 16px;border-radius:6px;border:1px solid var(--gFFFFFF,#FFFFFF);background:transparent;color:var(--gFFFFFF,#FFFFFF);cursor:pointer" style-hover="background:var(--gFFFFFF,#FFFFFF);color:var(--g0A0A0A,#0A0A0A)">Let's talk →</button>
+    <button type="button" data-m="nav-menu" onClick="{{ toggleNav }}" aria-label="{{ navLabel }}" aria-expanded="{{ navExpanded }}" style="font:inherit;width:44px;height:44px;place-items:center;border-radius:6px;border:1px solid var(--g383838,#383838);background:transparent;color:var(--gEDEDED,#EDEDED);cursor:pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path></svg></button>
   </div>
+  <sc-if value="{{ navOpen }}" hint-placeholder-val="{{ false }}">
+  <div data-m="nav-panel"><a href="#services" onClick="{{ closeNav }}">Services</a><a href="#work" onClick="{{ closeNav }}">Work</a><a href="#about" onClick="{{ closeNav }}">About</a><a href="#insights" onClick="{{ closeNav }}">Focus</a><a href="#contact" onClick="{{ closeNav }}">Contact</a></div>
+</sc-if>
 </nav>
 
 <sc-if value="{{ contactOpen }}" hint-placeholder-val="{{ false }}">
@@ -80,15 +133,15 @@ body:has([data-theme="light"]){background:#FAFAFA}
 <main id="top">
   <!-- HERO -->
   <section style="background:var(--g000,#000);border-bottom:1px solid var(--g1C1C1C,#1C1C1C)">
-    <div style="max-width:1320px;margin:0 auto;padding:clamp(56px,9vw,136px) clamp(20px,4vw,56px) clamp(40px,5vw,64px)">
+    <div style="max-width:1320px;margin:0 auto;padding:clamp(56px,9vw,136px) clamp(20px,4vw,56px) clamp(40px,5vw,64px)" data-m="hero-in">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--g8A8A8A,#8A8A8A)">Independent design studio</div>
       <h1 style="font-family:'Poppins',sans-serif; font-weight: 500; font-size: clamp(48px, 16vw, 208px); line-height: 0.94; letter-spacing: -0.05em; margin: clamp(28px,4vw,56px) 0 0; color: var(--gEDEDED,#EDEDED)">Complexity,<br><span style="color:var(--g5E5E5E,#5E5E5E)">made simple</span><span style="color:var(--acc,#D4FF3A)">.</span></h1>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:36px clamp(40px,7vw,120px);margin-top:clamp(56px,7vw,104px);padding-top:28px;border-top:1px solid var(--g2A2A2A,#2A2A2A);align-items:start">
+      <div data-m="hero-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:36px clamp(40px,7vw,120px);margin-top:clamp(56px,7vw,104px);padding-top:28px;border-top:1px solid var(--g2A2A2A,#2A2A2A);align-items:start">
         <div>
           <p style="font-size:clamp(18px,1.5vw,21px);line-height:1.55;max-width:38ch;margin:0;color:var(--gBDBDBD,#BDBDBD)">We design digital products that make complicated things feel simple both for businesses and the people who use them.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center;margin-top:30px">
+          <div data-m="hero-ctas" style="display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center;margin-top:30px">
             <a href="#work" style="display:inline-flex;gap:8px;padding:14px 22px;border-radius:6px;background:var(--gFFFFFF,#FFFFFF);color:var(--g0A0A0A,#0A0A0A);text-decoration:none;font-weight:600" style-hover="background:var(--acc,#D4FF3A);color:#0A0A0A">Explore our work ↗</a>
-            <a href="#about" style="color:var(--gEDEDED,#EDEDED);text-decoration:none;border-bottom:1px solid var(--g6E6E6E,#6E6E6E);padding-bottom:3px" style-hover="border-color:var(--acc-ink,#D4FF3A)">Meet IBBRU →</a>
+            <a href="#about" data-m="hero-link" style="color:var(--gEDEDED,#EDEDED);text-decoration:none;border-bottom:1px solid var(--g6E6E6E,#6E6E6E);padding-bottom:3px" style-hover="border-color:var(--acc-ink,#D4FF3A)">Meet IBBRU →</a>
           </div>
         </div>
         <div>
@@ -103,16 +156,16 @@ body:has([data-theme="light"]){background:#FAFAFA}
 
   <!-- SERVICES -->
   <section id="services" style="max-width:1320px;margin:0 auto;padding:clamp(64px,9vw,128px) clamp(20px,4vw,56px)">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px clamp(32px,5vw,80px)">
+    <div data-m="svc-head" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px clamp(32px,5vw,80px)">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF)">01 / What we do</div>
       <div style="grid-column:span 2;min-width:0">
         <h2 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:clamp(38px,4.8vw,68px);line-height:1;letter-spacing:-.01em;margin:0">We help teams solve problems, design better experiences, and build usable products.</h2>
         <p style="font-size:17px;line-height:1.7;margin:24px 0 0;color:var(--gA3A3A3,#A3A3A3);max-width:56ch">From enterprise workflows to consumer apps — we take ideas all the way to execution: research, product design, systems, brand, graphics, and motion.</p>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:var(--g242424,#242424);border:1px solid var(--g242424,#242424);border-radius:14px;overflow:hidden;margin-top:clamp(48px,6vw,80px)">
+    <div data-m="svc-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:var(--g242424,#242424);border:1px solid var(--g242424,#242424);border-radius:14px;overflow:hidden;margin-top:clamp(48px,6vw,80px)">
       <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
-        <div style="background:var(--g0A0A0A,#0A0A0A);padding:28px 26px 30px;min-height:240px;display:flex;flex-direction:column;transition:background .3s" style-hover="background:var(--g141414,#141414)">
+        <div data-m="svc-card" style="background:var(--g0A0A0A,#0A0A0A);padding:28px 26px 30px;min-height:240px;display:flex;flex-direction:column;transition:background .3s" style-hover="background:var(--g141414,#141414)">
           <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gFFFFFF,#FFFFFF)">{{ s.num }}</span>
           <h3 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.04em;font-size:30px;line-height:1.05;margin:18px 0 0">{{ s.name }}<sc-if value="{{ s.name2 }}" hint-placeholder-val="{{ false }}"><br><em style="color:var(--gA3A3A3,#A3A3A3);font-size:22px">{{ s.name2 }}</em></sc-if></h3>
           <ul style="list-style:none;padding:0;margin:auto 0 0;padding-top:24px;display:grid;gap:8px">
@@ -135,18 +188,18 @@ body:has([data-theme="light"]){background:#FAFAFA}
       </div>
 
       <sc-if value="{{ shelfOpen }}" hint-placeholder-val="{{ true }}">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(16px,2.4vw,32px);margin-top:clamp(48px,6vw,72px)">
-          <button type="button" onClick="{{ books.0.open }}" aria-label="{{ books.0.aria }}" style="all:unset;cursor:pointer;display:grid;grid-template-rows:1fr auto 1fr;aspect-ratio:3/4;max-height:480px;border-radius:6px 16px 16px 6px;overflow:hidden;background:#2336C9;box-shadow:inset 14px 0 0 rgba(0,0,0,0.18);box-sizing:border-box;transition:transform .35s cubic-bezier(.22,.61,.36,1)" style-hover="transform:translateY(-10px) rotate(-1.5deg)">
+        <div data-m="work-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(16px,2.4vw,32px);margin-top:clamp(48px,6vw,72px)">
+          <button type="button" data-m="book" onClick="{{ books.0.open }}" aria-label="{{ books.0.aria }}" style="all:unset;cursor:pointer;display:grid;grid-template-rows:1fr auto 1fr;aspect-ratio:3/4;max-height:480px;border-radius:6px 16px 16px 6px;overflow:hidden;background:#2336C9;box-shadow:inset 14px 0 0 rgba(0,0,0,0.18);box-sizing:border-box;transition:transform .35s cubic-bezier(.22,.61,.36,1)" style-hover="transform:translateY(-10px) rotate(-1.5deg)">
             <span style="padding:22px 22px 0 34px;color:#F4F1EA;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px">{{ books.0.vol }}</span>
             <span style="background: #F4F1EA; color: #141414; padding: 22px 22px 22px 34px; font-family: 'Poppins',sans-serif; font-weight: 600; font-size: clamp(30px,2.8vw,40px); line-height: 1.09; letter-spacing: -.045em">{{ books.0.group }}</span>
             <span style="padding:0 22px 22px 34px;display:flex;justify-content:space-between;align-items:flex-end;color:#F4F1EA;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px"><span>{{ books.0.count }}</span><span style="width:44px;height:44px;border-radius:50%;background:#F5B800;color:#141414;display:grid;place-items:center;font-size:18px">→</span></span>
           </button>
-          <button type="button" onClick="{{ books.1.open }}" aria-label="{{ books.1.aria }}" style="all:unset;cursor:pointer;display:grid;grid-template-rows:1fr auto 1fr;aspect-ratio:3/4;max-height:480px;border-radius:6px 16px 16px 6px;overflow:hidden;background:#EE5A2F;box-shadow:inset 14px 0 0 rgba(0,0,0,0.15);box-sizing:border-box;transition:transform .35s cubic-bezier(.22,.61,.36,1)" style-hover="transform:translateY(-10px) rotate(1.2deg)">
+          <button type="button" data-m="book" onClick="{{ books.1.open }}" aria-label="{{ books.1.aria }}" style="all:unset;cursor:pointer;display:grid;grid-template-rows:1fr auto 1fr;aspect-ratio:3/4;max-height:480px;border-radius:6px 16px 16px 6px;overflow:hidden;background:#EE5A2F;box-shadow:inset 14px 0 0 rgba(0,0,0,0.15);box-sizing:border-box;transition:transform .35s cubic-bezier(.22,.61,.36,1)" style-hover="transform:translateY(-10px) rotate(1.2deg)">
             <span style="padding:22px 22px 0 34px;color:#141414;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px">{{ books.1.vol }}</span>
             <span style="background: #F4F1EA; color: #141414; padding: 22px 22px 22px 34px; font-family: 'Poppins',sans-serif; font-weight: 600; font-size: clamp(30px,2.8vw,40px); line-height: 1.09; letter-spacing: -.045em">{{ books.1.group }}</span>
             <span style="padding:0 22px 22px 34px;display:flex;justify-content:space-between;align-items:flex-end;color:#141414;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px"><span>{{ books.1.count }}</span><span style="width:44px;height:44px;border-radius:50%;background:#141414;color:#F4F1EA;display:grid;place-items:center;font-size:18px">→</span></span>
           </button>
-          <button type="button" onClick="{{ books.2.open }}" aria-label="{{ books.2.aria }}" style="all:unset;cursor:pointer;display:grid;grid-template-rows:1fr auto 1fr;aspect-ratio:3/4;max-height:480px;border-radius:6px 16px 16px 6px;overflow:hidden;background:#F5B800;box-shadow:inset 14px 0 0 rgba(0,0,0,0.12);box-sizing:border-box;transition:transform .35s cubic-bezier(.22,.61,.36,1)" style-hover="transform:translateY(-10px) rotate(-1deg)">
+          <button type="button" data-m="book" onClick="{{ books.2.open }}" aria-label="{{ books.2.aria }}" style="all:unset;cursor:pointer;display:grid;grid-template-rows:1fr auto 1fr;aspect-ratio:3/4;max-height:480px;border-radius:6px 16px 16px 6px;overflow:hidden;background:#F5B800;box-shadow:inset 14px 0 0 rgba(0,0,0,0.12);box-sizing:border-box;transition:transform .35s cubic-bezier(.22,.61,.36,1)" style-hover="transform:translateY(-10px) rotate(-1deg)">
             <span style="padding:22px 22px 0 34px;color:#141414;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px">{{ books.2.vol }}</span>
             <span style="background: #F4F1EA; color: #141414; padding: 22px 22px 22px 34px; font-family: 'Poppins',sans-serif; font-weight: 600; font-size: clamp(30px,2.8vw,40px); line-height: 1.09; letter-spacing: -.045em">{{ books.2.group }}</span>
             <span style="padding:0 22px 22px 34px;display:flex;justify-content:space-between;align-items:flex-end;color:#141414;font-family:'Nunito',sans-serif;font-weight:600;font-size:14px"><span>{{ books.2.count }}</span><span style="width:44px;height:44px;border-radius:50%;background:#2336C9;color:#F4F1EA;display:grid;place-items:center;font-size:18px">→</span></span>
@@ -193,9 +246,9 @@ body:has([data-theme="light"]){background:#FAFAFA}
   <section style="max-width:1320px;margin:0 auto;padding:clamp(64px,9vw,128px) clamp(20px,4vw,56px)">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-bottom:22px">03 / How we work</div>
     <h2 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:clamp(44px,5.8vw,84px);line-height:.95;letter-spacing:-.015em;margin:0;max-width:18ch">Ask better questions. <em style="color:var(--g6E6E6E,#6E6E6E);font-style:normal">Ship better answers.</em></h2>
-    <ol style="list-style:none;padding:0;margin:clamp(48px,6vw,80px) 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:0">
+    <ol data-m="steps" style="list-style:none;padding:0;margin:clamp(48px,6vw,80px) 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:0">
       <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
-        <li style="position:relative;padding:28px 24px 0 0;border-top:1px solid var(--g2A2A2A,#2A2A2A)">
+        <li data-m="step" style="position:relative;padding:28px 24px 0 0;border-top:1px solid var(--g2A2A2A,#2A2A2A)">
           <span style="position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--acc,#D4FF3A)"></span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--g8A8A8A,#8A8A8A)">{{ s.num }}</span>
           <h3 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.04em;font-size:34px;margin:10px 0 10px">{{ s.title }}</h3>
@@ -218,15 +271,15 @@ body:has([data-theme="light"]){background:#FAFAFA}
           <p style="font-size:16px;line-height:1.7;margin:0;color:var(--gA3A3A3,#A3A3A3)">With over 16 years of industry experience each, we've spent our careers navigating the complexities of scaling products, shaping enterprise ecosystems, and solving hard design challenges for millions of users worldwide.</p>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:20px;margin-top:clamp(48px,6vw,80px)">
+      <div data-m="people" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:20px;margin-top:clamp(48px,6vw,80px)">
         <sc-for list="{{ people }}" as="p" hint-placeholder-count="2">
           <div style="padding:clamp(24px,3vw,40px);border:1px solid var(--g2A2A2A,#2A2A2A);border-radius:14px;background:linear-gradient(160deg,var(--g141414,#141414),var(--g0A0A0A,#0A0A0A))">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px">
               <div>
                 <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g8A8A8A,#8A8A8A)">Co-founder</div>
-                <h3 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.04em;font-size:clamp(40px,4vw,56px);line-height:1.2;margin:12px 0 0">{{ p.first }}<br>{{ p.last }}</h3>
+                <h3 data-m="person-name" style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.04em;font-size:clamp(40px,4vw,56px);line-height:1.2;margin:12px 0 0">{{ p.first }}<br>{{ p.last }}</h3>
               </div>
-              <div style="text-align:right"><div style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:64px;line-height:.9;color:var(--gFFFFFF,#FFFFFF)">16+</div><div style="font-size:12px;color:var(--g8A8A8A,#8A8A8A);margin-top:4px">years experience</div></div>
+              <div style="text-align:right"><div data-m="stat" style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:64px;line-height:.9;color:var(--gFFFFFF,#FFFFFF)">16+</div><div style="font-size:12px;color:var(--g8A8A8A,#8A8A8A);margin-top:4px">years experience</div></div>
             </div>
             <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--g222222,#222222)">
               <div style="font-size:14px;color:var(--gFFFFFF,#FFFFFF);margin-bottom:8px">{{ p.focus }}</div>
@@ -235,16 +288,16 @@ body:has([data-theme="light"]){background:#FAFAFA}
           </div>
         </sc-for>
       </div>
-      <div style="margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px clamp(32px,5vw,80px)">
+      <div data-m="clients" style="margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px clamp(32px,5vw,80px)">
         <div>
           <p style="margin:0 0 10px;font-size:15.5px;line-height:1.6;color:var(--gBDBDBD,#BDBDBD)">Our collective journey spans world-class brands across consumer and enterprise landscapes:</p>
           <p style="margin:0;font-size:14px;line-height:1.6;color:var(--g8A8A8A,#8A8A8A)"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-right:8px">Experience</span>Across B2B enterprise and B2C products used by millions of people.</p>
         </div>
         <div style="grid-column:span 2;min-width:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--g222222,#222222);border:1px solid var(--g222222,#222222);border-radius:10px;overflow:hidden">
-          <sc-for list="{{ clients }}" as="c" hint-placeholder-count="8"><div style="background:var(--g0A0A0A,#0A0A0A);padding:20px 18px;font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.03em;font-size:24px;color:var(--gEDEDED,#EDEDED);text-align:center" style-hover="color:var(--gFFFFFF,#FFFFFF)">{{ c }}</div></sc-for>
+          <sc-for list="{{ clients }}" as="c" hint-placeholder-count="8"><div data-m="client" style="background:var(--g0A0A0A,#0A0A0A);padding:20px 18px;font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.03em;font-size:24px;color:var(--gEDEDED,#EDEDED);text-align:center" style-hover="color:var(--gFFFFFF,#FFFFFF)">{{ c }}</div></sc-for>
         </div>
       </div>
-      <div style="margin-top:clamp(56px,7vw,96px);padding:clamp(28px,4vw,56px);border-radius:14px;background:radial-gradient(700px 300px at 0% 0%,rgba(var(--glw,255,255,255),.12),transparent 60%),var(--g111111,#111111);border:1px solid var(--g2A2A2A,#2A2A2A)">
+      <div data-m="quote" style="margin-top:clamp(56px,7vw,96px);padding:clamp(28px,4vw,56px);border-radius:14px;background:radial-gradient(700px 300px at 0% 0%,rgba(var(--glw,255,255,255),.12),transparent 60%),var(--g111111,#111111);border:1px solid var(--g2A2A2A,#2A2A2A)">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-bottom:18px">What drives us</div>
         <p style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:clamp(24px,2.4vw,34px);line-height:1.3;margin:0;max-width:60ch;color:var(--gEDEDED,#EDEDED)">We believe that great design isn't just about how things look—it's about architecting systems that scale, solving real operational problems, and creating meaningful clarity for users. Whether we are designing complex enterprise workflows or high-touch consumer experiences, we bring maturity, cross-functional leadership, and craft-driven execution to every project we take on.</p>
       </div>
@@ -255,9 +308,9 @@ body:has([data-theme="light"]){background:#FAFAFA}
   <section id="insights" style="max-width:1320px;margin:0 auto;padding:clamp(48px,7vw,104px) clamp(20px,4vw,56px) clamp(64px,9vw,128px)">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gFFFFFF,#FFFFFF);margin-bottom:22px">05 / Focus</div>
     <h2 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.045em;font-size:clamp(44px,5.4vw,80px);line-height:.95;letter-spacing:-.015em;margin:0">Our 4 main focus areas.</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;margin-top:clamp(40px,5vw,64px)">
+    <div data-m="focus-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;margin-top:clamp(40px,5vw,64px)">
       <sc-for list="{{ insights }}" as="a" hint-placeholder-count="4">
-        <div style="padding:28px 26px 32px;border:1px solid var(--g2A2A2A,#2A2A2A);border-radius:14px;min-height:240px;display:flex;flex-direction:column;transition:border-color .3s,transform .3s" style-hover="border-color:var(--gFFFFFF,#FFFFFF);transform:translateY(-4px)">
+        <div data-m="focus-card" style="padding:28px 26px 32px;border:1px solid var(--g2A2A2A,#2A2A2A);border-radius:14px;min-height:240px;display:flex;flex-direction:column;transition:border-color .3s,transform .3s" style-hover="border-color:var(--gFFFFFF,#FFFFFF);transform:translateY(-4px)">
           <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gFFFFFF,#FFFFFF)">{{ a.n }}</span>
           <h3 style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.04em;font-size:32px;line-height:1.02;margin:auto 0 12px;padding-top:40px">{{ a.title }}</h3>
           <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--gA3A3A3,#A3A3A3)">{{ a.body }}</p>
@@ -283,8 +336,8 @@ body:has([data-theme="light"]){background:#FAFAFA}
   <p style="font-family:'Poppins',sans-serif;font-weight:500;letter-spacing:-.04em;font-size:clamp(30px,3.4vw,48px);line-height:1;margin:0 0 40px">Let's make something better.</p>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:32px;padding-bottom:32px;border-bottom:1px solid var(--g222222,#222222)">
     <div><div style="font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:15px;letter-spacing:.24em;margin-bottom:12px">IBBRU</div><p style="margin:0;font-size:14px;line-height:1.6;color:var(--g8A8A8A,#8A8A8A);max-width:30ch">An independent design studio turning complex problems into products people love.</p></div>
-    <div style="display:grid;gap:8px;align-content:start;font-size:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g8A8A8A,#8A8A8A);margin-bottom:4px">Explore</span><a href="#services" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Services</a><a href="#work" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Work</a><a href="#about" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">About</a><a href="#insights" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Focus</a><a href="#contact" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Contact</a></div>
-    <div style="display:grid;gap:8px;align-content:start;font-size:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g8A8A8A,#8A8A8A);margin-bottom:4px">Connect</span><a href="mailto:ibbru.studio@gmail.com" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">ibbru.studio@gmail.com</a><a href="#contact" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">LinkedIn</a><a href="#contact" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Instagram</a></div>
+    <div data-m="foot-col" style="display:grid;gap:8px;align-content:start;font-size:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g8A8A8A,#8A8A8A);margin-bottom:4px">Explore</span><a href="#services" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Services</a><a href="#work" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Work</a><a href="#about" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">About</a><a href="#insights" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Focus</a><a href="#contact" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Contact</a></div>
+    <div data-m="foot-col" style="display:grid;gap:8px;align-content:start;font-size:14px"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--g8A8A8A,#8A8A8A);margin-bottom:4px">Connect</span><a href="mailto:ibbru.studio@gmail.com" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">ibbru.studio@gmail.com</a><a href="#contact" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">LinkedIn</a><a href="#contact" style="color:var(--gBDBDBD,#BDBDBD);text-decoration:none">Instagram</a></div>
   </div>
   <p style="font-size:12.5px;color:var(--g6E6E6E,#6E6E6E);margin:20px 0 0">© 2026 IBBRU. An independent design studio.</p>
 </footer>
@@ -330,7 +383,9 @@ class Component extends DCLogic {
     const v = window.IBBRU ? window.IBBRU.vals(this) : {};
     const theme = this.state.theme || 'light';
     return { ...v, theme, isDark: theme === 'dark', isLight: theme === 'light', themeLabel: theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode',
-      toggleTheme: () => { const t = theme === 'dark' ? 'light' : 'dark'; try { localStorage.setItem('ibbru-mono-theme', t); } catch (e) {} this.setState({ theme: t }); } };
+      toggleTheme: () => { const t = theme === 'dark' ? 'light' : 'dark'; try { localStorage.setItem('ibbru-mono-theme', t); } catch (e) {} this.setState({ theme: t }); },
+      navOpen: !!this.state.navOpen, navExpanded: this.state.navOpen ? 'true' : 'false', navLabel: this.state.navOpen ? 'Close menu' : 'Open menu',
+      toggleNav: () => this.setState({ navOpen: !this.state.navOpen }), closeNav: () => this.setState({ navOpen: false }) };
   }
 }
 </script>
